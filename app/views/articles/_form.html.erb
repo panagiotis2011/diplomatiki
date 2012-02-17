@@ -1,0 +1,38 @@
+# encoding: utf-8
+<%= form_for(@article) do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %>: και έτσι δεν επιτρέπεται η αποθήκευση του άρθρου</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% # Ο τίτλος του άρθρου δεν μπορεί να αλλάξει εφόσον το άρθρο γίνει αποδεκτό %>
+  <% if @article.state < 3 %>
+    <div class="field">
+        <label for="article_title">Τίτλος (Κείμενο, μέγιστος αριθμός χαρακτήρων 80)</label><br />
+        <%= f.text_field :title, :size => "100%", :class => "fullwidth"  %>
+    </div>
+   <% else %>
+    <div class="field">
+        <label for="article_title">Τίτλος (Δεν μπορεί να αλλάξει εφόσον το άρθρο γίνει αποδεκτό)</label><br />
+        <%= f.text_field :title, :readonly => true,  :size => "100%", :class => "fullwidth"  %>
+    </div>
+   <% end %>
+
+  <div class="field">
+    <label for="article_body">Το άρθρο σας (Textile: RedCloth with Coderay - <%= link_to "What is this?", '#' %>)</label><br />
+    <%= f.text_area :body, :size => "100%x40", :class => "fullwidth"  %>
+  </div>
+   <div class="actions">
+    <%= f.submit :class => "awesome custom red" %>
+    <%= link_to 'Εμφάνιση αυτού του άρθρου', @article, :class => "awesome custom black" %>
+    <%= link_to 'Επιστροφή στα άρθρα μου', myarticles_articles_path, :class => "awesome custom black" %>
+  </div>
+
+<% end %>

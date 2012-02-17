@@ -1,0 +1,9 @@
+<section id = "articles">
+    <% @articles.each do |article| %>
+        <article class="article">
+            <div class = "title"><%= link_to article.title, article %></div>
+            <div class = "byline"><%= article.created_at.strftime("%B %d, %Y") %></div>
+            <div class = "teaser"><%= article.teaser %></div>
+        </article>
+    <% end %>
+</section>

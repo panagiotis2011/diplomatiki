@@ -1,0 +1,255 @@
+/* Notes: */
+/* Styles for CodeRay output are located in a seperate stylesheet */
+
+/* reset */
+* {	margin: 0; padding: 0; }
+
+/* tell the browser to render HTML 5 elements as block */
+header, footer, section, aside, nav, article { display: block; }
+
+
+body { font-size: 14px; font-family: Helvetica, Arial, Verdana; background-color: #ffffff; }
+
+h1 { font-size: 24px; }
+
+h2 { font-size: 20px; margin-bottom: 40px; padding-bottom: 5px; border-bottom: 1px solid #74809a; }
+
+h3 { font-size: 16px; margin-bottom: 30px; }
+
+h4, h5, h6 { font-size: 14px; }
+
+p { margin: 0 0 20px 0; }
+
+p, li { line-height: 20px; }
+
+hr { margin: 25px 0;}
+
+a { color: #74809a; text-decoration: none !important; }
+a:visited { color: #74809a; }
+a:hover { background-color: transparent !important; color: #c81419; }
+li a:hover { background-color: transparent !important; color: #c81419; }
+
+/* style the page header */
+header#page_header { margin: 0px 2% 10px 2%; padding: 5px 15px; }
+#page_title h1 { color: #74809a; padding: 0 0; }
+#page_title h1 span { color: #c81419; }
+#page_title h2 { font-size: 14px; font-weight: normal; color: #74809a; padding: 0 0; margin: 10px 0 10px 25px; border: none; }
+#page_title h2 span { color: #c81419; }
+#page_title img { margin-left: 40px;}
+
+#maincontainer { overflow: hidden; }
+
+/* do some floating: we have two columns, content and sidebar, both are in maincontainer */
+#content { float: left; width: 72%; margin: 0px 10px 40px 2%; padding: 0 0 0 15px; }
+
+/* this is our sidebar with its elements */
+#sidebar { float: right; width: 18%; margin: 0px 2% 40px 0px; padding: 0; }
+#sidebar .box { background-color: #dddddd; padding: 15px; margin-bottom: 20px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+	background-image: -moz-linear-gradient(left, rgba(250,250,250,.2), rgba(150,150,150,.2), rgba(0,0,0,.0)) !important;
+	background-image: -webkit-gradient(linear, left top, right top, from(rgba(250,250,250,.2)), color-stop(0.5, rgba(150,150,150,.2)), to(rgba(0,0,0,.0))) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#30ffffff,endColorstr=#10000000) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=135,strength=2);
+}
+#sidebar h3 { font-size: 13px; margin-bottom: 10px; }
+#sidebar h4 { font-size: 12px; font-weight: normal; margin-bottom: 10px; }
+#sidebar a { font-size: 12px; }
+#sidebar hr { margin: 5px 0; color: #ffffff; }
+#sidebar ul { list-style: square; font-size: 12px;}
+#sidebar li { margin: 0 0 0 30px; padding: 0 10px 0 0; }
+
+/* style the flash; there is an id flash at the section and a class at each of the flash divs */
+#flash { }
+.flash { padding: 10px; margin-bottom: 30px; }
+.error, .alert { background-color: #cc0000; }
+.notice { background-color: #00cc00; }
+.myinfo { background-color: #00cc00; }
+
+/* apply some styling to devise forms */
+#user_edit label, #user_new label, #user_edit i, #user_new i { font-size: 12px; }
+#user_edit p, #user_new p { font-size: 12px; margin-bottom: 10px; }
+#user_edit span, #user_new span { margin-left: 7px; font-size: 12px; font-style: italic; }
+#user_edit div, #user_new div { margin-top: 30px; }
+#user_current_password { border: 1px solid #c81419;}
+#cancel { margin-top: 30px; font-size: 11px !important; }
+#user_edit .field_with_errors, #user_new .field_with_errors  { padding: 0 !important; margin: 0 !important;}
+
+
+/* 320 300 px */
+
+#deviseauth { background: #ffffff; text-align: left; }
+#deviseauth .box { border: 1px solid #74809a; padding: 15px; margin-bottom: 25px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+#deviseauth #local { float: left; width: 250px; margin: 0 60px 30px 0; }
+#deviseauth #remote { float: left; width: 390px; }
+#deviseauth #local2 { float: left; width: 320px; margin: 0 60px 30px 0; }
+#deviseauth #remote2 { float: left; width: 300px; }
+#deviseauth #terms { background-color: #ffff00; text-align: center; }
+#deviseauth #terms a { color: #000000; font-weight: bold; }
+#deviseauth #terms a:hover { color: #c81419; }
+#services { padding: 0; margin: 0; height: 90px; }
+#services .services { float: left; text-align: center; text-decoration: none; padding: 5px 15px 0px 10px; }
+#services .services2 { float: left; text-align: center; text-decoration: none; padding: 0px 15px 0px 10px; }
+#services .services img, #services .services2 img { display: block; }
+#footnote_signup { clear: both; font-size: 9px; padding: 5px 0px 5px 10px; }
+#devise_links { clear: both; }
+#user_email, #user_password { width: 95%; }
+
+#deviseauth #availableservices { clear: both; padding-top: 25px; }
+#currservices h3 { margin-bottom: 0; }
+#availableservices h3 { margin-bottom: 10px; }
+#availableservices h4 { margin: 20px 0 0 12px; font-weight: normal; }
+.services_used { clear: both; padding-top: 20px; }
+.services_used img, .services_used .user { float: left; }
+.services_used img { padding-left: 10px; }
+.services_used div { margin-left: 10px; }
+.line1 { margin-top: 12px;}
+
+/* style forms (standard rails forms) */
+div.field, div.actions { margin-bottom: 10px; }
+div.field label { font-size: 12px; }
+
+
+/* style the errors of _form.html.erb (articles) */
+.field_with_errors label { padding: 3px 10px 3px 10px; background-color: #c81419;  color: #ffffff; display: table; }
+#error_explanation { margin: 20px 0; padding: 0; width: 450px; border: 2px solid #c81419; background-color: #f0f0f0; }
+#error_explanation h2 { text-align: left; font-weight: bold; padding: 5px 5px 5px 15px; margin-bottom: 10px; font-size: 12px; background-color: #c81419; color: #ffffff; }
+#error_explanation ul li { font-size: 12px; margin-left: 30px; list-style: square; }
+
+
+/* section articles, this is the main index of the articles controller */
+#articles { padding: 0; margin: 0; }
+#articles { }
+.article { width: 100%; margin-bottom: 40px; }
+.article .title { font-weight: bold; margin-bottom: 0px; }
+.article .title a { font-size: 18px; text-decoration: none; color: #c81419; padding-top: 5px; }
+.article .teaser { text-align: justify; }
+.article .byline { font-size: 12px; margin-bottom: 10px; }
+.article .stars .text { margin-top: 0px !important; }
+
+/* show-method: display one article */
+#articleheader {}
+#articleheader h2 { margin-bottom: 5px; }
+#articleheader h3 { font-weight: normal; }
+#articleheader .byline { font-size: 12px; margin-bottom: 20px; }
+#articleheader .byline span { padding-left: 30px; }
+#articleheader .avatar { float: right; margin-left: 20px;}
+#articleheader .avatar img { border: 1px solid #74809a; }
+#articlebody { margin-top: 20px; }
+
+/* style the output of RedCloth */
+.textile { margin: 0; padding: 0;}
+.textile h1 { font-size: 16px; margin-top: 30px; margin-bottom: 10px; }
+.textile h2 { font-size: 14px; margin-top: 25px; margin-bottom: 10px; border: none;}
+.textile h3, .textile h4, .textile h5 { font-size: 14px;}
+.textile h6 { font-size: 12px; font-weight: normal; margin: 20px 0 0 0; padding: 3px 0px 3px 5px; color: #eeeeee; background-color: #555555; text-align: left;}
+.textile p { text-align: justify; margin: 10px 0 0 0; }
+.textile blockquote { margin: 20px; font-style: italic; }
+.textile a { font-size: 14px; }
+.textile li ul, .textile li ol { margin: 0 20px; }
+.textile ul, .textile ol { margin: 0 20px 20px; }
+.textile ul { list-style-type: square; }
+.textile ol { list-style-type: decimal; }
+.textile dl { margin: 0 0 20px; }
+.textile dl dt { margin-left: 20px; }
+.textile dd { margin-left: 20px; }
+
+#comments { overflow: hidden; margin-top: 30px; }
+.comment { background-color: #eeeeee; margin-bottom: 20px; min-height: 60px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+.comment .avatar { float: left;  padding: 6px 0 0 10px;}
+.comment .avatar img { border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+.comment .commentbody { width: 90%; padding: 6px 0 6px 80px; font-size: 12px;}
+.comment .commenthead { margin-bottom: 10px; font-size: 11px; }
+.comment a { font-size: 11px; }
+.comment .commenthead span { padding-left: 10px; }
+.comment .fullwidth { width: 95%; margin-bottom: 10px; }
+#comment .signin { font-size: 12px; background-color: #cccccc; padding: 15px; text-align: center; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+#comment .signin a { font-weight: bold; color: #c81419;}
+#comment .newcomment { margin-top: 40px; background-color: #cccccc !important; }
+
+.stars * { margin: 0; padding: 0; list-style: none; }
+.stars { height: 25px; width: 125px; background: url('../images/star.png') left top repeat-x; }
+.stars .yellowstars { height: 25px; width: 0px; background: url('../images/star.png') left repeat-x; }
+.stars .text { text-align: right; font-size: 10px; }
+.floatstars { float: right; }
+
+#ratingbox { background-color: #cccccc; width: 250px; padding: 10px; margin: 40px 0 50px 0; font-size: 12px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+#ratingbox ul { background-color: #dddddd; padding: 10px 0; margin: 0 0 10px 0; list-style: none; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+#ratingbuttons li { padding: 0 10px 0 10px; margin: 0; font-size: 12px; text-align: left; }
+#ratingbuttons li span { margin-left: 10px; }
+#rating_submit { margin: 10px;}
+#ratingbox .center { text-align: center; }
+
+/* section user */
+#user h3 { font-size: 14px; font-weight: normal; margin-right: 120px;}
+#user #userarticles { margin: 20px 0 10px 0; list-style: none; }
+#user .avatar { float: right; margin-left: 20px;}
+#user .avatar img { border: 1px solid #74809a; }
+#user .stars * { margin: 0; padding: 0; list-style: none; }
+#user .stars { float: left; margin-top: 2px; margin-right: 10px; height: 16px; width: 80px; background: url('../images/star_small.png') left top repeat-x; }
+#user .stars .yellowstars { height: 16px; width: 0px; background: url('../images/star_small.png') left repeat-x; }
+#user .floatlinks {  }
+
+
+/* section myarticles, this is the list of myarticles */
+#myarticles { padding-top: 20px;}
+#myarticles .myarticle { margin-bottom: 40px;}
+#myarticles .fullwidth { width: 100%; }
+.myarticle .title { font-size: 16px; font-weight: bold; margin-bottom: 10px; }
+.myarticle .created { font-size: 14px; }
+.myarticle .state { font-size: 14px; }
+.myarticle .reject { font-size: 14px; margin-left: 50px; border-left: 2px solid black; padding: 4px 0px 4px 10px; margin-top: 15px; }
+.myarticle .rejectmsg { font-size: 14px; margin-left: 50px; border-left: 2px solid black; padding: 4px 0px 4px 10px; margin-bottom: 15px; }
+.myarticle .actions { margin-top: 10px; }
+.myarticle span { padding: 0 10px 0 0; }
+
+
+/* search form */
+#listsearch * { border: none; }
+#listsearch { width: 380px; height: 40px; float: right !important; }
+#listsearch form { display: inline; }
+#listsearch input[type=text] { font-size: 12px; height: 20px; width: 250px; margin-top: 12px; padding: 0px 5px; border-radius: 5px !important; -moz-border-radius: 5px !important; -webkit-border-radius: 5px !important; }
+#listsearch input[type=submit] { margin-left: 25px; }
+
+
+/* user navigation */
+#currentuser { font-size: 11px; color: #666666; }
+#nav_user { text-align: right; }
+#nav_user ul { padding: 0; margin: 0; list-style: none; }
+#nav_user ul li { padding: 0; margin: 0 20px 0 0; display:inline; }
+#nav_user li a { width: 100px; font-size: 11px; text-align: center; text-decoration: none; }
+#nav_user ul li.selected a { color: #c81419; }
+
+
+/* main navigation */
+#nav_header { line-height: 40px; }
+#nav_main { padding-left: 3%; padding: 0 15; margin-bottom: 50px;
+/* taken from awesome buttons */
+background-color: #151515;
+background-image: -moz-linear-gradient(top, rgba(255,255,255,.2), rgba(150,150,150,.2), rgba(0,0,0,.0)) !important;
+background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,.2)), color-stop(0.5, rgba(150,150,150,.2)), to(rgba(0,0,0,.0))) !important;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#30ffffff,endColorstr=#10000000) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=135,strength=2);
+}
+#nav_main ul { padding: 0; margin: 0; list-style: none; }
+#nav_main ul li { padding: 0; margin: 0 20px 0 0; display: inline; }
+#nav_main li a { margin-right: 20px; width: 140px; font-size: 14px; line-height: 44px; text-align: center; text-decoration: none; }
+#nav_main ul li.selected a, #nav_main ul li a:hover { color: #ffffff; }
+
+
+/* the page footer */
+footer#page_footer { clear: both; background-color: #ffffff; margin: 0px 5% 50px 2%; display: block; text-align: center; font-size: 12px; }
+
+/* admin page */
+#admin {}
+#admin a { font-size: 14px; }
+#admin h3 { margin: 30px 0 10px 0; }
+#admin h4 { margin: 0; }
+#admin h4 a { font-size: 14px; color: #c81419; }
+#admin h4 a:hover { text-decoration: underline !important; }
+#admin p { margin: 20px 0 0 0; padding: 0; }
+#admin .fullwidth { width: 100%; }
+
+/* style the pagination */
+.pagination { background: #f1f1f1; text-align: center; padding: 3px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+.pagination a, .pagination span, .pagination em { font-size: 12px; padding: 5px 5px; }
+.pagination span.disabled { color: #74809a; }
+.pagination em { font-weight: bold; }
+.pagination a { text-decoration: none; color: #000000; }
+.pagination a:hover, .pagination a:focus { color: #c81419; text-decoration: underline !important; }

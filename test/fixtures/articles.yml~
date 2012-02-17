@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  student_id: 1
+  title: MyString
+  message: MyString
+  body: MyText
+  freezebody: MyText
+  state: 1
+  submitted: 2012-02-14
+  accepted: 2012-02-14
+
+two:
+  student_id: 1
+  title: MyString
+  message: MyString
+  body: MyText
+  freezebody: MyText
+  state: 1
+  submitted: 2012-02-14
+  accepted: 2012-02-14

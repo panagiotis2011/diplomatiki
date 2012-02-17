@@ -1,0 +1,7 @@
+class ApplicationController < ActionController::Base
+  protect_from_forgery
+  before_filter :authenticate_student!, :except => [:index, :show, :about]
+
+  def about
+  end
+end

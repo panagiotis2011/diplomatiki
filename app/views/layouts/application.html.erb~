@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diplomatiki</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+   <header id="page_header">
+        <nav id="nav_student">
+            <ul>
+                <% if student_signed_in? %>
+                    <li><span id="currentstudent"><%= current_student.email %></span></li>
+                    &nbsp;
+                    <li><%= link_to "Το προφίλ μου", edit_student_registration_path %></li>
+                    <li><%= link_to "Τα άρθρα μου", myarticles_articles_path %></li>
+                    <li><%= link_to "Έξοδος", destroy_student_session_path %></li>
+                <% else %>
+                    <li><%= link_to "Εγγραφή", new_student_registration_path %></li>
+                    <li><%= link_to "Είσοδος", new_student_session_path %></li>
+                <% end %>
+            </ul>
+        </nav>
+
+        <div id="page_title">
+            <h1>Χώρος <span>Συζήτησης Ενημέρωσης</span></h1>
+            <h2> <span>φοιτητών</span> EAP και <span>διδασκόντων</span> </h3>
+        </div>
+    </header>
+
+      <header id="nav_header">
+        <nav id="nav_main">
+            <ul>
+                <li>
+                    <%= link_to "Προτεινόμενα άρθρα", root_path %>
+                    <%= link_to "Όλα τα άρθρα", all_articles_path %>
+                    <%= link_to "Οδηγός χρήσης", about_articles_path %>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="maincontainer">
+        <section id="content">
+            <section id="flash">
+                <% flash.each do |key, value| %>
+                    <div class="flash <%= key %>"><%= value %></div>
+                <% end %>
+            </section>
+
+    <section id="flash">
+        <% flash.each do |key, value| %>
+            <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+    </section>
+
+<%= yield %>
+
+   </section>
+
+        <section id="sidebar">
+            <section id="support" class="box">
+                <h3>Συζήτηση-Ενημέρωση</h3>
+                <h4>Τρόποι συμμετοχής:</h4>
+                <ul>
+                    <li>Γράψε ένα άρθρο</li>
+                    <li>Σχολίασε ένα άρθρο</li>
+                    <li>Βαθμολόγησε ένα άρθρο</li>
+                </ul>
+            </section>
+
+            <section id="links" class="box">
+                <h3>Χρήσιμα links</h3>
+                <div><%= link_to "Χώροι Θεματικών Ενοτήτων", "http://class.eap.gr" %></div>
+                <div><%= link_to "Υπηρεσίες Μητρώου", "http://open.eap.gr" %></div>
+                <div><%= link_to "Ψηφιακό υλικό", "http://edy.eap.gr" %></div>
+                <div><%= link_to "Εικονικές Τάξεις", "http://centra.eap.gr" %></div>
+                <div><%= link_to "Online Ασκήσεις", "http://moodle.eap.gr" %></div>
+            </section>
+        </section>
+    </section>
+
+    <footer id="page_footer">
+        <hr />
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" />
+        </a>
+        <br />
+        Το περιεχόμενο είναι διαθέσιμο σύμφωνα με την
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+            Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+        </a>.
+    </footer>
+
+</body>
+</html>
