@@ -94,11 +94,7 @@ DEPENDENCIES
   coderay
   devise
   rails (= 3.0.11)
-<<<<<<< HEAD
   recaptcha
-  sqlite3
-=======
   sqlite3-ruby
   validate_url
   will_paginate (~> 3.0.pre2)
->>>>>>> comments
