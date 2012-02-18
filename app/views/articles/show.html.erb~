@@ -27,11 +27,11 @@
             <%= form_for [@article, @rating_currentstudent] do |f| %>
                 <div id="ratingbox">
                     <ul id="ratingbuttons">
-                        <li><%= f.radio_button :stars, "5" %><span>Excellent</span></li>
-                        <li><%= f.radio_button :stars, "4" %><span>Very Good</span></li>
-                        <li><%= f.radio_button :stars, "3" %><span>Good</span></li>
-                        <li><%= f.radio_button :stars, "2" %><span>Average</span></li>
-                        <li><%= f.radio_button :stars, "1" %><span>Poor</span></li>
+                        <li><%= f.radio_button :stars, "5" %><span>Τέλειο</span></li>
+                        <li><%= f.radio_button :stars, "4" %><span>Πολύ καλό</span></li>
+                        <li><%= f.radio_button :stars, "3" %><span>Καλό</span></li>
+                        <li><%= f.radio_button :stars, "2" %><span>Μέτριο</span></li>
+                        <li><%= f.radio_button :stars, "1" %><span>Αδιάφορο</span></li>
                     </ul>
                     <div class="center"><%= f.submit "Rate this article", :class => "awesome custom red" %></div>
                 </div>
