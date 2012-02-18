@@ -6,7 +6,7 @@ Devise.setup do |config|
   config.use_salt_as_remember_token = true
   config.reset_password_within = 2.hours
   config.sign_out_via = :delete
-  config.mailer_sender = "noreply@diplomatiki.info"
+  config.mailer_sender = "petridisko@gmail.com"
   config.remember_for = 2.weeks
   config.remember_across_browsers = true
   config.password_length = 8..30
