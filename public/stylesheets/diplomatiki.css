@@ -64,13 +64,13 @@ header#page_header { margin: 0px 2% 10px 2%; padding: 5px 15px; }
 .myinfo { background-color: #00cc00; }
 
 /* apply some styling to devise forms */
-#user_edit label, #user_new label, #user_edit i, #user_new i { font-size: 12px; }
-#user_edit p, #user_new p { font-size: 12px; margin-bottom: 10px; }
-#user_edit span, #user_new span { margin-left: 7px; font-size: 12px; font-style: italic; }
-#user_edit div, #user_new div { margin-top: 30px; }
-#user_current_password { border: 1px solid #c81419;}
+#student_edit label, #student_new label, #student_edit i, #student_new i { font-size: 12px; }
+#student_edit p, #student_new p { font-size: 12px; margin-bottom: 10px; }
+#student_edit span, #student_new span { margin-left: 7px; font-size: 12px; font-style: italic; }
+#student_edit div, #student_new div { margin-top: 30px; }
+#student_current_password { border: 1px solid #c81419;}
 #cancel { margin-top: 30px; font-size: 11px !important; }
-#user_edit .field_with_errors, #user_new .field_with_errors  { padding: 0 !important; margin: 0 !important;}
+#student_edit .field_with_errors, #student_new .field_with_errors  { padding: 0 !important; margin: 0 !important;}
 
 
 /* 320 300 px */
@@ -90,14 +90,14 @@ header#page_header { margin: 0px 2% 10px 2%; padding: 5px 15px; }
 #services .services img, #services .services2 img { display: block; }
 #footnote_signup { clear: both; font-size: 9px; padding: 5px 0px 5px 10px; }
 #devise_links { clear: both; }
-#user_email, #user_password { width: 95%; }
+#student_email, #student_password { width: 95%; }
 
 #deviseauth #availableservices { clear: both; padding-top: 25px; }
 #currservices h3 { margin-bottom: 0; }
 #availableservices h3 { margin-bottom: 10px; }
 #availableservices h4 { margin: 20px 0 0 12px; font-weight: normal; }
 .services_used { clear: both; padding-top: 20px; }
-.services_used img, .services_used .user { float: left; }
+.services_used img, .services_used .student { float: left; }
 .services_used img { padding-left: 10px; }
 .services_used div { margin-left: 10px; }
 .line1 { margin-top: 12px;}
@@ -177,15 +177,15 @@ div.field label { font-size: 12px; }
 #rating_submit { margin: 10px;}
 #ratingbox .center { text-align: center; }
 
-/* section user */
-#user h3 { font-size: 14px; font-weight: normal; margin-right: 120px;}
-#user #userarticles { margin: 20px 0 10px 0; list-style: none; }
-#user .avatar { float: right; margin-left: 20px;}
-#user .avatar img { border: 1px solid #74809a; }
-#user .stars * { margin: 0; padding: 0; list-style: none; }
-#user .stars { float: left; margin-top: 2px; margin-right: 10px; height: 16px; width: 80px; background: url('../images/star_small.png') left top repeat-x; }
-#user .stars .yellowstars { height: 16px; width: 0px; background: url('../images/star_small.png') left repeat-x; }
-#user .floatlinks {  }
+/* section student */
+#student h3 { font-size: 14px; font-weight: normal; margin-right: 120px;}
+#student #studentarticles { margin: 20px 0 10px 0; list-style: none; }
+#student .avatar { float: right; margin-left: 20px;}
+#student .avatar img { border: 1px solid #74809a; }
+#student .stars * { margin: 0; padding: 0; list-style: none; }
+#student .stars { float: left; margin-top: 2px; margin-right: 10px; height: 16px; width: 80px; background: url('../images/star_small.png') left top repeat-x; }
+#student .stars .yellowstars { height: 16px; width: 0px; background: url('../images/star_small.png') left repeat-x; }
+#student .floatlinks {  }
 
 
 /* section myarticles, this is the list of myarticles */
@@ -209,13 +209,13 @@ div.field label { font-size: 12px; }
 #listsearch input[type=submit] { margin-left: 25px; }
 
 
-/* user navigation */
-#currentuser { font-size: 11px; color: #666666; }
-#nav_user { text-align: right; }
-#nav_user ul { padding: 0; margin: 0; list-style: none; }
-#nav_user ul li { padding: 0; margin: 0 20px 0 0; display:inline; }
-#nav_user li a { width: 100px; font-size: 11px; text-align: center; text-decoration: none; }
-#nav_user ul li.selected a { color: #c81419; }
+/* student navigation */
+#currentstudent { font-size: 11px; color: #666666; }
+#nav_student { text-align: right; }
+#nav_student ul { padding: 0; margin: 0; list-style: none; }
+#nav_student ul li { padding: 0; margin: 0 20px 0 0; display:inline; }
+#nav_student li a { width: 100px; font-size: 11px; text-align: center; text-decoration: none; }
+#nav_student ul li.selected a { color: #c81419; }
 
 
 /* main navigation */
