@@ -1,0 +1,48 @@
+class RatingsController < ApplicationController
+  before_filter :authenticate_student!
+
+  # create a rating
+  def create
+    @article = Article.find(params[:article_id])
+    @rating = @article.ratings.build(params[:rating])
+    @rating.student = current_student
+
+    respond_to do |format|
+      if @article.state > 2
+        if @rating.save
+          format.html { redirect_to(@article, :notice => 'Ευχαριστώ που ψήφισες αυτό το άρθρο!') }
+        else
+          format.html { redirect_to(@article, :notice => 'Υπάρχει κάποιο λάθος κατά την αποθήκευση της ψήφου σου.') }
+        end
+      else
+        format.html { redirect_to(@article, :notice => 'Η ψηφοφορία περιορίζεται μόνο σε άρθρα που έχουν δημοσιευθεί.') }
+      end
+    end
+  end
+
+  # update a rating
+  def update
+    @rating = current_student.ratings.find(params[:id])
+    @article = Article.find(params[:article_id])
+
+    respond_to do |format|
+      if @rating.update_attributes(params[:rating])
+        format.html { redirect_to(@article, :notice => 'Ευχαριστώ που ενημέρωσες την ψήφο σου!') }
+      else
+        format.html { redirect_to(@article, :notice => 'Υπάρχει κάποιο λάθος κατά την αποθήκευση της ψήφου σου.') }
+      end
+    end
+  end
+
+  # remove a rating
+  def destroy
+    @rating = current_student.ratings.find(params[:id])
+    @article = Article.find(params[:article_id])
+
+    @rating.destroy
+
+    respond_to do |format|
+      format.html { redirect_to @article }
+    end
+  end
+end

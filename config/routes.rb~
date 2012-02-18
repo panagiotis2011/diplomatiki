@@ -1,6 +1,17 @@
 Diplomatiki::Application.routes.draw do
 	devise_for :students
 
+	resources :admin, :only => [:index] do
+		member do
+			get 'editreject'
+			put 'reject'
+			put 'accept'
+		end
+		collection do
+			get 'articles'
+		end
+	end
+
 	resources :articles do
 		collection do
 			get 'about'
@@ -11,7 +22,10 @@ Diplomatiki::Application.routes.draw do
 		member do
 			put 'submit'
 		end
+
+		resources :comments, :only => [:create, :destroy]
+		resources :ratings, :only => [:create, :update, :destroy]
 	end
 
-	root :to => 'article#index'
+	root :to => 'articles#index'
 end
