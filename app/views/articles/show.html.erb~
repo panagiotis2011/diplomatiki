@@ -1,45 +1,88 @@
-<p id="notice"><%= notice %></p>
+<section id="articleheader">
+    <h2><%= @article.title %>
+       <ul class="stars floatstars">
+            <li class="yellowstars" style="width: <%= @article.avg_rating * 25 %>px !important;"></li>
+            <li class="text"><%= @article.avg_rating %> average from <%= pluralize(@article.count_ratings, "vote") %></li>
+       </ul>
 
-<p>
-  <b>Student:</b>
-  <%= @article.student_id %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @article.title %>
-</p>
-
-<p>
-  <b>Message:</b>
-  <%= @article.message %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @article.body %>
-</p>
-
-<p>
-  <b>Freezebody:</b>
-  <%= @article.freezebody %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @article.state %>
-</p>
-
-<p>
-  <b>Submitted:</b>
-  <%= @article.submitted %>
-</p>
-
-<p>
-  <b>Accepted:</b>
-  <%= @article.accepted %>
-</p>
+    </h2>
 
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+    <div class="byline">Γράφτηκε από: <%= link_to @article.student.fullname, "" %></div>
+
+    <div class="avatar"><%= image_tag gravatar(@article.student.email, 64) %></div>
+
+</section>
+
+<section id="articlebody" class="textile">
+    <%= sanitize textilize(coderay_dressed(@article.body)) %>
+</section>
+
+
+<% # comments και ratings είναι διαθέσιμα μόνο για άρθρα που είναι δημοσιευμένα %>
+<% if @article.state > 2 %>
+
+     <section id="rating">
+        <% if student_signed_in? %>
+            <%= form_for [@article, @rating_currentstudent] do |f| %>
+                <div id="ratingbox">
+                    <ul id="ratingbuttons">
+                        <li><%= f.radio_button :stars, "5" %><span>Excellent</span></li>
+                        <li><%= f.radio_button :stars, "4" %><span>Very Good</span></li>
+                        <li><%= f.radio_button :stars, "3" %><span>Good</span></li>
+                        <li><%= f.radio_button :stars, "2" %><span>Average</span></li>
+                        <li><%= f.radio_button :stars, "1" %><span>Poor</span></li>
+                    </ul>
+                    <div class="center"><%= f.submit "Rate this article", :class => "awesome custom red" %></div>
+                </div>
+            <% end %>
+        <% else %>
+            <div id="ratingbox"><%= link_to "Sign in", new_student_session_path %> to rate this article</div>
+        <% end %>
+    </section>
+    <section id="comments">
+        <% @comments.each do |comment| %>
+            <article class="comment">
+                <div class="avatar"><%= image_tag gravatar(comment.student.email, 48) %></div>
+                <div class="commentbody">
+                    <div class="commenthead">
+                      <%= comment.student.fullname %> - <%=time_ago_in_words(comment.created_at)%> ago
+                      <% # display delete link only for comments written by this particular student %>
+                      <% if student_signed_in? and comment.student_id == current_student.id %>
+                          <span><%= link_to 'delete', article_comment_path(@article, comment), :confirm => 'Are you sure?', :method => :delete, :class => "" %></span>
+                      <% end %>
+                    </div>
+                    <div><%= comment.body %></div>
+                </div>
+            </article>
+        <% end %>
+
+        <% # add a new comment %>
+        <article class="comment newcomment">
+                <% if student_signed_in? %>
+                    <div class="avatar"><%= image_tag gravatar(current_student.email, 48) %></div>
+                    <div class="commentbody">
+                        <% if current_student.fullname == nil or current_student.fullname == '' %>
+                            <div class="commenthead">
+                                Παρακαλώ ενημερώστε το <%= link_to "Προφίλ", edit_student_registration_path %> πριν σχολιάσετε το άρθρο.
+                            </div>
+                        <% else %>
+                            <div class="commenthead">
+                                <%= current_student.fullname %>
+                            </div>
+                            <div>
+                                <%= form_for [@article, current_student.comments.new] do |f| %>
+                                    <%= f.text_area :body, :size => "100%x20", :class => "fullwidth" %>
+                                    <%= f.submit "Add Comment", :class => "awesome custom red" %>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                <% else %>
+                    <div class="signin">
+                       Παρακαλώ κάντε <%= link_to "Σύνδεση", new_student_session_path %> πριν σχολιάσετε κάποιο άρθρο.
+                    </div>
+                <% end %>
+        </article>
+    </section>
+<% end %>

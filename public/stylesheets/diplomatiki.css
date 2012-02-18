@@ -134,6 +134,13 @@ div.field label { font-size: 12px; }
 #articleheader .avatar img { border: 1px solid #74809a; }
 #articlebody { margin-top: 20px; }
 
+
+.stars * { margin: 0; padding: 0; list-style: none; }
+.stars { height: 25px; width: 125px; background: url('../images/star.png') left top repeat-x; }
+.stars .yellowstars { height: 25px; width: 0px; background: url('../images/star.png') left repeat-x; }
+.stars .text { text-align: right; font-size: 10px; }
+.floatstars { float: right; }
+
 /* style the output of RedCloth */
 .textile { margin: 0; padding: 0;}
 .textile h1 { font-size: 16px; margin-top: 30px; margin-bottom: 10px; }
@@ -202,10 +209,10 @@ div.field label { font-size: 12px; }
 
 
 /* search form */
-#listsearch * { border: none; }
-#listsearch { width: 380px; height: 40px; float: right !important; }
+listsearch * { border: none; }
+listsearch { width: 380px; height: 40px; float: right !important; }
 #listsearch form { display: inline; }
-#listsearch input[type=text] { font-size: 12px; height: 20px; width: 250px; margin-top: 12px; padding: 0px 5px; border-radius: 5px !important; -moz-border-radius: 5px !important; -webkit-border-radius: 5px !important; }
+listsearch input[type=text] { font-size: 12px; height: 20px; width: 250px; margin-top: 12px; padding: 0px 5px; border-radius: 5px !important; -moz-border-radius: 5px !important; -webkit-border-radius: 5px !important; }
 #listsearch input[type=submit] { margin-left: 25px; }
 
 
@@ -219,7 +226,7 @@ div.field label { font-size: 12px; }
 
 
 /* main navigation */
-#nav_header { line-height: 40px; }
+nav_header { line-height: 40px; }
 #nav_main { padding-left: 3%; padding: 0 15; margin-bottom: 50px;
 /* taken from awesome buttons */
 background-color: #151515;

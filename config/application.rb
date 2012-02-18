@@ -38,5 +38,6 @@ module Diplomatiki
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    config.secret_token = 'd5d7c38a6ab33acd37aa93447b564f9774f623fffcbb3c6bb3db0b689927241b7f1b04002b443e75b9bddf16e40889767986197f08291b1b0529243a8aaf73eb'
   end
 end

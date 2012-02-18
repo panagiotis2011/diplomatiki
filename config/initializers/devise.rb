@@ -1,4 +1,5 @@
 Devise.setup do |config|
+
   require 'devise/orm/active_record'
   config.case_insensitive_keys = [ :email ]
   config.strip_whitespace_keys = [ :email ]
@@ -15,6 +16,7 @@ Devise.setup do |config|
   config.unlock_strategy = :time
   config.maximum_attempts = 20
   config.unlock_in = 1.hour
+
 
 
 end

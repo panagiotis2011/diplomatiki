@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
 
 	def index
-		@articles = Article.where(:state => '4')
+		@articles = Article.where(:state => '4').paginate(:page => params[:page], :per_page => 10)
 		respond_to do |format|
 			format.html  # index.html.erb
 			format.xml  { render :xml => @articles }
@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
 
 
 	def all
-		@articles = Article.where(:state => ['3', '4'])
+		@articles = Article.where(:state => ['3', '4']).search(params[:search]).order('accepted desc').paginate(:page => params[:page], :per_page => 10)
 		respond_to do |format|
 			format.html { render 'index' }
 			format.xml  { render :xml => @articles }
@@ -55,6 +55,13 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find(params[:id])
+		@comments = @article.comments.all
+		if student_signed_in?
+			@rating_currentstudent = @article.ratings.find_by_student_id(current_student.id)
+			unless @rating_currentstudent
+				@rating_currentstudent = current_student.ratings.new
+			end
+		end
 		respond_to do |format|
 			format.html # show.html.erb
 			format.xml  { render :xml => @article }

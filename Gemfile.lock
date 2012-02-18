@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    RedCloth (4.2.9)
     abstract (1.0.0)
     actionmailer (3.0.11)
       actionpack (= 3.0.11)
@@ -31,6 +32,7 @@ GEM
     arel (2.0.10)
     bcrypt-ruby (3.0.1)
     builder (2.1.2)
+    coderay (1.0.5)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -71,19 +73,32 @@ GEM
       json (~> 1.4)
     recaptcha (0.3.4)
     sqlite3 (1.3.5)
+    sqlite3-ruby (1.3.3)
+      sqlite3 (>= 1.3.3)
     thor (0.14.6)
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.31)
+    validate_url (0.2.0)
+      activemodel (>= 3.0.0)
     warden (1.1.0)
       rack (>= 1.0)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth
+  coderay
   devise
   rails (= 3.0.11)
+<<<<<<< HEAD
   recaptcha
   sqlite3
+=======
+  sqlite3-ruby
+  validate_url
+  will_paginate (~> 3.0.pre2)
+>>>>>>> comments

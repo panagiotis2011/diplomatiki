@@ -1,0 +1,17 @@
+<section id = "admin">
+<h2>Admin: <%= @state_name.capitalize %> Articles</h2>
+
+    <% @articles.each do |article| %>
+      <p>
+        <h4><%= link_to article.title, article %></h4>
+        Author: <%= article.user.fullname %>
+        <%= link_to 'Delete', article, :confirm => 'This is admin delete despite of the article´s state. Are you sure?', :method => :delete %>
+
+        <% if article.state == 1 %>
+          <%= link_to 'Reject', editreject_admin_path(article) %>
+          <%= link_to 'Publish standard', accept_admin_path(article, :value => '0'), :method => :put %>
+          <%= link_to 'Publish featured', accept_admin_path(article, :value => '1'), :method => :put %>
+        <% end %>
+      </p>
+    <% end %>
+</section>
