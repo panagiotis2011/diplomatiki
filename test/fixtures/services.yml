@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  student_id: 1
+  provider: MyString
+  uid: MyString
+  uname: MyString
+  uemail: MyString
+
+two:
+  student_id: 1
+  provider: MyString
+  uid: MyString
+  uname: MyString
+  uemail: MyString

@@ -1,0 +1,30 @@
+<% "Sign In" %>
+<% if @services %>
+ <% unless @services.empty? %>
+  <p><strong>You can sign in to this account using:</strong></p>
+   <div class="services">
+    <% for service in @services %>
+     <div class="service">
+      <%= image_tag "#{service.provider}_32.png", :size => "32x32" %>
+      <div class="provider"><%= service.provider.titleize %></div>
+      <div class="uid"><%= service.uid %></div>
+          <%= link_to "X", service, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
+     </div>
+     <% end %>
+     <div class="clear"></div>
+    </div>
+   <% end %>
+   <p><strong>Add another service to sign in with:</strong></p>
+  <% else %>
+  <p><strong>Sign in through one of these services:</strong></p>
+<% end %>
+
+<a href="/auth/twitter" class="auth_provider">
+  <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>Twitter</a>
+<a href="/auth/facebook" class="auth_provider">
+  <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>Facebook</a>
+<a href="/auth/google_apps" class="auth_provider">
+  <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>Google</a>
+<a href="/auth/open_id" class="auth_provider">
+  <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>OpenID</a>
+<div class="clear"></div>

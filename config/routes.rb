@@ -1,6 +1,8 @@
-Diplomatiki::Application.routes.draw do
+Diplomatiki::Application.routes.draw do |map|
 	devise_for :students, :controllers => { :registrations => "students/registrations" }
 
+	match '/auth/:provider/callback' => 'services#create'
+	resources :services
 	resources :admin, :only => [:index] do
 		member do
 			get 'editreject'

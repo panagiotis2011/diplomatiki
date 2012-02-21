@@ -11,6 +11,7 @@
         <nav id="nav_student">
             <ul>
                 <% if student_signed_in? %>
+                      &nbsp;
                     <li><span id="currentstudent"><%= current_student.email %></span></li>
 
 
@@ -18,8 +19,10 @@
 
                     <li><%= link_to "Τα άρθρα μου", myarticles_articles_path %></li>
                     <li><%= link_to "Έξοδος", destroy_student_session_path, :method => 'delete' %></li>
-                          &nbsp;
+
                 <% else %>
+                    <%= request.path == new_student_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
+                    <li><%= link_to "Social", new_student_registration_path %></li>
                     <%= request.path == new_student_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
                     <li><%= link_to "Εγγραφή", new_student_registration_path %></li>
                     <%= request.path == new_student_session_path ? raw("<li class='selected'>") : raw("<li>") %>
