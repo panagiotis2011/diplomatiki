@@ -1,13 +1,14 @@
+# encoding: utf-8
 class ServicesController < ApplicationController
   before_filter :authenticate_student!, :except => [:create]
 
 def index
-  # get all authentication services assigned to the current user
+  # get all authentication services assigned to the current student
   @services = current_student.services.all
 end
 
 def destroy
-  # remove an authentication service linked to the current user
+  # remove an authentication service linked to the current student
   @service = current_student.services.find(params[:id])
   @service.destroy
       flash[:notice] = "Successfully destroyed authentication."
@@ -26,23 +27,23 @@ def create
 
     # map the returned hashes to our variables first - the hashes differ for every service
     if service_route == 'facebook'
-      omniauth['extra']['user_hash']['email'] ? email =  omniauth['extra']['user_hash']['email'] : email = ''
-      omniauth['extra']['user_hash']['name'] ? name =  omniauth['extra']['user_hash']['name'] : name = ''
-      omniauth['extra']['user_hash']['id'] ?  uid =  omniauth['extra']['user_hash']['id'] : uid = ''
+      omniauth['extra']['student_hash']['email'] ? email =  omniauth['extra']['student_hash']['email'] : email = ''
+      omniauth['extra']['student_hash']['name'] ? name =  omniauth['extra']['student_hash']['name'] : name = ''
+      omniauth['extra']['student_hash']['id'] ?  uid =  omniauth['extra']['student_hash']['id'] : uid = ''
       omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
     elsif service_route == 'github'
-      omniauth['user_info']['email'] ? email =  omniauth['user_info']['email'] : email = ''
-      omniauth['user_info']['name'] ? name =  omniauth['user_info']['name'] : name = ''
-      omniauth['extra']['user_hash']['id'] ?  uid =  omniauth['extra']['user_hash']['id'] : uid = ''
+      omniauth['student_info']['email'] ? email =  omniauth['student_info']['email'] : email = ''
+      omniauth['student_info']['name'] ? name =  omniauth['student_info']['name'] : name = ''
+      omniauth['extra']['student_hash']['id'] ?  uid =  omniauth['extra']['student_hash']['id'] : uid = ''
       omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
     elsif service_route == 'twitter'
       email = ''    # Twitter API never returns the email address
-      omniauth['user_info']['name'] ? name =  omniauth['user_info']['name'] : name = ''
+      omniauth['student_info']['name'] ? name =  omniauth['student_info']['name'] : name = ''
       omniauth['uid'] ?  uid =  omniauth['uid'] : uid = ''
       omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
        elsif service_route == 'google'
-       omniauth['user_info']['email'] ? email =  omniauth['user_info']['email'] : email = ''
-       omniauth['user_info']['name'] ? name =  omniauth['user_info']['name'] : name = ''
+       omniauth['student_info']['email'] ? email =  omniauth['student_info']['email'] : email = ''
+       omniauth['student_info']['name'] ? name =  omniauth['student_info']['name'] : name = ''
        omniauth['uid'] ? uid =  omniauth['uid'] : uid = ''
        omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
     else
@@ -58,29 +59,29 @@ def create
       # nobody can sign in twice, nobody can sign up while being signed in (this saves a lot of trouble)
       if !student_signed_in?
 
-        # check if user has already signed in using this service provider and continue with sign in process if yes
+        # check if student has already signed in using this service provider and continue with sign in process if yes
         auth = Service.find_by_provider_and_uid(provider, uid)
         if auth
-          flash[:notice] = 'Signed in successfully via ' + provider.capitalize + '.'
+          flash[:notice] = 'Η σύνδεση μέσω ' + provider.capitalize + ' έγινε με επιτυχία .'
           sign_in_and_redirect(:student, auth.student)
         else
-          # check if this user is already registered with this email address; get out if no email has been provided
+          # check if this student is already registered with this email address; get out if no email has been provided
           if email != ''
-            # search for a user with this email address
+            # search for a student with this email address
             existingstudent = Student.find_by_email(email)
             if existingstudent
               # map this new login method via a service provider to an existing account if the email address is the same
               existingstudent.services.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
-              flash[:notice] = 'Sign in via ' + provider.capitalize + ' has been added to your account ' + existinguser.email + '. Signed in successfully!'
+              flash[:notice] = 'Η σύνδεση με ' + provider.capitalize + ' έχει προστεθεί στον λογαριασμό σας. ' + existingstudent.email + '. Signed in successfully!'
               sign_in_and_redirect(:student, existingstudent)
             else
-              # let's create a new user: register this user and add this authentication method for this user
-              name = name[0, 39] if name.length > 39             # otherwise our user validation will hit us
+              # let's create a new student: register this student and add this authentication method for this student
+              name = name[0, 39] if name.length > 39             # otherwise our student validation will hit us
 
-              # new user, set email, a random password and take the name from the authentication service
+              # new student, set email, a random password and take the name from the authentication service
               student = Student.new :email => email, :password => SecureRandom.hex(10), :fullname => name, :haslocalpw => false
 
-              # add this authentication service to our new user
+              # add this authentication service to our new student
               student.services.build(:provider => provider, :uid => uid, :uname => name, :uemail => email)
 
               # do not send confirmation email, we directly save and confirm the new record
@@ -93,18 +94,18 @@ def create
               sign_in_and_redirect(:student, student)
             end
           else
-            flash[:error] =  service_route.capitalize + ' can not be used to sign-up on CommunityGuides as no valid email address has been provided. Please use another authentication provider or use local sign-up. If you already have an account, please sign-in and add ' + service_route.capitalize + ' from your profile.'
+            flash[:error] =  service_route.capitalize + ' δεν μπορεί να χρησιμοποιηθεί για την εγγραφή σας στον χώρο συζήτησης και ενημέρωσης μιας και δεν παρέχεται κάποιο έγκυρο email. Παρακαλώ χρησιμοποιήστε άλλο πάροχο αυθεντικοποίησης ή χρησιμοποιήστε το σύστημα πιστοποίσης της παρούσας σελίδας. Εάν έχετε ήδη κάποιο λογαριασμό κάνετε είσοδο και προσθέστε το ' + service_route.capitalize + ' στο προφίλ σας.'
             redirect_to new_student_session_path
           end
         end
       else
-        # the user is currently signed in
+        # the student is currently signed in
 
         # check if this service is already linked to his/her account, if not, add it
         auth = Service.find_by_provider_and_uid(provider, uid)
         if !auth
           current_student.services.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
-          flash[:notice] = 'Sign in via ' + provider.capitalize + ' has been added to your account.'
+          flash[:notice] = 'Η σύνδεση με ' + provider.capitalize + ' έχει προστεθεί στον λογαριασμό σας.'
           redirect_to services_path
         else
           flash[:notice] = service_route.capitalize + ' is already linked to your account.'
@@ -112,11 +113,11 @@ def create
         end
       end
     else
-      flash[:error] =  service_route.capitalize + ' returned invalid data for the user id.'
+      flash[:error] =  service_route.capitalize + ' επιστρέφει λανθασμένα δεδομένα για το id του φοιτητή.'
       redirect_to new_student_session_path
     end
   else
-    flash[:error] = 'Error while authenticating via ' + service_route.capitalize + '.'
+    flash[:error] = 'Σφάλμα κατά την αυθεντικοποίηση μέσω ' + service_route.capitalize + '.'
     redirect_to new_student_session_path
   end
 end

@@ -1,5 +1,10 @@
+<section id="deviseauth">
+
 <h2>Είσοδος</h2>
 
+    <h3><p>Εισέλθετε στον Χώρος <span>Συζήτησης Ενημέρωσης</span με τον λογαριασμό σας</p> <p>ή</p><p> χρησιμοποιήστε μια υπηρεσία αυθεντικοποίησης από τις παρακάτω.</p></h3>
+
+ <div id="local" class="box">
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
@@ -13,5 +18,21 @@
 
   <div><%= f.submit "Είσοδος" %></div>
 <% end %>
+  </div>
 
-<%= render :partial => "devise/shared/links" %>
+    <div id="remote">
+        <div id="terms" class="box">
+            <%= link_to "Terms of Service", "#" %>
+        </div>
+        <div id="services" class="box">
+            <a href="/auth/facebook" class="services"><%= image_tag "facebook_64.png", :size => "64x64",  :alt => "Facebook" %>Facebook</a>
+            <a href="/auth/google" class="services"><%= image_tag "google_64.png", :size => "64x64",  :alt => "Google" %>Google</a>
+            <a href="/auth/github" class="services"><%= image_tag "github_64.png", :size => "64x64",  :alt => "Github" %>Github</a>
+            <a href="/auth/twitter" class="services"><%= image_tag "twitter_64.png", :size => "64x64",  :alt => "Twitter" %>Twitter</a>
+        </div>
+    </div>
+
+    <div id="devise_links">
+        <%= render :partial => "devise/shared/links" %>
+    </div>
+</section>
