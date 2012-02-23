@@ -6,7 +6,7 @@ class Student < ActiveRecord::Base
          :confirmable, :lockable
 
 
-  has_many :services
+  has_many :services, :dependent => :destroy
   has_many :articles, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :ratings, :dependent => :destroy

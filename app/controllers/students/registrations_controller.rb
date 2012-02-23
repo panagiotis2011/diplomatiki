@@ -8,16 +8,16 @@ class Students::RegistrationsController < Devise::RegistrationsController
 		if params[resource_name][:lesson_id]
 			resource.lesson_id = params[resource_name][:lesson_id] if Lesson.find_by_id(params[resource_name][:lesson_id])
 		end
-		if current_user.haslocalpw
+		if current_student.haslocalpw
 			super
 		else
-			# this account has been created with a random pw / the user is signed in via an omniauth service
-			# if the user does not want to set a password we remove the params to prevent a validation error
+			# this account has been created with a random pw / the student is signed in via an omniauth service
+			# if the student does not want to set a password we remove the params to prevent a validation error
 			if params[resource_name][:password].blank?
 				params[resource_name].delete(:password)
 				params[resource_name].delete(:password_confirmation) if params[resource_name][:password_confirmation].blank?
 			else
-				# if the user wants to set a password we set haslocalpw for the future
+				# if the student wants to set a password we set haslocalpw for the future
 				params[resource_name][:haslocalpw] = true
 			end
 			# this is copied over from the original devise controller, instead of update_with_password we use update_attributes

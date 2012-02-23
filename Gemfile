@@ -18,6 +18,7 @@ gem 'omniauth-openid'
 gem 'omniauth-github'
 gem 'multi_json'
 
+
 group :production do
 
 gem 'dalli'

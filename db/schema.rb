@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20120221004448) do
     t.integer  "lesson_id",                             :default => 1,    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "Haslocalw",                             :default => true, :null => false
+    t.boolean  "haslocalpw",                            :default => true, :null => false
   end
 
   add_index "students", ["confirmation_token"], :name => "index_students_on_confirmation_token", :unique => true

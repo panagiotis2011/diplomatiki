@@ -49,6 +49,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
 		@all_lessons = Lesson.all
 		@lessons = []
 		@all_lessons.each do |c|
-		@lessons.push([c.name, c.id])
+			@lessons.push([c.name, c.id])
+		end
 	end
 end

@@ -1,6 +1,6 @@
 class AddHaslocalpwToStudent < ActiveRecord::Migration
   def self.up
-    add_column :students, :Haslocalpw, :boolean, :null => false, :default => true
+    add_column :students, :haslocalpw, :boolean, :null => false, :default => true
   end
 
   def self.down
