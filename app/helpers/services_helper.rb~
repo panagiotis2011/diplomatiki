@@ -1,0 +1,5 @@
+module ServicesHelper
+def auth_path
+  '/auth/facebook'
+end
+end

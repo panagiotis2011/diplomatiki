@@ -1,10 +1,12 @@
 <section id="deviseauth">
     <h2>Υπηρεσίες πιστοποίησης - Ρυθμίσεις</h2>
 
+
  	<% @services.each do |service| %>
+ 	sds
 		  <div class="service_in_use round">
 		      <div class="service_img">
-			      	<% if ['aol', 'facebook', 'github', 'google', 'openid', 'twitter', 'yahoo'].index(Service.provider) %>
+			      	<% if ['aol', 'facebook', 'github', 'google', 'openid', 'twitter', 'yahoo'].index(service.provider) %>
 						<%= image_tag "#{service.provider}_64.png", :size => "64x64" %>
 					<% else %>
 						<%= image_tag "openid_64.png", :size => "64x64" %>
@@ -19,7 +21,7 @@
 				<% end %>
 				<br />
 				<%= service.uname if service.uname != '' %><br />
-			    <%= service.uemail if service.uemail != '' %><br />
+				<%= service.uemail if service.uemail != '' %><br />
 				</div>
 		  </div>
 	<% end %>

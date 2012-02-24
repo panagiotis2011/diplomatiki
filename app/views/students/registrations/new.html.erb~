@@ -32,7 +32,6 @@
 			<div id="footnote_signup">*Μπορείτε να χρησιμοποιήσετε το Github μόνο αν έχετε ενεργοποιήσει μία δημόσια ηλεκτρονική διεύθυνση</div>
 		</div>
 	</div>
-	link_to "sign in with google", user_omniauth_authorize_path(:google)
 
 
 	<div id="devise_links">

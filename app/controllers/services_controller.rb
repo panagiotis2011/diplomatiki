@@ -2,31 +2,34 @@
 class ServicesController < ApplicationController
 	before_filter :authenticate_student!, :except => [:create]
 
+
 	def index
 		# όλες οι υπηρεσίες αυθεντικοποίησης συνδέονται με τον φοιτητή που είναι συνδεδεμένος
 		@services = current_student.services.all
 	end
 
+
 	def destroy
-		# διαγραφή μιας υπηρεσίας αυθεντικοποίησης που είναι συνδεδεμένη με τον τρέχων φοιτητή
+		# διαγραφή μιας υπηρεσίας αυθεντικοποίησης που είναι συνδεδεμένη με τον φοιτητή
 		@service = current_student.services.find(params[:id])
 		@service.destroy
 		flash[:notice] = "Επιτυχής αποσύνδεση της υπηρεσίας από τον λογαριασμό σας."
 		redirect_to services_path
 	end
 
+
 	def create
 		# αποθηκεύεται η μεταβλητή :service
-		params[:service] ? service_route = params[:service] : service_route = 'non service (invalid callback)'
+		params[:provider] ? service_route = params[:provider] : service_route = 'non service (invalid callback)'
 		# αποθηκεύεται όλη η πληροφορία που επιστρέφει από υπηρεσία κοινωνικής δικτύωσης στο omniauth
-		omniauth = request.env['omniauth.auth']
+		omniauth = request.env["omniauth.auth"]
 		# συνεχίζουμε μόνο αν υπάρχουν οι μεταβλητές omniauth και service
-		if omniauth and params[:service]
+		if omniauth and params[:provider]
 			# για κάθε υπηρεσία δικτύωσης αποθηκεύουμε σε μεταβλητές όλη την πληροφορία
 			if service_route == 'facebook'
-				omniauth['extra']['student_hash']['email'] ? email =  omniauth['extra']['student_hash']['email'] : email = ''
-				omniauth['extra']['student_hash']['name'] ? name =  omniauth['extra']['student_hash']['name'] : name = ''
-				omniauth['extra']['student_hash']['id'] ?  uid =  omniauth['extra']['student_hash']['id'] : uid = ''
+				omniauth['info']['email'] ? email =  omniauth['info']['email'] : email = ''
+				omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
+				omniauth['uid'] ?  uid =  omniauth['uid'] : uid = ''
 				omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
 			elsif service_route == 'github'
 				omniauth['student_info']['email'] ? email =  omniauth['student_info']['email'] : email = ''
@@ -35,7 +38,7 @@ class ServicesController < ApplicationController
 				omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
 			elsif service_route == 'twitter'
 				email = ''    # Το Twitter API ποτέ δεν επιστρέφει την διεύθυνση email
-				omniauth['student_info']['name'] ? name =  omniauth['student_info']['name'] : name = ''
+				omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
 				omniauth['uid'] ?  uid =  omniauth['uid'] : uid = ''
 				omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
 			elsif service_route == 'google'
@@ -46,7 +49,7 @@ class ServicesController < ApplicationController
 			else
 				# εάν έχουμε μια υπηρεσία που δεν έχει αναγνωριστεί απλά αποθηκεύουμε την πληροφορία που έχει επιστραφεί
 				render :text => omniauth.to_yaml
-				# render :text => uid.to_s + " - " + name + " - " + email + " - " + provider
+				#render :text => uid.to_s + " - " + name + " - " + email + " - " + provider
 			return
 		end
 		# συνεχίζουμε μόνο αν υπάρχουν οι μεταβλητές uid και provider
