@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20120221004448) do
     t.datetime "updated_at"
   end
 
+  add_index "articles", ["student_id"], :name => "index_articles_on_student_id"
+
   create_table "comments", :force => true do |t|
     t.integer  "student_id"
     t.integer  "article_id"
@@ -77,7 +79,6 @@ ActiveRecord::Schema.define(:version => 20120221004448) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.integer  "failed_attempts",                       :default => 0
-    t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "fullname"
     t.text     "shortbio"

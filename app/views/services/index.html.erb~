@@ -1,23 +1,28 @@
 <section id="deviseauth">
     <h2>Υπηρεσίες πιστοποίησης - Ρυθμίσεις</h2>
 
-    <div id="currservices">
-        <h3>Οι παρακάτω υπηρεσίες <%= @services.count == 1 ? 'account is' : 'accounts are' %> πιστοποίησης είναι συνδεδεμένες με τον τοπικό λογαριασμό στον χώρο συζήτησης και ενημέρωσης:</h3>
+ 	<% @services.each do |service| %>
+		  <div class="service_in_use round">
+		      <div class="service_img">
+			      	<% if ['aol', 'facebook', 'github', 'google', 'openid', 'twitter', 'yahoo'].index(Service.provider) %>
+						<%= image_tag "#{service.provider}_64.png", :size => "64x64" %>
+					<% else %>
+						<%= image_tag "openid_64.png", :size => "64x64" %>
+					<% end %>
+			  </div>
 
-        <% @services.each do |service| %>
-          <div class="services_used">
-              <%= image_tag "#{service.provider}_64.png", :size => "64x64" %>
-              <div class = "student">
-                <div class="line1">Name: <%= service.student %> (ID: <%= service.uid %>)</div>
-                <div class="line2">Email: <%= service.uemail != '' ? service.uemail : 'not set' %></div>
-                <div class="line3">
-                    <% @services.count == 1 ? @msg = 'Η κατάργηση του τελευταίου λογαριασμού σας μπορεί να σας "κλειδώσει" έξω από τον χώρο συζήτησης και ενημέρωσης</p><p> εάν δεν γνωρίζεται email και κωδικό πρόσβασης του τοπικού σας λογαριασμού.' : @msg = '' %>
-                    <%= link_to "Να καταργηθεί η υπηρεσία", service, :confirm => ' Είστε σίγουρος για την κατάργηση της παρούσας;' + @msg, :method => :delete, :class => "remove" %>
-                </div>
-              </div>
-          </div>
-        <% end %>
-    </div>
+			  <div class="service_userdata">
+			    <% if service.uid.starts_with?('http') %>
+					<%= service.uid.scan(/http[s]*:\/\/.*?\//)[0] %>
+				<% else %>
+					<%= service.provider.capitalize %>: <%= service.uid %>
+				<% end %>
+				<br />
+				<%= service.uname if service.uname != '' %><br />
+			    <%= service.uemail if service.uemail != '' %><br />
+				</div>
+		  </div>
+	<% end %>
 
     <div id="availableservices">
         <h3>Μπορείτε να συνδέσεται περισσότερες υπηρεσίες σύνδεσης στον λογαριασμό σας:</h3>

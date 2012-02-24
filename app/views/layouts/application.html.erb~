@@ -11,10 +11,10 @@
         <nav id="nav_student">
             <ul>
                 <% if student_signed_in? %>
-                      &nbsp;
-                      <%= link_to "Sign in with Facebook", student_omniauth_authorize_path(:facebook) %>
 
                     <li><span id="currentstudent"><%= current_student.email %></span></li>
+                       &nbsp;
+                    <%= request.path == edit_student_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
                     <li><%= link_to "Υπηρεσίες δικτύωσης", services_path %></li>
                     <li><%= link_to "Το προφίλ μου", edit_student_registration_path %></li>
                     <li><%= link_to "Τα άρθρα μου", myarticles_articles_path %></li>

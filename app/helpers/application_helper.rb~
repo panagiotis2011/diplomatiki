@@ -12,7 +12,7 @@ module ApplicationHelper
 		text.gsub!(/\s*@@@(\w*?)\s+(.+?)\s*@@@\s*/m) do        # remove the spaces between the @!
 			$1 != '' ? @lang = $1 : @lang = 'ruby'
 			code = CodeRay.highlight($2, @lang, :css => :class)
-			"\n<notextile>#{code.strip}</notextile>\n"
+			"\n\n<notextile>#{code.strip}</notextile>\n\n"
 		end
 		return text.html_safe
 	end

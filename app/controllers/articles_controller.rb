@@ -130,6 +130,10 @@ class ArticlesController < ApplicationController
 		end
 	end
 
+	def about
+	end
+
+
 	protected
 
 	def record_not_found

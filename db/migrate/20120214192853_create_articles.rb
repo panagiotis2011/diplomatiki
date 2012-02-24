@@ -14,6 +14,7 @@ class CreateArticles < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :articles, :student_id
   end
 
   def self.down

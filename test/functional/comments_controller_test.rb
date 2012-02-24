@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
@@ -14,7 +15,7 @@ class CommentsControllerTest < ActionController::TestCase
       post :create, :article_id => articles(:seven).id, :comment => { :student_id => students(:student2).id, :body => 'Comment' }
     end
     assert_redirected_to article_path(assigns(:article))
-    assert_equal 'Comment was successfully created.', flash[:notice]
+    assert_equal 'Το σχόλιο δημιουργήθηκε με επιτυχία.', flash[:notice]
   end
   test "should not create comment not assigned to article" do
     sign_in students(:student2)
@@ -37,7 +38,7 @@ class CommentsControllerTest < ActionController::TestCase
       post :create, :article_id => articles(:seven).id, :comment => { :article_id => articles(:six).id, :student_id => students(:student2).id, :body => 'Comment' }
     end
     assert_redirected_to article_path(assigns(:article))
-    assert_equal 'Comment was successfully created.', flash[:notice]
+    assert_equal 'Το σχόλιο δημιουργήθηκε με επιτυχία.', flash[:notice]
     assert assigns(:comment).article_id ==  articles(:seven).id, "Comment does not belong to the right article"
   end
 

@@ -20,6 +20,8 @@
                 <!-- Κατάσταση άρθρου:  0...draft, 1...submitted, 2...rejected, 3...full article, 4...featured article -->
 
                 <% if (article.state == 0) or (article.state == 2) %>
+                 <span><%= link_to "Υποβολή τώρα", submit_article_path(article), :method => :put, :class => "awesome custom red" %>
+                 </span>
 
                   <div class="state">Τρέχουσα κατάσταση: Πρόχειρο (Ορατό μέσω απευθείας link)</div>
                 <% end%>
@@ -35,7 +37,7 @@
                 <% end%>
 
                 <% if article.state == 3 %>
-                  <div class="state">Τρέχουσα κατάσταση: Αποδοχή και δημοσίσευση του άρθου (<%= article.accepted.strftime("%B %d, %Y") %>)</div>
+                  <div class="state">Τρέχουσα κατάσταση: Αποδοχή και δημοσίευση του άρθου (<%= article.accepted.strftime("%B %d, %Y") %>)</div>
                 <% end %>
 
                 <% if article.state == 4 %>

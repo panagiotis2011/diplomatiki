@@ -1,10 +1,11 @@
 <section id = "admin">
-<h2>Admin: <%= @state_name.capitalize %> Articles</h2>
+<h2>Διαχειριστής: <%= @state_name.capitalize %> Άρθρου</h2>
 
     <% @articles.each do |article| %>
       <p>
         <h4><%= link_to article.title, article %></h4>
-        Author: <%= article.student.fullname %>
+        Δημιουργός: <%= article.student.fullname %>
+
         <%= link_to 'Delete', article, :confirm => 'This is admin delete despite of the article´s state. Are you sure?', :method => :delete %>
 
         <% if article.state == 1 %>

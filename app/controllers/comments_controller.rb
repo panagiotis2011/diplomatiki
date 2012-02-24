@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CommentsController < ApplicationController
   before_filter :authenticate_student!
 
@@ -10,12 +11,12 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @article.state > 2
         if @comment.save
-          format.html { redirect_to(@article, :notice => 'Comment was successfully created.') }
+          format.html { redirect_to(@article, :notice => 'Το σχόλιο δημιουργήθηκε με επιτυχία.') }
         else
-          format.html { redirect_to(@article, :notice => 'There was an error saving your comment (empty comment or comment way to long).') }
+          format.html { redirect_to(@article, :notice => 'Υπάρχει κάποιο σφάλμα και δεν αποθηκεύτηκε το σχόλιο.') }
         end
       else
-        format.html { redirect_to(@article, :notice => 'Comments are limited to published articles.') }
+        format.html { redirect_to(@article, :notice => 'Τα σχόλια μπορούν να γίνουν μόνο σε δημοσιευμένα άρθρα.') }
       end
     end
   end

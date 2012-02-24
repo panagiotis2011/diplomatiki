@@ -13,7 +13,7 @@ class DeviseCreateStudents < ActiveRecord::Migration
       t.string :fullname
       t.text :shortbio
       t.string :weburl
-      t.integer :lesson_id, :null => false, :default => 1  #foreign key to lesson table
+      t.integer :lesson_id, :null => false, :default => 1  #ξένο κλειδί για τον πίνακα Lesson
 
       t.timestamps
     end
