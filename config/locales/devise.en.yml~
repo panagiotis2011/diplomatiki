@@ -24,10 +24,10 @@ en:
       inactive: 'Ο λογαριασμός σας δεν έχει ενεργοποιηθεί ακόμη.'
     sessions:
       signed_in: 'Συνδεθήκατε στον χώρο συζήτησης και ενημέρωσης.'
-      signed_out: 'sΑποσυνδεθήκατε επιτυχώς.'
+      signed_out: 'Αποσυνδεθήκατε επιτυχώς.'
     passwords:
-      send_instructions: 'Θα σας αποσταλεί ένα email με οδηγίες για το πως θα επαναφέρετε τον κωδικό σας.'
-      updated: 'Ο κωδικός σας άλλαξε επιτυχώς. Μπορείτε να συνδεθείτε.'
+      send_instructions: 'Σας έχει αποσταλεί ένα email με οδηγίες για το πως θα επαναφέρετε τον κωδικό σας.'
+      updated: 'Ο κωδικός σας άλλαξε επιτυχώς. Μπορείτε να συνεχίσετε.'
       updated_not_active: 'Ο κωδικός σας άλλαξε επιτυχώς.'
       send_paranoid_instructions: "Εάν το email σας υπάρχει στην βάση δεδομένων θα σας αποσταλεί ένα link για την ανάκτηση του κωδικού σας."
     confirmations:
@@ -37,7 +37,7 @@ en:
     registrations:
       signed_up: 'Καλώς ήλθατε! Έχετε συνδεθεί επιτυχώς.'
       inactive_signed_up: 'Έχετε συνδεθεί επιτυχώς. Ωστόσο δεν μπορείτε να συνεχίσετε διότι ο λογαριασμός σας είναι %{reason}.'
-      updated: 'You updated your account successfully.'
+      updated: 'Ενημερώσατε τον λογαριασμό σας επιτυχώς.'
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
       reasons:
         inactive: 'ανενεργός'

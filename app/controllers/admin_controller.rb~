@@ -16,7 +16,7 @@ class AdminController < ApplicationController
 	end
 
 
-	# display form to enter reject message
+	# φόρμα για την εισαγωγή του μηνύματος στα άρθρα που είναι μη αποδεκτά
 	def editreject
 		@article = Article.find(params[:id])
 		# Μόνο υποβληθέντα άρθρα μπορούν να απορριφθούν
@@ -27,7 +27,7 @@ class AdminController < ApplicationController
 	end
 
 
-	# reject the article (updates the article)
+	# απόρριψη του άρθρου
 	def reject
 		@article = Article.find(params[:id])
 		if @article.state == 1
@@ -52,10 +52,10 @@ class AdminController < ApplicationController
 	end
 
 
-	# accept an article as normal or featured article
+	# αποδοχή του άρθρου σαν κανονικό ή σαν προτεινόμενο
 	def accept
 		@article = Article.find(params[:id])
-		# only submitted articles can be accepted
+		# μόνο υποβληθέντα άρθρα μπορούν να γίνουν αποδεκτά
 		if @article.state == 1
 			@article.state = 3
 			flash[:notice] = 'Το άρθρο έχει γίνει αποδεκτό.'
@@ -68,7 +68,7 @@ class AdminController < ApplicationController
 			# freeeze
 			@article.freezebody = @article.title + "\n\n" + @article.body + "\n\n"
 			@article.accepted = Time.now
-			# save article
+			# αποθήκευση άρθρου
 			if !@article.save
 				flash[:notice] = 'Υπάρχει κάποιο σφάλμα κατά την αποδοχή του άρθρου.'
 			end
@@ -82,19 +82,19 @@ class AdminController < ApplicationController
 	def articles
 		if params[:state]
 			@state = params[:state]
-			# invalid parameter? show submitted articles
+			# λανθασμένες παράμετροι δείξε τα προς υποβολή άρθρα
 			if !['0', '1', '2', '3', '4'].index(@state)
 				@state = '1'
 			end
 		else
-			# no parameter? show submitted articles
+			# καθόλου παράμετροι δείξε τα προς υποβολή άρθρα
 			@state = '1'
 		end
 		# different sort order for different states; verbose the state for the view
 		case @state
 			when '0' then @state_name = 'Πρόχειρο'; @order = 'updated_at desc'
 			when '1' then @state_name = 'Προς υποβολή'; @order = 'updated_at desc'
-			when '2' then @state_name = 'rejected'; @order = 'updated_at desc'
+			when '2' then @state_name = 'Μη αποδεκτό'; @order = 'updated_at desc'
 			when '3' then @state_name = 'Αποδεκτό'; @order = 'accepted desc'
 			when '4' then @state_name = 'Προτεινόμενο'; @order = 'accepted desc'
 		end
@@ -104,7 +104,7 @@ class AdminController < ApplicationController
 	protected
 	def is_admin
 		if current_student
-			if current_student.id < 4
+			if current_student.id < 6
 				return 1
 			end
 		end

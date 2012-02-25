@@ -7,7 +7,7 @@ en:
       expired: "έχει λήξη παρακαλώ ζητήστε έναν καινούργιο"
       not_found: "Δεν βρέθηκε"
       already_confirmed: "έχει ήδη επιβεβαιωθεί παρακαλώ συνδεθείτε"
-      not_locked: "was not locked"
+      not_locked: "Δεν είναι κλειδωμένος"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
@@ -26,8 +26,8 @@ en:
       signed_in: 'Συνδεθήκατε στον χώρο συζήτησης και ενημέρωσης.'
       signed_out: 'Αποσυνδεθήκατε επιτυχώς.'
     passwords:
-      send_instructions: 'Θα σας αποσταλεί ένα email με οδηγίες για το πως θα επαναφέρετε τον κωδικό σας.'
-      updated: 'Ο κωδικός σας άλλαξε επιτυχώς. Μπορείτε να συνδεθείτε.'
+      send_instructions: 'Σας έχει αποσταλεί ένα email με οδηγίες για το πως θα επαναφέρετε τον κωδικό σας.'
+      updated: 'Ο κωδικός σας άλλαξε επιτυχώς. Μπορείτε να συνεχίσετε.'
       updated_not_active: 'Ο κωδικός σας άλλαξε επιτυχώς.'
       send_paranoid_instructions: "Εάν το email σας υπάρχει στην βάση δεδομένων θα σας αποσταλεί ένα link για την ανάκτηση του κωδικού σας."
     confirmations:
@@ -37,8 +37,8 @@ en:
     registrations:
       signed_up: 'Καλώς ήλθατε! Έχετε συνδεθεί επιτυχώς.'
       inactive_signed_up: 'Έχετε συνδεθεί επιτυχώς. Ωστόσο δεν μπορείτε να συνεχίσετε διότι ο λογαριασμός σας είναι %{reason}.'
-      updated: 'You updated your account successfully.'
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      updated: 'Ενημερώσατε τον λογαριασμό σας επιτυχώς.'
+      destroyed: 'Ο λογαριασμός σας έχει διαγραφεί. Ελπίζουμε να σας ξαναδούμε σύντομα. Γεια σας!'
       reasons:
         inactive: 'ανενεργός'
         unconfirmed: 'ανεπιβεβαίωτος'
