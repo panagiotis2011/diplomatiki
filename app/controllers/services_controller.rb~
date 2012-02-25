@@ -38,12 +38,12 @@ class ServicesController < ApplicationController
 				omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
 			elsif service_route == 'twitter'
 				email = ''    # Το Twitter API ποτέ δεν επιστρέφει την διεύθυνση email
-				omniauth['student_info']['name'] ? name =  omniauth['student_info']['name'] : name = ''
+				omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
 				omniauth['uid'] ?  uid =  omniauth['uid'] : uid = ''
 				omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
 			elsif service_route == 'google'
-				omniauth['student_info']['email'] ? email =  omniauth['student_info']['email'] : email = ''
-				omniauth['student_info']['name'] ? name =  omniauth['student_info']['name'] : name = ''
+				omniauth['info']['email'] ? email =  omniauth['info']['email'] : email = ''
+				omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
 				omniauth['uid'] ? uid =  omniauth['uid'] : uid = ''
 				omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
 			else

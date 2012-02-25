@@ -6,4 +6,6 @@ require 'openid/store/filesystem'
   provider :github, 'CLIENT ID', 'SECRET', {:client_options => {:ssl => {:ca_path => "/etc/ssl/certs"}}}
   provider :openid, :store => OpenID::Store::Filesystem.new('./tmp'), :name => 'openid'
   provider :openid, :store => OpenID::Store::Filesystem.new('./tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id'
+  provider :openid, :store => OpenID::Store::Filesystem.new('./tmp'), :name => 'yahoo', :identifier => 'yahoo.com'
+
 end
