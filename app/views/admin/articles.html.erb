@@ -1,17 +1,17 @@
 <section id = "admin">
-<h2>Διαχειριστής: <%= @state_name.capitalize %> Άρθρου</h2>
+<h2>Διαχειριστής: <%= @state_name.capitalize %> Άρθρο</h2>
 
     <% @articles.each do |article| %>
       <p>
         <h4><%= link_to article.title, article %></h4>
         Δημιουργός: <%= article.student.fullname %>
 
-        <%= link_to 'Delete', article, :confirm => 'This is admin delete despite of the article´s state. Are you sure?', :method => :delete %>
+        <%= link_to 'Διαγραφή', article, :confirm => 'Αυτή η ενέργεια θα διαγράψει το άρθρο. Να γίνει η διαγραφή;', :method => :delete %>
 
         <% if article.state == 1 %>
-          <%= link_to 'Reject', editreject_admin_path(article) %>
-          <%= link_to 'Publish standard', accept_admin_path(article, :value => '0'), :method => :put %>
-          <%= link_to 'Publish featured', accept_admin_path(article, :value => '1'), :method => :put %>
+          <%= link_to 'Απόρριψη', editreject_admin_path(article) %>
+          <%= link_to 'Όλα τα άρθρα', accept_admin_path(article, :value => '0'), :method => :put %>
+          <%= link_to 'Προτεινόμενα άρθρα', accept_admin_path(article, :value => '1'), :method => :put %>
         <% end %>
       </p>
     <% end %>

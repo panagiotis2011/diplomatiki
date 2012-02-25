@@ -6,12 +6,12 @@
         <h4><%= link_to article.title, article %></h4>
         Δημιουργός: <%= article.student.fullname %>
 
-        <%= link_to 'Delete', article, :class => "awesome custom black", :confirm => 'Αυτή η ενέργεια διαγράφει πλήρως το άρθρο. Είσαι σίγουρος;', :method => :delete %>
+        <%= link_to 'Διαγραφή', article, :confirm => 'Αυτή η ενέργεια θα διαγράψει το άρθρο. Να γίνει η διαγραφή;', :method => :delete %>
+
         <% if article.state == 1 %>
-        <%= link_to 'Reject', editreject_admin_path(article), :class => "awesome custom red" %>
-        <%= link_to 'Publish standard', accept_admin_path(article, :value => '0'), :class => "awesome custom green", :method => :put %>
-          <%= link_to 'Publish featured', accept_admin_path(article, :value => '1'), :class => "awesome custom green", :method => :put %>
-       </div>
+          <%= link_to 'Reject', editreject_admin_path(article) %>
+          <%= link_to 'Publish standard', accept_admin_path(article, :value => '0'), :method => :put %>
+          <%= link_to 'Publish featured', accept_admin_path(article, :value => '1'), :method => :put %>
         <% end %>
       </p>
     <% end %>

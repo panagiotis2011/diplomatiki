@@ -55,7 +55,7 @@ class AdminController < ApplicationController
 	# accept an article as normal or featured article
 	def accept
 		@article = Article.find(params[:id])
-		# only submitted articles can be accepted
+		# μόνο υποβληθέντα άρθρα μπορούν να γίνουν αποδεκτά
 		if @article.state == 1
 			@article.state = 3
 			flash[:notice] = 'Το άρθρο έχει γίνει αποδεκτό.'
@@ -94,7 +94,7 @@ class AdminController < ApplicationController
 		case @state
 			when '0' then @state_name = 'Πρόχειρο'; @order = 'updated_at desc'
 			when '1' then @state_name = 'Προς υποβολή'; @order = 'updated_at desc'
-			when '2' then @state_name = 'rejected'; @order = 'updated_at desc'
+			when '2' then @state_name = 'Μη αποδεκτό'; @order = 'updated_at desc'
 			when '3' then @state_name = 'Αποδεκτό'; @order = 'accepted desc'
 			when '4' then @state_name = 'Προτεινόμενο'; @order = 'accepted desc'
 		end
