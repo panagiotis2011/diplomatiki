@@ -10,6 +10,14 @@ Diplomatiki::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'gmail.com',
+    :user_name            => 'petridisko@gmail.com',
+    :password             => 't2310927485',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 
   # Specifies the header that your server uses for sending files
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
@@ -48,4 +56,16 @@ Diplomatiki::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  Rails.application.config.middleware.use OmniAuth::Builder do
+require 'openid/store/filesystem'
+
+  provider :twitter, 'HWeGxTH2ysMmPnQUhbsQg', 'ud2YQ1u9PByzQsfGE2OF2khrC3vR4RIw6Oxpju5b948', {:client_options => {:ssl => {:ca_path => "/etc/ssl/certs"}}}
+  provider :facebook, '241098305977064', '3da066f5216ff5833ee821d9c8764fb8'
+  provider :github, 'CLIENT ID', 'SECRET', {:client_options => {:ssl => {:ca_path => "/etc/ssl/certs"}}}
+  provider :openid, :store => OpenID::Store::Filesystem.new('./tmp'), :name => 'openid'
+  provider :openid, :store => OpenID::Store::Filesystem.new('./tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id'
+  provider :openid, :store => OpenID::Store::Filesystem.new('./tmp'), :name => 'yahoo', :identifier => 'yahoo.com'
+
+end
 end
