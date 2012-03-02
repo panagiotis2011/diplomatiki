@@ -15,7 +15,7 @@
 
                 <% if student_signed_in? %>
 
-                 <% if admin_singed_in %>
+                 <% if admin_signed_in %>
                     <li><%= link_to "Διαχείριση", admin_index_path %></li>
                      <% end %>
 

@@ -5,7 +5,7 @@ class ArticlesControllerTest < ActionController::TestCase
 
 	setup do
 		@article_student1 = articles(:one)
-		@article_student2 = articles(:three)
+		@article_student6 = articles(:three)
 	end
 
 
@@ -19,7 +19,7 @@ class ArticlesControllerTest < ActionController::TestCase
 		assert_not_nil assigns(:articles)
 	end
 	test "should get index and all signed in" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		get :index
 		assert_response :success
 		assert_not_nil assigns(:articles)
@@ -35,12 +35,12 @@ class ArticlesControllerTest < ActionController::TestCase
 		assert_redirected_to new_student_session_path
 	end
 	test "should get myarticles signed in" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		get :myarticles
 		assert_response :success
 	end
 	test "should not destroy accepted article" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		assert_no_difference('Article.count', "Article count has changed but should not") do
 			delete :destroy, :id => articles(:six).id
 		end
@@ -48,7 +48,7 @@ class ArticlesControllerTest < ActionController::TestCase
 		assert_equal 'Το άρθρο δεν μπορεί να διαγραφεί.', flash[:error]
 	end
 	test "should not destroy featured article" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		assert_no_difference('Article.count', "Article count has changed but should not") do
 			delete :destroy, :id => articles(:seven).id
 		end
@@ -63,7 +63,7 @@ class ArticlesControllerTest < ActionController::TestCase
 		assert_response :success
 	end
 	test "should get about signed in" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		get :about
 		assert_response :success
 	end
@@ -75,7 +75,7 @@ class ArticlesControllerTest < ActionController::TestCase
 		assert_response :success
 	end
 	test "should show article signed in" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		get :show, :id => @article_student1.to_param
 		assert_response :success
 	end
@@ -89,22 +89,22 @@ class ArticlesControllerTest < ActionController::TestCase
 		assert_redirected_to new_student_session_path
 	end
 	test "should get new signed in" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		get :new
 		assert_response :success
 	end
 	test "new article has to belong to current student" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		get :new
-		assert assigns(:article).student_id == students(:student2).id, "Το άρθρο δεν ανήκει στον φοιτητή"
+		assert assigns(:article).student_id == students(:student6).id, "Το άρθρο δεν ανήκει στον φοιτητή"
 	end
 	test "should get edit to own article signed in" do
-		sign_in students(:student2)
-		get :edit, :id => @article_student2.to_param
+		sign_in students(:student6)
+		get :edit, :id => @article_student6.to_param
 		assert_response :success
 	end
 	test "edited article has to belong to current student" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		get :edit, :id => @article_student1.to_param
 		assert_redirected_to root_url, "Should be redirected to root url if article of other student is requested"
 		assert_equal 'Το άρθρο που ζητήσατε δεν βρέθηκε.', flash[:error]
@@ -118,15 +118,15 @@ class ArticlesControllerTest < ActionController::TestCase
 		end
 	end
 	test "should not create article linked to other student" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		post :create, :article => { :student_id => students(:student1).id, :title => 'Title', :body => 'Body' }
 		puts assigns(:article).student_id
-		assert assigns(:article).student_id == students(:student2).id, "Το άρθρο δεν ανήκει στον φοιτητή"
+		assert assigns(:article).student_id == students(:student6).id, "Το άρθρο δεν ανήκει στον φοιτητή"
 	end
 	test "should create article signed in" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		assert_difference('Article.count', 1, "Article count has not changed") do
-			post :create, :article => { :student_id => students(:student2).id, :title => 'Title', :body => 'Body' }
+			post :create, :article => { :student_id => students(:student6).id, :title => 'Title', :body => 'Body' }
 		end
 		assert_redirected_to article_path(assigns(:article))
 		assert_equal 'Το άρθρο δημιουργήθηκε επιτυχώς.', flash[:notice]
@@ -139,12 +139,12 @@ class ArticlesControllerTest < ActionController::TestCase
 		assert_redirected_to new_student_session_path
 	end
 	test "should update article signed in" do
-		sign_in students(:student2)
-		put :update, :id => @article_student2.to_param, :article => @article_student2.attributes
+		sign_in students(:student6)
+		put :update, :id => @article_student6.to_param, :article => @article_student6.attributes
 		assert_redirected_to article_path(assigns(:article))
 	end
 	test "should not update article linked to other student" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		put :update, :id => @article_student1.to_param, :article => @article_student1.attributes
 		assert_redirected_to root_url, "Should be redirected to root url if article of other student is requested"
 		assert_equal 'Το άρθρο που ζητήσατε δεν βρέθηκε.', flash[:error]
@@ -157,39 +157,39 @@ class ArticlesControllerTest < ActionController::TestCase
 		assert_redirected_to new_student_session_path
 	end
 	test "should not submit article for other student" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		put :submit, :id => articles(:one).id
 		assert_redirected_to root_url, "Should be redirected to root url if article of other student is requested"
 		assert_equal 'Το άρθρο που ζητήσατε δεν βρέθηκε.', flash[:error]
 	end
 	test "should submit draft article" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		put :submit, :id => articles(:three).id
 		assert assigns(:article).state == 1, "Article state is not 1 (submitted)"
 		assert_redirected_to myarticles_articles_path
 		assert_equal 'Το άρθρο σας υποβλήθηκε με επιτυχία για έγκριση.', flash[:notice]
 	end
 	test "should resubmit rejected article" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		put :submit, :id => articles(:five).id
 		assert assigns(:article).state == 1, "Article state is not 1 (submitted)"
 		assert_redirected_to myarticles_articles_path
 		assert_equal 'Το άρθρο σας υποβλήθηκε με επιτυχία για έγκριση.', flash[:notice]
 	end
 	test "should not submit submitted article again" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		put :submit, :id => articles(:four).id
 		assert_redirected_to myarticles_articles_path
 		assert_equal 'Το άρθρο δεν μπορεί να υποβληθεί.', flash[:error]
 	end
 	test "should not submit accepted article again" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		put :submit, :id => articles(:six).id
 		assert_redirected_to myarticles_articles_path
 		assert_equal 'Το άρθρο δεν μπορεί να υποβληθεί.', flash[:error]
 	end
 	test "should not submit featured article again" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		put :submit, :id => articles(:seven).id
 		assert_redirected_to myarticles_articles_path
 		assert_equal 'Το άρθρο δεν μπορεί να υποβληθεί.', flash[:error]
@@ -204,14 +204,14 @@ class ArticlesControllerTest < ActionController::TestCase
 		assert_redirected_to new_student_session_path
 	end
 	test "should destroy article signed in" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 			assert_difference('Article.count', -1) do
-				delete :destroy, :id => @article_student2.to_param
+				delete :destroy, :id => @article_student6.to_param
 			end
 			assert_redirected_to articles_path
 		end
 	test "should not destroy article linked to other student" do
-		sign_in students(:student2)
+		sign_in students(:student6)
 		assert_no_difference('Article.count', "Article count has changed") do
 			delete :destroy, :id => @article_student1.to_param
 		end

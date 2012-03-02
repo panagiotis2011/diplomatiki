@@ -22,7 +22,7 @@ two:
 
 three:
   id: 3
-  student_id: 2
+  student_id: 6
   title: MyString
   body: MyText
   message: MyString
@@ -33,7 +33,7 @@ three:
 
 four:
   id: 4
-  student_id: 2
+  student_id: 6
   title: MyString
   body: MyText
   message: MyString
@@ -44,7 +44,7 @@ four:
 
 five:
   id: 5
-  student_id: 2
+  student_id: 6
   title: MyString
   body: MyText
   message: MyString
@@ -55,7 +55,7 @@ five:
 
 six:
   id: 6
-  student_id: 2
+  student_id: 6
   title: MyString
   body: MyText
   message: MyString
@@ -66,7 +66,7 @@ six:
 
 seven:
   id: 7
-  student_id: 2
+  student_id: 6
   title: MyString
   body: MyText
   message: MyString

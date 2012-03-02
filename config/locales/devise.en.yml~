@@ -7,7 +7,7 @@ en:
       expired: "έχει λήξη παρακαλώ ζητήστε έναν καινούργιο"
       not_found: "Δεν βρέθηκε"
       already_confirmed: "έχει ήδη επιβεβαιωθεί παρακαλώ συνδεθείτε"
-      not_locked: "was not locked"
+      not_locked: "Δεν είναι κλειδωμένος"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
@@ -38,7 +38,7 @@ en:
       signed_up: 'Καλώς ήλθατε! Έχετε συνδεθεί επιτυχώς.'
       inactive_signed_up: 'Έχετε συνδεθεί επιτυχώς. Ωστόσο δεν μπορείτε να συνεχίσετε διότι ο λογαριασμός σας είναι %{reason}.'
       updated: 'Ενημερώσατε τον λογαριασμό σας επιτυχώς.'
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      destroyed: 'Ο λογαριασμός σας έχει διαγραφεί. Ελπίζουμε να σας ξαναδούμε σύντομα. Γεια σας!'
       reasons:
         inactive: 'ανενεργός'
         unconfirmed: 'ανεπιβεβαίωτος'

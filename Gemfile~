@@ -18,10 +18,6 @@ gem 'omniauth-openid'
 gem 'omniauth-github'
 gem 'multi_json'
 
-group :development do
-
-gem 'thin'
-end
 
 group :production do
 

@@ -2,8 +2,10 @@ Diplomatiki::Application.routes.draw do
 	devise_for :students, :controllers => { :registrations => "students/registrations" }
 
 	match '/auth/:provider/callback' => 'services#create'
+
 	resources :services, :only => [:index, :create]
-	resources :admin, :only => [:index] do
+
+	resources :admin, :only => [:index, :delete] do
 		member do
 			get 'editreject'
 			put 'reject'
@@ -19,6 +21,7 @@ Diplomatiki::Application.routes.draw do
 			get 'about'
 			get 'all'
 			get 'myarticles'
+			delete 'destroy'
 		end
 
 		member do

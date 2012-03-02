@@ -101,10 +101,24 @@ class AdminController < ApplicationController
 		@articles = Article.where(:state => @state).order(@order)
 	end
 
+	def destroy
+		@article = current_student.articles.find(params[:id])
+		# Ο φοιτητής μπορεί να διαγράψει μόνο άρθρα σε κατάσταση "πρόχειρο", "προς υποβολή" ή "μη αποδεκτό"
+		if (@article.state < 3)
+			@article.destroy
+		else
+			flash[:error] = 'Το άρθρο δεν μπορεί να διαγραφεί.'
+		end
+		respond_to do |format|
+			format.html { redirect_to(articles_url) }
+			format.xml  { head :ok }
+		end
+	end
+
 	protected
 	def is_admin
 		if current_student
-			if current_student.id < 6
+			if current_student.id < 5
 				return 1
 			end
 		end

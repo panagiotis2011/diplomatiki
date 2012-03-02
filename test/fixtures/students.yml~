@@ -30,3 +30,17 @@ student3:
   encrypted_password: abcdef3
   #password_salt:  gheureuf
   confirmed_at: <%= Time.now %>
+
+student4:
+  id: 4
+  email: student4@diplomatiki.eu
+  encrypted_password: abcdef3
+  #password_salt:  gheureuf
+  confirmed_at: <%= Time.now %>
+
+student5:
+  id: 5
+  email: student5@diplomatiki.eu
+  encrypted_password: abcdef3
+  #password_salt:  gheureuf
+  confirmed_at: <%= Time.now %>
