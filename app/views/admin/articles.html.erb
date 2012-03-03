@@ -7,7 +7,7 @@
         <h4><%= link_to article.title, article %></h4>
         Δημιουργός: <%= article.student.fullname %>
 
-        <%= link_to 'Delete', article, :confirm => 'Προσοχή η διαγραφή του άρθρου είναι οριστική. Είστε σίγουρος;', :method => :delete %>
+        <%= link_to 'Delete', article, :confirm => 'Προσοχή! Αυτή η ενέργεια θα διαγράψει οριστικά το άρθρο. Να γίνει η διαγραφή;', :method => :delete %>
 
         <% if article.state == 1 %>
           <%= link_to 'Απόρριψη', editreject_admin_path(article) %>
