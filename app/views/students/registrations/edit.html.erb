@@ -7,6 +7,9 @@
   <p><%= f.label :email %><span>       (Δεν εμφανίζεται ποτέ)</span><br />
   <%= f.email_field :email %></p>
 
+  <p>Ο Χώρος συζήτησης ενημέρωσης χρησιμοποιεί την υπηρεσία Gravatar και σε συνδυασμό με την ηλεκτρονική σας διεύθυνση εμφανίζει την avatar εικόνα σας. Μπορείτε να ρυθμίσεται το avatar σας στο <%= link_to 'Gravatar', 'http://www.gravatar.com' %>.<br /><%= image_tag gravatar(resource.email, 30) %></p>
+
+
   <p><%= f.label 'name', 'Όνομα Επίθετο' %><span>(Θα εμφανίζεται στα άρθρα / σχόλια)</span><br />
   <%= f.text_field :fullname %></p>
 

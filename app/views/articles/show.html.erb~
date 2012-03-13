@@ -2,7 +2,7 @@
     <h2><%= @article.title %>
        <ul class="stars floatstars">
             <li class="yellowstars" style="width: <%= @article.avg_rating * 25 %>px !important;"></li>
-            <li class="text"><%= @article.avg_rating %> average from <%= pluralize(@article.count_ratings, "vote") %></li>
+            <li class="text">Ο μέσος όρος είναι <%= @article.avg_rating %> από συνολικά <%= pluralize(@article.count_ratings, "ψήφο") %></li>
        </ul>
 
     </h2>
@@ -10,15 +10,15 @@
 
     <div class="byline">Γράφτηκε από: <%= link_to @article.student.fullname, "" %></div>
 
-    <div class="avatar"><%= image_tag gravatar(@article.student.email, 64) %></div>
+    <div class="avatar"><%= image_tag gravatar(article.student.email, 64) %></div>
 
 </section>
 
 <section id="articlebody" class="textile">
-  <%= sanitize textilize(coderay_dressed(@article.body)) %>
 
+	<h2><%= @article.title %></h2>
 	<div class="textile">
-		<%= @article.body %>
+		<%= sanitize textilize(coderay_dressed(@article.body)) %>
 	</div>
 
 </section>

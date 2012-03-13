@@ -6,7 +6,7 @@
   <p><%= f.label :email %><span>(Δεν εμφανίζεται ποτέ)</span><br />
   <%= f.email_field :email %></p>
 
-  <p>diplomatiki uses <%= link_to 'Gravatar', 'http://www.gravatar.com' %> σε συνδυασμό με την ηλεκτρονική διεύθυνση εμφανίζεται η εικόνα avatar. Μπορείτε να ρυθμίσεται το avatar σας στο Gravatar.<br /><%= image_tag gravatar(resource.email) %></p>
+  <p>diplomatiki uses <%= link_to 'Gravatar', 'http://www.gravatar.com' %> σε συνδυασμό με την ηλεκτρονική διεύθυνση εμφανίζεται η εικόνα avatar. Μπορείτε να ρυθμίσεται το avatar σας στο Gravatar.<br /><%= image_tag gravatar(resource.email, 30) %></p>
 
   <p><%= f.label 'name', 'Firstname Lastname' %><span>(Θα εμφανίζεται στα άρθρα / σχόλια)</span><br />
   <%= f.text_field :fullname %></p>

@@ -14,4 +14,5 @@ ActiveSupport::Inflector.inflections do |inflect|
 	inflect.irregular 'Φοιτητής έχει', 'Φοιτητές έχουν'
 	inflect.irregular 'λάθος δεν επιτρέπει', 'λάθη δεν επιτρέπουν'
 	inflect.irregular 'σφάλμα', 'σφάλματα'
+	inflect.irregular 'ψήφο', 'ψήφους'
 end
