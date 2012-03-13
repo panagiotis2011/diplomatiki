@@ -13,7 +13,7 @@ gem 'will_paginate', '~> 3.0.pre2'
 gem 'RedCloth'
 gem 'coderay'
 gem 'validate_url'
-gem 'sqlite3'
+gem 'thin'
 
 gem 'omniauth'
 gem 'omniauth-twitter'
