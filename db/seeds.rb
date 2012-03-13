@@ -1,7 +1,10 @@
 # encoding: utf-8
+
+
 Student.delete_all
 Article.delete_all
 Lesson.delete_all
+
 
 
 module ActiveModel
