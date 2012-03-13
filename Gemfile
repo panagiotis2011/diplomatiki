@@ -21,16 +21,4 @@ gem 'omniauth-facebook'
 gem 'omniauth-openid'
 gem 'omniauth-github'
 gem 'multi_json'
-
-
-group :production do
-
 gem 'dalli'
-gem 'heroku'
-gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
-gem 'pg'
-gem 'mogli'
-gem 'sinatra'
-end

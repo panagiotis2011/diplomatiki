@@ -1,6 +1,6 @@
 class CreateArticles < ActiveRecord::Migration
   def self.up
-    drop_table :articles
+
     create_table :articles do |t|
       t.integer :student_id, :null => false        #ξένο κλειδί για τον πίνακα Lesson
 
