@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_student!, :except => [:index, :all, :show, :about]
   before_filter :count_articles
-  before_filter :mailer_set_url_options
+
 
   def about
   end
