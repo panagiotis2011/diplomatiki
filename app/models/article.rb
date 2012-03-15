@@ -1,16 +1,17 @@
 class Article < ActiveRecord::Base
-
+  acts_as_taggable_on :keywords
   belongs_to :student
   has_many :comments, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
 
-  attr_accessible :title, :body
+  attr_accessible :title, :body, :keyword_list
 
   validates :student_id, :presence => true
   validates :title, :presence => true, :length => { :maximum => 80 }
   validates :body, :presence => true
   validates :message, :length => { :maximum => 5000 }
   validates :state, :presence => true, :numericality => true, :inclusion => { :in => 0..4 }
+
 
   # returns the number of ratings for that article
   def count_ratings

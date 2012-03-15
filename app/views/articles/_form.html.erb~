@@ -29,9 +29,14 @@
     <label for="article_body">Το άρθρο σας (Μετατρέψτε το απλό κείμενο σε html - <%= link_to "Περισσότερα εδώ!", 'http://redcloth.org' %>)</label><br />
     <%= f.text_area :body, :size => "100%x40", :class => "fullwidth"  %>
   </div>
+
+  <div class="field">
+    <%= f.label :Keyword_list %><br />
+    <%= f.text_field :keyword_list %>
+  </div>
+
    <div class="actions">
     <%= f.submit :class => "awesome custom red" %>
-    <%= link_to 'Δημιουργία άρθρου', @article, :class => "awesome custom black" %>
     <%= link_to 'Εμφάνιση αυτού του άρθρου', @article, :class => "awesome custom black" %>
     <%= link_to 'Επιστροφή στα άρθρα μου', myarticles_articles_path, :class => "awesome custom black" %>
   </div>

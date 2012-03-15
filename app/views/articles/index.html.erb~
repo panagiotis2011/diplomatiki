@@ -1,4 +1,8 @@
+
+
 <section id = "articles">
+
+
     <% @articles.each do |article| %>
         <article class="article">
             <ul class="stars floatstars">
@@ -8,5 +12,19 @@
             <div class = "byline"><%= article.created_at.strftime("%B %d, %Y") %> : <%= article.state %></div>
 
         </article>
+    <% end %>
+
+     <div class='pagination'>
+        <%= will_paginate @articles %>
+    </div>
+       <% @tags.sort_by(&:count).reverse.each do |k| %>
+
+      <% url_opts = {:action => "all", :controller => "articles"}
+         link_name = "#{k.name} (#{k.count})" %>
+      <% if @keyword == k.name %>
+        <%= link_to link_name, url_opts.merge(:keyword => nil), :class => "tag current_tag", :title => "Click again to see all" %>
+      <% else %>
+        <%= link_to link_name,  url_opts.merge(:keyword => k.name), :class => "tag", :title => "Click to filter by #{k.name}" %>
+      <% end %>
     <% end %>
 </section>

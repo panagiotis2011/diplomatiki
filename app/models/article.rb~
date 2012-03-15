@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-
+  acts_as_taggable_on :keywords
   belongs_to :student
   has_many :comments, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
@@ -11,6 +11,7 @@ class Article < ActiveRecord::Base
   validates :body, :presence => true
   validates :message, :length => { :maximum => 5000 }
   validates :state, :presence => true, :numericality => true, :inclusion => { :in => 0..4 }
+
 
   # returns the number of ratings for that article
   def count_ratings
@@ -25,7 +26,7 @@ class Article < ActiveRecord::Base
 
   def self.search(search)
   if search
-    where('title LIKE ? or teaser LIKE ?', "%#{search}%", "%#{search}%")
+    where('title LIKE ? or body LIKE ?', "%#{search}%", "%#{search}%")
   else
     scoped
   end

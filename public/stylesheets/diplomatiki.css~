@@ -40,7 +40,7 @@ header#page_header { margin: 0px 2% 10px 2%; padding: 5px 15px; }
 #maincontainer { overflow: hidden; }
 
 /* do some floating: we have two columns, content and sidebar, both are in maincontainer */
-#content { float: left; width: 72%; margin: 0px 10px 40px 2%; padding: 0 0 0 15px; }
+#content { float: left; width: 75%; margin: 4px 10px 40px 2%; padding: 0 0 0 5px; }
 
 /* this is our sidebar with its elements */
 #sidebar { float: right; width: 18%; margin: 0px 2% 40px 0px; padding: 0; }
@@ -118,10 +118,8 @@ div.field label { font-size: 12px; }
 #articles { padding: 0; margin: 0; }
 #articles { }
 .article { width: 100%; margin-bottom: 40px; }
-.article .title { font-weight: bold; margin-bottom: 0px; }
+.article .title { font-weight: bold; margin-bottom: 10px; }
 .article .title a { font-size: 18px; text-decoration: none; color: #c81419; padding-top: 5px; }
-.article .teaser { text-align: justify; }
-.article .byline { font-size: 12px; margin-bottom: 10px; }
 .article .stars .text { margin-top: 0px !important; }
 
 /* show-method: display one article */
@@ -254,8 +252,8 @@ footer#page_footer { clear: both; background-color: #ffffff; margin: 0px 5% 50px
 #admin .fullwidth { width: 100%; }
 
 /* style the pagination */
-.pagination { background: #f1f1f1; text-align: center; padding: 3px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
-.pagination a, .pagination span, .pagination em { font-size: 12px; padding: 5px 5px; }
+.pagination { background: #f1f1f1; text-align: center; padding: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+.pagination a, .pagination span, .pagination em { font-size: 1px; padding: 5px 5px; }
 .pagination span.disabled { color: #74809a; }
 .pagination em { font-weight: bold; }
 .pagination a { text-decoration: none; color: #000000; }
@@ -315,7 +313,34 @@ footer#page_footer { clear: both; background-color: #ffffff; margin: 0px 5% 50px
 .auth_provider {
   float: left;
   text-decoration: none;
-  margin-right: 200px;
+  margin-right: 20px;
   text-align: center;
   margin-bottom: 10px;
 }
+
+/**** and associated tag-cloud styles ****/
+  /* basic tag-box */
+.tag {
+    background-color: #eee;
+    border: 2px solid #ccc;
+    color: red;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    padding: 2px 15px;
+    text-decoration: none;
+  }
+  .current_tag {
+    background-color: #ddd;
+    color: black;
+    border: 2px solid red;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    font-weight: bold;
+  }
+  .tag:hover, .current_tag:hover {
+    background-color: #bbb;
+    color: red;
+    border: 2px solid red;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+  }
