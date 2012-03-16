@@ -13,8 +13,8 @@
 
                 <div class="title"><%= article.title %></div>
                 <div class="created">
-                   <p> Δημιουργήθηκε: <%= article.created_at.strftime("%B %d, %Y") %> </p>
-                   <p>   Ενημερώθηκε: <%= article.updated_at.strftime("%B %d, %Y") %> </p>
+                   <p> Δημιουργήθηκε: <%= l(article.created_at, :format => '%d %b %Y') %> </p>
+                   <p>   Ενημερώθηκε: <%= l(article.updated_at, :format => '%d %b %Y') %> </p>
                 </div>
 
                 <!-- Κατάσταση άρθρου:  0...draft, 1...submitted, 2...rejected, 3...full article, 4...featured article -->
@@ -27,21 +27,21 @@
                 <% end%>
 
                 <% if article.state == 1 %>
-                  <div class="state">Τρέχουσα κατάσταση: Προς υποβολή (<%= article.submitted.strftime("%B %d, %Y") %>)</div>
+                  <div class="state">Τρέχουσα κατάσταση: Προς υποβολή (<%= l(article.submitted, :format => '%d %b %Y') %>)</div>
                 <% end%>
 
                 <% if article.state == 2 %>
-                  <div class="state">Τρέχουσα κατάσταση: Μη αποδεκτό (<%= article.submitted.strftime("%B %d, %Y") %>)</div>
+                  <div class="state">Τρέχουσα κατάσταση: Μη αποδεκτό (<%= l(article.submitted, :format => '%d %b %Y') %>)</div>
                   <div class="reject">Παρακαλώ διαβάστε τα σχόλια, εξετάστε το άρθρο σας και προσπαθήστε ξανά!</div>
                   <div class="rejectmsg"><%= article.message %></div>
                 <% end%>
 
                 <% if article.state == 3 %>
-                  <div class="state">Τρέχουσα κατάσταση: Αποδοχή και δημοσίευση του άρθου (<%= article.accepted.strftime("%B %d, %Y") %>)</div>
+                  <div class="state">Τρέχουσα κατάσταση: Αποδοχή και δημοσίευση του άρθου (<%= l(article.accepted, :format => '%d %b %Y') %>)</div>
                 <% end %>
 
                 <% if article.state == 4 %>
-                  <div class="state">Τρέχουσα κατάσταση: Αποδοχή και δημοσίευση του άρθρου ως <b>Προτεινόμενο άρθρο</b> (<%= article.accepted.strftime("%B %d, %Y") %>)</div>
+                  <div class="state">Τρέχουσα κατάσταση: Αποδοχή και δημοσίευση του άρθρου ως <b>Προτεινόμενο άρθρο</b> (<%= l(article.accepted, :format => '%d %b %Y') %>)</div>
                 <% end %>
 
                 <div class="actions">

@@ -1,0 +1,9 @@
+pirate:
+  time:
+    formats:
+      short: "arrrround %H'ish"
+
+      state=4:
+       time:
+    formats:
+      short: "arrrround %H'ish"

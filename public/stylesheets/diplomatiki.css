@@ -321,7 +321,7 @@ footer#page_footer { clear: both; background-color: #ffffff; margin: 0px 5% 50px
 /**** and associated tag-cloud styles ****/
   /* basic tag-box */
 .tag {
-    background-color: #eee;
+    background-color: #ddd;
     border: 2px solid #ccc;
     color: red;
     border-radius: 7px;

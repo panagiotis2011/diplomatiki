@@ -2,6 +2,18 @@
 class AdminController < ApplicationController
   before_filter :authenticate_student!
   before_filter :is_admin
+  before_filter :set_locale
+
+def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+# app/controllers/application_controller.rb
+  def default_url_options(options={})
+    logger.debug "default_url_options is passed options: #{options.inspect}\n"
+    { :locale => I18n.locale }
+  end
+
 
 	def index
 		@num_state0 = Article.where(:state => '0').count
@@ -99,20 +111,6 @@ class AdminController < ApplicationController
 			when '4' then @state_name = 'Προτεινόμενο'; @order = 'accepted desc'
 		end
 		@articles = Article.where(:state => @state).order(@order)
-	end
-
-	def destroy
-		@article = current_student.articles.find(params[:id])
-		# Ο φοιτητής μπορεί να διαγράψει μόνο άρθρα σε κατάσταση "πρόχειρο", "προς υποβολή" ή "μη αποδεκτό"
-		if (@article.state < 3)
-			@article.destroy
-		else
-			flash[:error] = 'Το άρθρο δεν μπορεί να διαγραφεί.'
-		end
-		respond_to do |format|
-			format.html { redirect_to(articles_url) }
-			format.xml  { head :ok }
-		end
 	end
 
 	protected

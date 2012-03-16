@@ -1,7 +1,7 @@
 # encoding: utf-8
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
-en:
+el:
   errors:
     messages:
       expired: "έχει λήξη παρακαλώ ζητήστε έναν καινούργιο"

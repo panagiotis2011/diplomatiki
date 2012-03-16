@@ -14,6 +14,7 @@ gem 'RedCloth'
 gem 'coderay'
 gem 'validate_url'
 gem 'thin'
+gem 'acts-as-taggable-on', '~> 2.2.2'
 
 gem 'omniauth'
 gem 'omniauth-twitter'

@@ -3,6 +3,7 @@ class AdminController < ApplicationController
   before_filter :authenticate_student!
   before_filter :is_admin
 
+
 	def index
 		@num_state0 = Article.where(:state => '0').count
 		@num_state1 = Article.where(:state => '1').count

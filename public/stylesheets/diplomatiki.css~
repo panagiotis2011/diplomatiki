@@ -253,7 +253,7 @@ footer#page_footer { clear: both; background-color: #ffffff; margin: 0px 5% 50px
 
 /* style the pagination */
 .pagination { background: #f1f1f1; text-align: center; padding: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
-.pagination a, .pagination span, .pagination em { font-size: 1px; padding: 5px 5px; }
+.pagination a, .pagination span, .pagination em { font-size: 15px; padding: 5px 5px; }
 .pagination span.disabled { color: #74809a; }
 .pagination em { font-weight: bold; }
 .pagination a { text-decoration: none; color: #000000; }
@@ -321,7 +321,19 @@ footer#page_footer { clear: both; background-color: #ffffff; margin: 0px 5% 50px
 /**** and associated tag-cloud styles ****/
   /* basic tag-box */
 .tag {
-    background-color: #eee;
+body
+{
+	text-align: center;
+}
+
+div#container
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 50em;
+	text-align: left;
+}
+    background-color: #ddd;
     border: 2px solid #ccc;
     color: red;
     border-radius: 7px;
