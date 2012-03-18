@@ -1,7 +1,5 @@
 el:
- time:
-    formats:
-        short: '%d %b'
+
   date:
     abbr_day_names:
     - Κυριακή
