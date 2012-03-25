@@ -9,7 +9,7 @@
                 <li class="yellowstars" style="width: <%= article.avg_rating * 25 %>px !important;"></li>
             </ul>
             <div class = "title"><%= link_to article.title, article %></div>
-            <div class = "byline"><%= l(article.created_at, :format => '%d %b') %> : <%= article.state %></div>
+            <div class = "byline"><%= l(article.created_at, :format => '%d %B') %> : <%= article.state %></div>
 
         </article>
     <% end %>

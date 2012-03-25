@@ -91,7 +91,7 @@ class AdminController < ApplicationController
 			# καθόλου παράμετροι δείξε τα προς υποβολή άρθρα
 			@state = '1'
 		end
-		# different sort order for different states; verbose the state for the view
+		# διαφορετική σειρά ταξινόμησης για διαφορετικές καταστάσεις
 		case @state
 			when '0' then @state_name = 'Πρόχειρο'; @order = 'updated_at desc'
 			when '1' then @state_name = 'Προς υποβολή'; @order = 'updated_at desc'

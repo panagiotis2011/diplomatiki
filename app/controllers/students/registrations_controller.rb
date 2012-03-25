@@ -11,13 +11,13 @@ class Students::RegistrationsController < Devise::RegistrationsController
 		if current_student.haslocalpw
 			super
 		else
-			# this account has been created with a random pw / the student is signed in via an omniauth service
-			# if the student does not want to set a password we remove the params to prevent a validation error
+			# αυτός ο λογαριασμός έχει δημιουργηθεί με τυχαίο password / ο σπουδαστής έχει εγγραφεί με υπηρεσίες δικτύωσης
+			# εάν ο σπουδαστής δεν επιθυμεί να συμπληρώσει κάποιον κωδικό αφαιρούμε τις παραμέτρους για να αποτρέψουμε σφάλματα επικύρωσης
 			if params[resource_name][:password].blank?
 				params[resource_name].delete(:password)
 				params[resource_name].delete(:password_confirmation) if params[resource_name][:password_confirmation].blank?
 			else
-				# if the student wants to set a password we set haslocalpw for the future
+				# εάν ο σπουδαστής επιθυμεί να συμπληρώσει κάποιον κωδικό
 				params[resource_name][:haslocalpw] = true
 			end
 			# this is copied over from the original devise controller, instead of update_with_password we use update_attributes

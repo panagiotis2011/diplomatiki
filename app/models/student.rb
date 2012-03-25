@@ -13,7 +13,7 @@ class Student < ActiveRecord::Base
   belongs_to :lesson
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :fullname, :shortbio, :weburl
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :fullname, :shortbio, :weburl, :lesson_id
   validates :weburl, :url => {:allow_blank => true}, :length => { :maximum => 50 }
   validates :fullname, :length => { :maximum => 40 }
   validates :shortbio, :length => { :maximum => 500 }

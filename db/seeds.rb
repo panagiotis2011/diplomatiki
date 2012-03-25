@@ -19,17 +19,17 @@ end
 
 
 @lesson1 = Lesson.create! :name => ''
-#@lesson1.confirm!
+@lesson1.confirm!
 @lesson2 = Lesson.create! :name => 'ΠΛΣ 50'
-#@lesson2.confirm!
+@lesson2.confirm!
 @lesson3 = Lesson.create! :name => 'ΠΛΣ 51'
-#@lesson3.confirm!
+@lesson3.confirm!
 @lesson4 = Lesson.create! :name => 'ΠΛΣ 60'
-#@lesson4.confirm!
+@lesson4.confirm!
 @lesson5 = Lesson.create! :name => 'ΠΛΣ 61'
-#@lesson5.confirm!
+@lesson5.confirm!
 @lesson6 = Lesson.create! :name => 'ΠΛΣ 62'
-#@lesson6.confirm!
+@lesson6.confirm!
 
 @student1 = Student.create! :email => 'oneadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin One', :lesson_id => '2', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin'
 @student1.confirm!

@@ -46,6 +46,11 @@ class ServicesController < ApplicationController
 				omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
 				omniauth['uid'] ? uid =  omniauth['uid'] : uid = ''
 				omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
+			elsif service_route == 'yahoo'
+				omniauth['info']['email'] ? email =  omniauth['info']['email'] : email = ''
+				omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
+				omniauth['uid'] ? uid =  omniauth['uid'] : uid = ''
+				omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
 			else
 				# εάν έχουμε μια υπηρεσία που δεν έχει αναγνωριστεί απλά αποθηκεύουμε την πληροφορία που έχει επιστραφεί
 				render :text => omniauth.to_yaml

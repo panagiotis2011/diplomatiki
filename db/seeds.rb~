@@ -1,9 +1,4 @@
 # encoding: utf-8
-require 'pathname'
-RailsRoot = Pathname.new(RAILS_ROOT).expand_path
-
-print "Loading data..."
-fileData = File.read (RailsRoot + "db/data-file.csv")
 
 
 Student.delete_all
@@ -24,15 +19,15 @@ end
 
 
 @lesson1 = Lesson.create! :name => ''
-#@lesson1.confirm!
+@lesson1.confirm!
 @lesson2 = Lesson.create! :name => 'ΠΛΣ 50'
-#@lesson2.confirm!
+@lesson2.confirm!
 @lesson3 = Lesson.create! :name => 'ΠΛΣ 51'
-#@lesson3.confirm!
+@lesson3.confirm!
 @lesson4 = Lesson.create! :name => 'ΠΛΣ 60'
-#@lesson4.confirm!
+@lesson4.confirm!
 @lesson5 = Lesson.create! :name => 'ΠΛΣ 61'
-#@lesson5.confirm!
+@lesson5.confirm!
 @lesson6 = Lesson.create! :name => 'ΠΛΣ 62'
 #@lesson6.confirm!
 

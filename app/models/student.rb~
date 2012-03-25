@@ -5,7 +5,7 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
 
-
+  acts_as_tagger
   has_many :services, :dependent => :destroy
   has_many :articles, :dependent => :destroy
   has_many :comments, :dependent => :destroy
