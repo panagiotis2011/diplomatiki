@@ -2,7 +2,7 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_student!
 
-  # create a comment and bind it to an article and a student
+  # δημιουργία ενός σχολίου και σύνδεσή του με ένα άρθρο και έναν σπουδαστή
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(params[:comment])
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  # remove a comment
+  # διαγραφή ενός σχολίου
   def destroy
     @comment = current_student.comments.find(params[:id])
     @article = Article.find(params[:article_id])
