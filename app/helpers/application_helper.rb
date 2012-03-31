@@ -17,4 +17,8 @@ module ApplicationHelper
 		"http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}&d=mm"
 	end
 
+	def auth_path
+		'/auth/twitter'
+	end
+
 end

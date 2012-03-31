@@ -2,6 +2,7 @@ Diplomatiki::Application.routes.draw do
 	devise_for :students, :controllers => { :registrations => "students/registrations" }
 
 	match '/auth/:provider/callback' => 'services#create'
+	match '/auth/twitter', :as => :auth_twitter
 
 	resources :services, :only => [:index, :create]
 
