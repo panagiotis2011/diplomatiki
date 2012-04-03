@@ -12,6 +12,8 @@
     </div>
   <% end %>
 
+
+
   <% # Ο τίτλος του άρθρου δεν μπορεί να αλλάξει εφόσον το άρθρο γίνει αποδεκτό %>
   <% if @article.state < 3 %>
     <div class="field">
@@ -31,6 +33,7 @@
   </div>
 
   <div class="field">
+   <label for="keyword_list">Κατηγορία (Μπορείτε να προσθέσετε διαφορετικές κατηγορίες διαχωρίζοντάς τες με κόμμα)</label><br />
     <%= f.label :Keyword_list %><br />
     <%= f.text_field :keyword_list %>
   </div>
