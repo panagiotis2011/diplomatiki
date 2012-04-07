@@ -18,8 +18,15 @@
 				<br />
 				<%= service.uname if service.uname != '' %><br />
 				<%= service.uemail if service.uemail != '' %><br />
+						<% if session[:service_id] == service.id %>
+					<span>Είσοδος </span>
+				<% else %>
+					<%= link_to "Αποσύνδεση αυτής της υπηρεσίας", service, :confirm => 'Είστε σίγουροι; Θα διαγραφεί η υπηρεσία δικτύωσης.', :method => :delete, :class => "remove" %>
+				<% end %>
+
 			</div>
 		</div>
+
 	<% end %>
 
 	<div id="availableservices">

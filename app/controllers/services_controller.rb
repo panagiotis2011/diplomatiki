@@ -12,8 +12,13 @@ class ServicesController < ApplicationController
 	def destroy
 		# διαγραφή μιας υπηρεσίας αυθεντικοποίησης που είναι συνδεδεμένη με τον φοιτητή
 		@service = current_student.services.find(params[:id])
+
+		 if session[:service_id] == @service.id
+      flash[:error] = 'You are currently signed in with this account!'
+    else
 		@service.destroy
 		flash[:notice] = "Επιτυχής αποσύνδεση της υπηρεσίας από τον λογαριασμό σας."
+		end
 		redirect_to services_path
 	end
 
@@ -31,6 +36,8 @@ class ServicesController < ApplicationController
 				omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
 				omniauth['uid'] ?  uid =  omniauth['uid'] : uid = ''
 				omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
+				omniauth['credentials']['token'] ? session['fb_access_token'] =  omniauth['credentials']['token'] : session['fb_access_token'] = ''
+
 			elsif service_route == 'github'
 				omniauth['student_info']['email'] ? email =  omniauth['student_info']['email'] : email = ''
 				omniauth['student_info']['name'] ? name =  omniauth['student_info']['name'] : name = ''
@@ -74,7 +81,7 @@ class ServicesController < ApplicationController
 						if existingstudent
 							# συνδέουμε την νέα υπηρεσία δικτύωσης με τον λογαριασμό του φοιτητή εάν είναι ίδια η διεύθυνση email
 							existingstudent.services.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
-							flash[:notice] = 'Η σύνδεση με ' + provider.capitalize + ' έχει προστεθεί στον λογαριασμό σας. ' + existingstudent.email + '. Signed in successfully!'
+							flash[:notice] = 'Η σύνδεση με ' + provider.capitalize + ' έχει προστεθεί στον λογαριασμό σας ' + existingstudent.email
 							sign_in_and_redirect(:student, existingstudent)
 						else
 							# δημιουργούμε έναν νέο φοιτητή κάνουμε εγγραφή και προσθέτουμε την υπηρεσία δικτύωσης

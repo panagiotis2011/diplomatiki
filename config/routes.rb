@@ -4,7 +4,7 @@ Diplomatiki::Application.routes.draw do
 	match '/auth/:provider/callback' => 'services#create'
 	match '/auth/twitter', :as => :auth_twitter
 
-	resources :services, :only => [:index, :create]
+	resources :services, :only => [:index, :create, :destroy]
 
 	resources :admin, :only => [:index, :delete] do
 		member do

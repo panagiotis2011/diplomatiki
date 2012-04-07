@@ -16,8 +16,5 @@ Devise.setup do |config|
   config.unlock_strategy = :time
   config.maximum_attempts = 20
   config.unlock_in = 1.hour
-
-
-
-
+  #config.omniauth :facebook, '241098305977064', '3da066f5216ff5833ee821d9c8764fb8', :scope => 'publish_stream,email,offline_access,manage_pages'
 end
