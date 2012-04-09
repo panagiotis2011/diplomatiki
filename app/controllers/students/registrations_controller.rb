@@ -3,8 +3,8 @@ class Students::RegistrationsController < Devise::RegistrationsController
 	before_filter :get_lessons
 
 	def update
-		# no mass assignment for country_id, we do it manually
-		# check for existence of the lesson in case a malicious student manipulates the params (fails silently)
+		# η ιδιότητα lesson_id δεν έχει mass assignment (πρέπει να εμφανίζεται στο προφίλ μου) άρα την προστατεύουμε χειροκίνητα
+		# έλεγχος για την ύπαρξη του lesson στην περίπτωση ενός κακόβουλου σπουδαστή που χειρίζεται τις παραμέτρους (fails silently)
 		if params[resource_name][:lesson_id]
 			resource.lesson_id = params[resource_name][:lesson_id] if Lesson.find_by_id(params[resource_name][:lesson_id])
 		end
@@ -20,7 +20,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
 				# εάν ο σπουδαστής επιθυμεί να συμπληρώσει κάποιον κωδικό
 				params[resource_name][:haslocalpw] = true
 			end
-			# this is copied over from the original devise controller, instead of update_with_password we use update_attributes
+			# ο παρακάτω κώδικας έχει αντιγραφεί από τον devise controller, στη θέση τυο update_with_password χρησιμοποιούμε update_attributes
 			if resource.update_attributes(params[resource_name])
 				set_flash_message :notice, :updated
 				sign_in resource_name, resource

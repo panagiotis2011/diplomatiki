@@ -28,7 +28,7 @@ class ServicesController < ApplicationController
 		params[:provider] ? service_route = params[:provider] : service_route = 'non service (invalid callback)'
 		# αποθηκεύεται όλη η πληροφορία που επιστρέφει από υπηρεσία κοινωνικής δικτύωσης στο omniauth
 		omniauth = request.env["omniauth.auth"]
-		# συνεχίζουμε μόνο αν υπάρχουν οι μεταβλητές omniauth και service
+		# συνεχίζουμε μόνο αν υπάρχουν οι μεταβλητές omniauth και provider
 		if omniauth and params[:provider]
 			# για κάθε υπηρεσία δικτύωσης αποθηκεύουμε σε μεταβλητές όλη την πληροφορία
 			if service_route == 'facebook'
@@ -37,7 +37,6 @@ class ServicesController < ApplicationController
 				omniauth['uid'] ?  uid =  omniauth['uid'] : uid = ''
 				omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
 				omniauth['credentials']['token'] ? session['fb_access_token'] =  omniauth['credentials']['token'] : session['fb_access_token'] = ''
-
 			elsif service_route == 'github'
 				omniauth['student_info']['email'] ? email =  omniauth['student_info']['email'] : email = ''
 				omniauth['student_info']['name'] ? name =  omniauth['student_info']['name'] : name = ''

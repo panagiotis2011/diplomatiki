@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(:version => 20120314160904) do
   create_table "articles", :force => true do |t|
     t.integer  "student_id",                :null => false
     t.string   "title",                     :null => false
-    t.string   "message"
     t.text     "body",                      :null => false
     t.text     "freezebody"
     t.integer  "state",      :default => 0, :null => false
+    t.string   "message"
     t.date     "submitted"
     t.date     "accepted"
     t.datetime "created_at"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20120314160904) do
 
   add_index "articles", ["student_id"], :name => "index_articles_on_student_id"
 
-  create_table "comments",   :force => true do |t|
+  create_table "comments", :force => true do |t|
     t.integer  "student_id"
     t.integer  "article_id"
     t.string   "body",       :null => false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20120314160904) do
     t.datetime "updated_at"
   end
 
-  create_table "ratings",    :force => true do |t|
+  create_table "ratings", :force => true do |t|
     t.integer  "student_id", :null => false
     t.integer  "article_id", :null => false
     t.integer  "stars"

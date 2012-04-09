@@ -154,6 +154,7 @@ DEPENDENCIES
   gravatar_image_tag (= 1.0.0.pre2)
   mogli
   multi_json
+  oauth2
   omniauth
   omniauth-facebook
   omniauth-github

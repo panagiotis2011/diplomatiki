@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
 
 
 	def index
-		options = {} # any search/pagination conditions go here
+		options = {} # εδώ οποιαδήποτε συνθήκη search/pagination
 		@tags = Article.tag_counts_on(:keywords)
 		klass = Article
 		klass = klass.tagged_with(@keyword) if (@keyword = params[:keyword]).present?
@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
 
 
 	def all
-		options = {} # any search/pagination conditions go here
+		options = {} # εδώ οποιαδήποτε συνθήκη search/pagination
 		@tags = Article.tag_counts_on(:keywords)
 		klass = Article
 		klass = klass.tagged_with(@keyword) if (@keyword = params[:keyword]).present?

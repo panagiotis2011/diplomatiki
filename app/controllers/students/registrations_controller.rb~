@@ -3,8 +3,8 @@ class Students::RegistrationsController < Devise::RegistrationsController
 	before_filter :get_lessons
 
 	def update
-		# no mass assignment for country_id, we do it manually
-		# check for existence of the lesson in case a malicious student manipulates the params (fails silently)
+		# η ιδιότητα lesson_id δεν έχει mass assignment (πρέπει να εμφανίζεται στο προφίλ μου) άρα την προστατεύουμε χειροκίνητα
+		# έλεγχος για την ύπαρξη του lesson στην περίπτωση ενός κακόβουλου σπουδαστή που χειρίζεται τις παραμέτρους (fails silently)
 		if params[resource_name][:lesson_id]
 			resource.lesson_id = params[resource_name][:lesson_id] if Lesson.find_by_id(params[resource_name][:lesson_id])
 		end

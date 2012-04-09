@@ -24,6 +24,7 @@ gem 'omniauth-openid'
 gem 'omniauth-github'
 gem 'multi_json'
 gem 'dalli'
+gem 'oauth2'
 
 group 	:test do
 	gem 'sqlite3'
