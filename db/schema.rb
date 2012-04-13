@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120410190954) do
+ActiveRecord::Schema.define(:version => 20120413204652) do
 
   create_table "articles", :force => true do |t|
     t.integer  "student_id",                :null => false
@@ -88,8 +88,6 @@ ActiveRecord::Schema.define(:version => 20120410190954) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "haslocalpw",                            :default => true, :null => false
-    t.integer  "fb_student_uid",                        :default => 0
-    t.string   "fb_access_token"
   end
 
   add_index "students", ["confirmation_token"], :name => "index_students_on_confirmation_token", :unique => true
