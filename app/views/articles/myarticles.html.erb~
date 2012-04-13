@@ -41,7 +41,7 @@
                 <% end %>
 
                 <% if article.state == 4 %>
-                  <div class="state">Τρέχουσα κατάσταση: Αποδοχή και δημοσίευση του άρθρου ως <b>Προτεινόμενο άρθρο</b> (<%= article.accepted.strftime("%B %d, %Y") %>)</div>
+                  <div class="state">Τρέχουσα κατάσταση: Αποδοχή και δημοσίευση του άρθρου ως <b>Προτεινόμενο άρθρο</b> (<%= l(article.accepted, :format => '%d %b %Y') %>)</div>
                 <% end %>
 
                 <div class="actions">
@@ -54,6 +54,7 @@
                     <% if article.state < 3 %>
                         <span class="Διαγραφή"><%= link_to 'Διαγραφή', article, :confirm => 'Είσαι σίγουρος;', :method => :delete, :class => "awesome custom black" %></span>
                     <% end %>
+                    <span class="Δημοσίευση"><%= link_to 'Δημοσίευση στο Facebook', article, :class => "awesome custom red" %></span>
                 </div>
 
             </article>

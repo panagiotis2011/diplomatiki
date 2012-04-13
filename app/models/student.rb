@@ -18,5 +18,24 @@ class Student < ActiveRecord::Base
   validates :fullname, :length => { :maximum => 40 }
   validates :shortbio, :length => { :maximum => 500 }
 
+  def apply_omniauth(omniauth)
+    case omniauth['provider']
+    when 'facebook'
+      self.apply_facebook(omniauth)
+    end
+    services.build(:provider => omniauth['provider'], :uid => omniauth['uid'], :token =>(omniauth['credentials']['token'] rescue nil))
+  end
 
+  def facebook
+    @current_student ||= FbGraph::User.me(self.services.find_by_provider('facebook').token)
+  end
+
+
+  protected
+
+  def apply_facebook(omniauth)
+    if (extra = omniauth['extra']['user_hash'] rescue false)
+      self.email = (extra['email'] rescue '')
+    end
+  end
 end

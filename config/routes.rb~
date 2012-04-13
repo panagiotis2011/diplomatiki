@@ -3,6 +3,7 @@ Diplomatiki::Application.routes.draw do
 
 	match '/auth/:provider/callback' => 'services#create'
 	match '/auth/twitter', :as => :auth_twitter
+	match '/auth/facebook', :as => :auth_facebook
 
 	resources :services, :only => [:index, :create, :destroy]
 

@@ -13,10 +13,29 @@ class Student < ActiveRecord::Base
   belongs_to :lesson
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :fullname, :shortbio, :weburl
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :fullname, :shortbio, :weburl, :lesson_id
   validates :weburl, :url => {:allow_blank => true}, :length => { :maximum => 50 }
   validates :fullname, :length => { :maximum => 40 }
   validates :shortbio, :length => { :maximum => 500 }
 
+  def apply_omniauth(omniauth)
+    case omniauth['provider']
+    when 'facebook'
+      self.apply_facebook(omniauth)
+    end
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'], :token =>(omniauth['credentials']['token'] rescue nil))
+  end
 
+  def facebook
+    @current_student ||= FbGraph::User.me(self.authentications.find_by_provider('facebook').token)
+  end
+
+
+  protected
+
+  def apply_facebook(omniauth)
+    if (extra = omniauth['extra']['user_hash'] rescue false)
+      self.email = (extra['email'] rescue '')
+    end
+  end
 end

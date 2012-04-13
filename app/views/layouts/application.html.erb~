@@ -10,18 +10,12 @@
    <header id="page_header">
         <nav id="nav_student">
             <ul>
-
-
-
                 <% if student_signed_in? %>
-
-                 <% if admin_signed_in %>
-                    <li><%= link_to "Διαχείριση", admin_index_path %></li>
+                		<% if admin_signed_in %>
+                		    <li><%= link_to "Διαχείριση", admin_index_path %></li>
                      <% end %>
-
                     <li><span id="currentstudent"><%= current_student.email %></span></li>
                        &nbsp;
-
                     <li><%= link_to "Δικτύωση", services_path %></li>
                     <%= request.path == edit_student_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
                     <li><%= link_to "Το προφίλ μου", edit_student_registration_path %></li>
@@ -35,7 +29,6 @@
                     <li><%= link_to "Είσοδος", new_student_session_path %></li>
                 <% end %>
             </ul>
-
         </nav>
         <div id="page_title">
             <h1>Χώρος <span>Συζήτησης Ενημέρωσης</span></h1>
@@ -43,7 +36,6 @@
             <%= l(Time.now, :format => :default) %></p></h2>
         </div>
     </header>
-
       <header id="nav_header">
         <nav id="nav_main">
             <ul>
@@ -62,7 +54,6 @@
             </ul>
         </nav>
     </header>
-
     <section id="maincontainer">
         <section id="content">
             <section id="flash">
@@ -70,17 +61,13 @@
                     <div class="flash <%= key %>"><%= value %></div>
                 <% end %>
             </section>
-
     <section id="flash">
         <% flash.each do |key, value| %>
             <div class="flash <%= key %>"><%= value %></div>
         <% end %>
     </section>
-
 <%= yield %>
-
    </section>
-
         <section id="sidebar">
             <section id="support" class="box">
                 <h3>Συζήτηση-Ενημέρωση</h3>
@@ -91,7 +78,6 @@
                     <li>Βαθμολόγησε ένα άρθρο</li>
                 </ul>
             </section>
-
             <section id="links" class="box">
                 <h3>Χρήσιμα links</h3>
                 <div><%= link_to "Χώροι Θεματικών Ενοτήτων", "http://class.eap.gr" %></div>
@@ -100,9 +86,8 @@
                 <div><%= link_to "Εικονικές Τάξεις", "http://centra.eap.gr" %></div>
                 <div><%= link_to "Online Ασκήσεις", "http://moodle.eap.gr" %></div>
             </section>
-        </section>
+            </section>
     </section>
-
     <footer id="page_footer">
         <hr />
         <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
@@ -114,6 +99,5 @@
             Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
         </a>.
     </footer>
-
 </body>
 </html>

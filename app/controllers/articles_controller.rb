@@ -92,7 +92,6 @@ class ArticlesController < ApplicationController
 		end
 	end
 
-
 	def edit
 		@article = current_student.articles.find(params[:id])
 	end
@@ -105,6 +104,10 @@ class ArticlesController < ApplicationController
 			if @article.save
 				format.html { redirect_to(@article, :notice => 'Το άρθρο δημιουργήθηκε επιτυχώς.') }
 				format.xml  { render :xml => @article, :status => :created, :location => @article }
+
+				current_student.facebook.feed!(
+					:message => "Στον Χώρο Συζήτησης Ενημέρωσης δημοσιεύθηκε άρθρο με τίτλο: #{ @article.title }",
+					:name => 'My Rails 3 App with Omniauth, Devise and FB_graph')
 			else
 				format.html { render :action => "new" }
 				format.xml  { render :xml => @article.errors, :status => :unprocessable_entity }
@@ -163,4 +166,5 @@ class ArticlesController < ApplicationController
 		flash[:error] = 'Το άρθρο που ζητήσατε δεν βρέθηκε.'
 		redirect_to root_url
 	end
+
 end

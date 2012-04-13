@@ -34,13 +34,13 @@
 
   <div class="field">
    <label for="keyword_list">Κατηγορία (Μπορείτε να προσθέσετε διαφορετικές κατηγορίες διαχωρίζοντάς τες με κόμμα)</label><br />
-    <%= f.label :Keyword_list %><br />
-    <%= f.text_field :keyword_list %>
+   <%= f.text_field :keyword_list %>
   </div>
 
    <div class="actions">
     <%= f.submit :class => "awesome custom red" %>
     <%= link_to 'Εμφάνιση αυτού του άρθρου', @article, :class => "awesome custom black" %>
+   <span class="Δημοσίευση"><%= link_to 'Δημοσίευση στο Facebook', article, :class => "awesome custom red" %></span>
     <%= link_to 'Επιστροφή στα άρθρα μου', myarticles_articles_path, :class => "awesome custom black" %>
   </div>
 

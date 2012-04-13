@@ -22,7 +22,6 @@ class ServicesController < ApplicationController
 		redirect_to services_path
 	end
 
-
 	def create
 		# αποθηκεύεται η μεταβλητή :service
 		params[:provider] ? service_route = params[:provider] : service_route = 'non service (invalid callback)'
@@ -79,7 +78,7 @@ class ServicesController < ApplicationController
 						existingstudent = Student.find_by_email(email)
 						if existingstudent
 							# συνδέουμε την νέα υπηρεσία δικτύωσης με τον λογαριασμό του φοιτητή εάν είναι ίδια η διεύθυνση email
-							existingstudent.services.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
+							existingstudent.services.create(:provider => provider, :uid => uid, :uname => name, :uemail => email, :token => (session['fb_access_token'] rescue nil))
 							flash[:notice] = 'Η σύνδεση με ' + provider.capitalize + ' έχει προστεθεί στον λογαριασμό σας ' + existingstudent.email
 							sign_in_and_redirect(:student, existingstudent)
 						else
@@ -88,7 +87,7 @@ class ServicesController < ApplicationController
 							# παίρνουμε το όνομα από την υπηρεσία δικτύωσης και θέτουμε email και τυχαίο κωδικό πρόσβασης
 							student = Student.new :email => email, :password => SecureRandom.hex(10), :fullname => name, :haslocalpw => false
 							# προσθέτουμε την υπηρεσία δικτύωσης στον νέο φοιτητή
-							student.services.build(:provider => provider, :uid => uid, :uname => name, :uemail => email)
+							student.services.build(:provider => provider, :uid => uid, :uname => name, :uemail => email, :token => (session['fb_access_token'] rescue nil))
 							# δεν στέλνουμε email επιβεβαίωσης και απευθείας αποθηκεύουμε και επαληθεύουμε την νέα εγγραφή για τον φοιτητή
 							student.skip_confirmation!
 							student.save!
@@ -106,7 +105,7 @@ class ServicesController < ApplicationController
 				# ο φοιτητής έχει κάνει ήδη είσοδο, ελέχουμε αν η υπηρεσία δικτύωσης είναι συνδεδεμένη με τον λογαριασμό του και αν όχι την προσθέτουμε
 				auth = Service.find_by_provider_and_uid(provider, uid)
 				if !auth
-					current_student.services.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
+					current_student.services.create(:provider => provider, :uid => uid, :uname => name, :uemail => email, :token => (session['fb_access_token'] rescue nil))
 					flash[:notice] = 'Η σύνδεση με ' + provider.capitalize + ' έχει προστεθεί στον λογαριασμό σας.'
 					redirect_to services_path
 				else
