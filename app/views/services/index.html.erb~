@@ -17,6 +17,7 @@
 				<% end %>
 				<br />
 				<%= service.uname if service.uname != '' %><br />
+				<%= service.token if service.token != '' %><br />
 				<%= service.uemail if service.uemail != '' %><br />
 						<% if session[:service_id] == service.id %>
 					<span>Είσοδος </span>
