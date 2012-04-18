@@ -47,6 +47,9 @@
                 <div class="actions">
                     <span class="Προβολή"><%= link_to 'Προβολή', article, :class => "awesome custom red" %></span>
                     <span class="Επεξεργασία"><%= link_to 'Επεξεργασία', edit_article_path(article), :class => "awesome custom red" %></span>
+                    <% if (article.state == 3) or (article.state == 4) %>
+                    <span> <%= link_to 'Δημοσίευση στο Facebook', postfacebook_article_path(article), :class => "awesome custom blue" %></span>
+                    <% end %>
                     <% if (article.state == 0) or (article.state == 2) %>
                         <span><%= link_to "Υποβολή τώρα", submit_article_path(article), :method => :put, :class => "awesome custom red" %>
                     </span>

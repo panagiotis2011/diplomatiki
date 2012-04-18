@@ -96,6 +96,50 @@ class ArticlesController < ApplicationController
 		@article = current_student.articles.find(params[:id])
 	end
 
+	def postfacebook
+		@article = current_student.articles.find(params[:id])
+
+		begin
+		#rescue FbGraph::InvalidToken
+			#flash[:alert] = "Σφάλμα επικύρωσης. Θα χρειαστεί εκ νέου αυθεντικοποίηση!"
+			#respond_to do |format|
+			#format.html { redirect_to(@article) }
+			#format.xml  { head :ok }
+			#end
+
+
+		current_student.facebook.feed!(
+		:message => "Στον Χώρο Συζήτησης Ενημέρωσης δημοσιεύθηκε άρθρο με τίτλο: #{ @article.title }",
+		:name => 'My Rails 3 App with Omniauth, Devise and FB_graph')
+		page = FbGraph::Page.new(354024727961476, :access_token => current_student.services.find_by_provider('facebook').token)
+		page.feed!(
+		:message => "Στον Χώρο Συζήτησης Ενημέρωσης δημοσιεύθηκε άρθρο με τίτλο: #{ @article.title }",
+		:name => 'My Rails 3 App with Omniauth, Devise and FB_graph')
+
+		respond_to do |format|
+			format.html { redirect_to(@article, :notice => 'Ο τίλτος του άρθρου δημοσιεύθηκε επιτυχώς στο Facebook!') }
+			format.xml  { head :ok }
+		end
+
+		rescue FbGraph::InvalidRequest => e
+		case e.message
+		when /Error validating access token/
+			flash[:alert] = "Σφάλμα επικύρωσης. Θα χρειαστεί εκ νέου αυθεντικοποίηση!"
+			respond_to do |format|
+			format.html { redirect_to(@article) }
+			format.xml  { head :ok }
+			end
+		when /Duplicate status message/
+			flash[:alert] = "Το άρθρο έχει ήδη δημοσιευθεί στο Facebook!"
+			respond_to do |format|
+			format.html { redirect_to(@article) }
+			format.xml  { head :ok }
+			end
+		else
+			raise e
+		end
+		end
+	end
 
 	def create
 
@@ -104,10 +148,6 @@ class ArticlesController < ApplicationController
 			if @article.save
 				format.html { redirect_to(@article, :notice => 'Το άρθρο δημιουργήθηκε επιτυχώς.') }
 				format.xml  { render :xml => @article, :status => :created, :location => @article }
-
-				current_student.facebook.feed!(
-					:message => "Στον Χώρο Συζήτησης Ενημέρωσης δημοσιεύθηκε άρθρο με τίτλο: #{ @article.title }",
-					:name => 'My Rails 3 App with Omniauth, Devise and FB_graph')
 			else
 				format.html { render :action => "new" }
 				format.xml  { render :xml => @article.errors, :status => :unprocessable_entity }

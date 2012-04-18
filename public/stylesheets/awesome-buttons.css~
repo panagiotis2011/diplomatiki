@@ -21,6 +21,7 @@
 .awesome.red { background-color: #c81419 !important; }
 .awesome.black { background-color: #222222 !important; }
 .awesome.gray { background-color: #74809a !important; }
+.awesome.blue { background-color: #31809a !important; }
 
 /* set an awesome color for the buttons, feel free to add new colors like an .awesome.green or .awesome.secondary */
 .awesome {
@@ -75,11 +76,11 @@
   zoom: 1;
 
   /* disable text selection (Firefox only) */
-  -moz-user-select: none;
+  -moz-student-select: none;
 
   /* no text selection for iOS */
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-user-select: none;
+  -webkit-student-select: none;
   -webkit-touch-callout: none;
 }
 

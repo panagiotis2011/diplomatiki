@@ -23,11 +23,12 @@ class Student < ActiveRecord::Base
     when 'facebook'
       self.apply_facebook(omniauth)
     end
-    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'], :token =>(omniauth['credentials']['token'] rescue nil))
+    services.build(:provider => omniauth['provider'], :uid => omniauth['uid'], :token =>(omniauth['credentials']['token'] rescue nil))
   end
 
   def facebook
-    @current_student ||= FbGraph::User.me(self.authentications.find_by_provider('facebook').token)
+    @current_student ||= FbGraph::User.me(self.services.find_by_provider('facebook').token)
+    @page = FbGraph::Page.new(354024727961476, :access_token => services.find_by_provider('facebook').token)
   end
 
 

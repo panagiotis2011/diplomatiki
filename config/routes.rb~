@@ -3,7 +3,7 @@ Diplomatiki::Application.routes.draw do
 
 	match '/auth/:provider/callback' => 'services#create'
 	match '/auth/twitter', :as => :auth_twitter
-	match '/auth/facebook', :as => :auth_facebook
+
 
 	resources :services, :only => [:index, :create, :destroy]
 
@@ -28,6 +28,7 @@ Diplomatiki::Application.routes.draw do
 
 		member do
 			put 'submit'
+			put 'postfacebook'
 		end
 
 		resources :comments, :only => [:create, :destroy]
