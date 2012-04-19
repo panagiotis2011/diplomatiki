@@ -69,7 +69,7 @@
 <%= yield %>
    </section>
         <section id="sidebar">
-            <section id="support" class="box">
+           <section id="support" class="box">
                 <h3>Συζήτηση-Ενημέρωση</h3>
                 <h4>Τρόποι συμμετοχής:</h4>
                 <ul>
@@ -86,6 +86,39 @@
                 <div><%= link_to "Εικονικές Τάξεις", "http://centra.eap.gr" %></div>
                 <div><%= link_to "Online Ασκήσεις", "http://moodle.eap.gr" %></div>
             </section>
+
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: 'Social media',
+  interval: 30000,
+  title: '',
+  subject: 'Social media',
+  width: 180,
+  height: 300,
+  theme: {
+    shell: {
+      background: '#dddddd',
+      color: '#050505'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#e82c51'
+    }
+  },
+  features: {
+    scrollbar: true,
+    loop: false,
+    live: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+
+
             </section>
     </section>
     <footer id="page_footer">
