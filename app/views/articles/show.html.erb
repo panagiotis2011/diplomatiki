@@ -78,7 +78,7 @@
                             </div>
                             <div>
                                 <%= form_for [@article, current_student.comments.new] do |f| %>
-                                    <%= f.text_area :body, :size => "100%x20", :class => "fullwidth" %>
+                                    <%= f.text_area :body, :size => "100%x10", :class => "fullwidth" %>
                                     <%= f.submit "Πρόσθεσε σχόλιο", :class => "awesome custom red" %>
                                 <% end %>
                             </div>

@@ -7,7 +7,7 @@ class DeviseCreateStudents < ActiveRecord::Migration
       t.trackable
       ##t.encryptable
       t.confirmable
-      t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
+      t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :time
       # t.token_authenticatable
 
       t.string :fullname
