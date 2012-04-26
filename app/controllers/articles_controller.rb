@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
 	def index
 		options = {} # εδώ οποιαδήποτε συνθήκη search/pagination
-		@tags = Article.tag_counts_on(:keywords)
+		@tags = Article.tag_counts_on(:keywords).limit(8).order('count desc')
 		klass = Article
 		klass = klass.tagged_with(@keyword) if (@keyword = params[:keyword]).present?
 		@articles = klass.where(:state => '4').paginate(:page => params[:page])
@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
 
 	def all
 		options = {} # εδώ οποιαδήποτε συνθήκη search/pagination
-		@tags = Article.tag_counts_on(:keywords)
+		@tags = Article.tag_counts_on(:keywords).limit(8).order('count desc')
 		klass = Article
 		klass = klass.tagged_with(@keyword) if (@keyword = params[:keyword]).present?
 		@articles = klass.where(:state => ['3', '4']).search(params[:search]).order('accepted desc').paginate(:page => params[:page], :per_page => 10)

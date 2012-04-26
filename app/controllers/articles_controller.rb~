@@ -98,14 +98,7 @@ class ArticlesController < ApplicationController
 
 	def postfacebook
 		@article = current_student.articles.find(params[:id])
-
 		begin
-			#rescue FbGraph::InvalidToken
-			#flash[:alert] = "Σφάλμα επικύρωσης. Θα χρειαστεί εκ νέου αυθεντικοποίηση!"
-			#respond_to do |format|
-			#format.html { redirect_to(@article) }
-			#format.xml  { head :ok }
-			#end
 			current_student.facebook.feed!(
 			:message => "Στον Χώρο Συζήτησης Ενημέρωσης δημοσιεύθηκε άρθρο με τίτλο: #{ @article.title }",
 			:name => 'My Rails 3 App with Omniauth, Devise and FB_graph')
@@ -113,13 +106,6 @@ class ArticlesController < ApplicationController
 			page.feed!(
 			:message => "Στον Χώρο Συζήτησης Ενημέρωσης δημοσιεύθηκε άρθρο με τίτλο: #{ @article.title }",
 			:name => 'My Rails 3 App with Omniauth, Devise and FB_graph')
-
-			#respond_to do |format|
-				#format.html { redirect_to( @article, :notice => 'dkdlkuppp') }
-				#format.xml  { head :ok }
-			#end
-
-
 		rescue FbGraph::InvalidToken => e
 			case e.message
 			when /Error validating access token/
@@ -151,20 +137,11 @@ class ArticlesController < ApplicationController
 				end
 			end
 		else
-
-			#current_student.facebook.feed!(
-			#:message => "Στον Χώρο Συζήτησης Ενημέρωσης δημοσιεύθηκε άρθρο με τίτλο: #{ @article.title }",
-			#:name => 'My Rails 3 App with Omniauth, Devise and FB_graph')
-			#page = FbGraph::Page.new(354024727961476, :access_token => current_student.services.find_by_provider('facebook').token)
-			#page.feed!(
-			#:message => "Στον Χώρο Συζήτησης Ενημέρωσης δημοσιεύθηκε άρθρο με τίτλο: #{ @article.title }",
-			#:name => 'My Rails 3 App with Omniauth, Devise and FB_graph')
 			respond_to do |format|
 				format.html { redirect_to( @article, :notice => 'Ο τίτλος του άρθρου δημοσιεύθηκε με επιτυχία στο Facebook!') }
 				format.xml  { head :ok }
 			end
-			end
-
+		end
 	end
 
 	def create
