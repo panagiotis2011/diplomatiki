@@ -26,7 +26,7 @@ gem 'multi_json'
 gem 'dalli'
 gem 'oauth2'
 gem 'fb_graph'
-gem 'unicorn'
+
 
 group 	:test do
 	gem 'sqlite3'

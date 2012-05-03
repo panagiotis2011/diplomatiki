@@ -1,10 +1,10 @@
 class Article < ActiveRecord::Base
-  acts_as_taggable_on :keywords
+  acts_as_taggable_on :tags
   belongs_to :student
   has_many :comments, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
 
-  attr_accessible :title, :body, :keyword_list
+  attr_accessible :title, :body, :tag_list
 
   validates :student_id, :presence => true
   validates :title, :presence => true, :length => { :maximum => 80 }

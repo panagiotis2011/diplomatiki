@@ -31,9 +31,8 @@
             </ul>
         </nav>
         <div id="page_title">
-            <h1>Χώρος <span>Συζήτησης Ενημέρωσης</span></h1>
-            <h2> <span>φοιτητών</span> EAΠ και <span>διδασκόντων</span>
-            <%= l(Time.now, :format => :default) %></p></h2>
+           <h1><span>Χώρος </span>Συζήτησης Ενημέρωσης</h1>
+            <h2><%= image_tag "facebook_32.png", :size => "32x32" %>οιτητών <span> EAΠ και </span>διδασκόν<%= image_tag "twitter_32.png", :size => "32x32" %>ων <span><%= l(Time.now, :format => :default) %></span> </p></h2>
         </div>
     </header>
       <header id="nav_header">
@@ -87,36 +86,37 @@
                 <div><%= link_to "Online Ασκήσεις", "http://moodle.eap.gr" %></div>
             </section>
 
-<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-<script>
-new TWTR.Widget({
-  version: 2,
-  type: 'search',
-  search: 'Social media',
-  interval: 30000,
-  title: '',
-  subject: 'Social media',
-  width: 180,
-  height: 300,
-  theme: {
-    shell: {
-      background: '#dddddd',
-      color: '#050505'
-    },
-    tweets: {
-      background: '#ffffff',
-      color: '#444444',
-      links: '#e82c51'
-    }
-  },
-  features: {
-    scrollbar: true,
-    loop: false,
-    live: true,
-    behavior: 'default'
-  }
-}).render().start();
-</script>
+
+				<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+				<script>
+					new TWTR.Widget({
+					version: 2,
+					type: 'search',
+					search: 'Social media',
+					interval: 30000,
+					title: '',
+					subject: 'Social media',
+					width: 180,
+					height: 300,
+					theme: {
+						shell: {
+							background: '#dddddd',
+							color: '#050505'
+						},
+						tweets: {
+							background: '#ffffff',
+							color: '#444444',
+							links: '#e82c51'
+						}
+					},
+					features: {
+						scrollbar: true,
+						loop: false,
+						live: true,
+						behavior: 'default'
+					}
+					}).render().start();
+				</script>
 
 
             </section>

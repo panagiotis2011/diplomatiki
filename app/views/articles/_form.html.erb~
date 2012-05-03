@@ -29,12 +29,12 @@
 
   <div class="field">
     <label for="article_body">Το άρθρο σας (Μετατρέψτε το απλό κείμενο σε html - <%= link_to "Περισσότερα εδώ!", 'http://redcloth.org' %>)</label><br />
-    <%= f.text_area :body, :size => "100%x20", :class => "fullwidth"  %>
+    <%= f.text_area :body, :size => "100%x15", :class => "fullwidth"  %>
   </div>
 
   <div class="field">
-   <label for="keyword_list">Κατηγορία (Μπορείτε να προσθέσετε διαφορετικές κατηγορίες διαχωρίζοντάς τες με κόμμα)</label><br />
-   <%= f.text_field :keyword_list %>
+   <label for="tag_list">Κατηγορία (Μπορείτε να προσθέσετε διαφορετικές κατηγορίες διαχωρίζοντάς τες με κόμμα)</label><br />
+           <%= f.autocomplete_field :tag_list, autocomplete_tag_name_articles_path, :"data-delimiter" => ', ' %>
   </div>
 
    <div class="actions">

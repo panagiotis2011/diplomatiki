@@ -8,6 +8,8 @@ gem 'sinatra'
 gem 'mogli'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'rails-i18n'
+gem 'jquery-rails', '>= 1.0.12'
+gem 'rails3-jquery-autocomplete'
 
 
 gem 'will_paginate', '~> 3.0.pre2'

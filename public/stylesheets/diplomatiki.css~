@@ -35,7 +35,7 @@ header#page_header { margin: 0px 2% 10px 2%; padding: 5px 15px; }
 #page_title h1 span { color: #c81419; }
 #page_title h2 { font-size: 14px; font-weight: normal; color: #74809a; padding: 0 0; margin: 10px 0 10px 25px; border: none; }
 #page_title h2 span { color: #c81419; }
-#page_title img { margin-left: 40px;}
+#page_title img { margin: 1px;}
 
 #maincontainer { overflow: hidden; }
 
@@ -321,18 +321,6 @@ footer#page_footer { clear: both; background-color: #ffffff; margin: 0px 5% 50px
 /**** and associated tag-cloud styles ****/
   /* basic tag-box */
 .tag {
-body
-{
-	text-align: center;
-}
-
-div#container
-{
-	margin-left: auto;
-	margin-right: auto;
-	width: 50em;
-	text-align: left;
-}
     background-color: #ddd;
     border: 2px solid #ccc;
     color: red;

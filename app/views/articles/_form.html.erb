@@ -33,8 +33,8 @@
   </div>
 
   <div class="field">
-   <label for="keyword_list">Κατηγορία (Μπορείτε να προσθέσετε διαφορετικές κατηγορίες διαχωρίζοντάς τες με κόμμα)</label><br />
-   <%= f.text_field :keyword_list %>
+   <label for="tag_list">Κατηγορία (Μπορείτε να προσθέσετε διαφορετικές κατηγορίες διαχωρίζοντάς τες με κόμμα)</label><br />
+    <%= f.autocomplete_field :tag_list, autocomplete_tag_name_articles_path, :"data-delimiter" => ', ' %>
   </div>
 
    <div class="actions">

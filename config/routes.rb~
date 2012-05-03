@@ -28,7 +28,7 @@ Diplomatiki::Application.routes.draw do
 
 		member do
 			put 'submit'
-			put 'postfacebook'
+			get 'postfacebook'
 		end
 
 		resources :comments, :only => [:create, :destroy]

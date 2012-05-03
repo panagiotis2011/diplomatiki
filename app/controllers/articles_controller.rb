@@ -1,20 +1,22 @@
 # encoding: utf-8
 class ArticlesController < ApplicationController
+	respond_to :json
+	autocomplete :tag, :name
 	# μόνο οι μέθοδοι index, all, about και show είναι προσβάσιμες από μη πιστοποιημένους χρήστες
 	before_filter :authenticate_student!, :except => [:index, :all, :show, :about]
 	rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
 
 	def tag_cloud
-		@tags ||= Article.tag_counts_on(:keywords)
+		@tags ||= Article.tag_counts_on(:tags)
 	end
 
 
 	def index
 		options = {} # εδώ οποιαδήποτε συνθήκη search/pagination
-		@tags = Article.tag_counts_on(:keywords).limit(8).order('count desc')
+		@tags = Article.tag_counts_on(:tags).limit(8).order('count desc')
 		klass = Article
-		klass = klass.tagged_with(@keyword) if (@keyword = params[:keyword]).present?
+		klass = klass.tagged_with(@tag) if (@tag = params[:tag]).present?
 		@articles = klass.where(:state => '4').paginate(:page => params[:page])
 		#@articles = Article.where(:state => '4').paginate(:page => params[:page], :per_page => 10)
 		respond_to do |format|
@@ -26,9 +28,9 @@ class ArticlesController < ApplicationController
 
 	def all
 		options = {} # εδώ οποιαδήποτε συνθήκη search/pagination
-		@tags = Article.tag_counts_on(:keywords).limit(8).order('count desc')
+		@tags = Article.tag_counts_on(:tags)
 		klass = Article
-		klass = klass.tagged_with(@keyword) if (@keyword = params[:keyword]).present?
+		klass = klass.tagged_with(@tag) if (@tag = params[:tag]).present?
 		@articles = klass.where(:state => ['3', '4']).search(params[:search]).order('accepted desc').paginate(:page => params[:page], :per_page => 10)
 		#@articles = Article.where(:state => ['3', '4']).search(params[:search]).order('accepted desc').paginate(:page => params[:page], :per_page => 10)
 		respond_to do |format|
@@ -45,6 +47,13 @@ class ArticlesController < ApplicationController
 			format.xml  { render :xml => @myarticles }
 		end
 	end
+
+
+def auto_complete_for_link_tag_list
+    @tags = Link.tag_counts_on(:tags).where('tags.name LIKE ?', params[:link][:tag_list])
+    render :inline => "<%= auto_complete_result(@tags, 'name') %>", :layout => false
+    logger.info "#{@tags.size} tags found."
+  end
 
 
 	def submit

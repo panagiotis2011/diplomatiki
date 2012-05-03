@@ -19,10 +19,10 @@
 
       <% url_opts = {:action => "all", :controller => "articles"}
          link_name = "#{k.name} (#{k.count})" %>
-      <% if @keyword == k.name %>
-        <%= link_to link_name, url_opts.merge(:keyword => nil), :class => "tag current_tag", :title => "Κλικ για εμφάνιση όλων" %>
+      <% if @tag == k.name %>
+        <%= link_to link_name, url_opts.merge(:tag => nil), :class => "tag current_tag", :title => "Κλικ για εμφάνιση όλων" %>
       <% else %>
-        <%= link_to link_name,  url_opts.merge(:keyword => k.name), :class => "tag", :title => "Κλικ για εμφάνιση άρθρων στην κατηγορία #{k.name}" %>
+        <%= link_to link_name,  url_opts.merge(:tag => k.name), :class => "tag", :title => "Κλικ για εμφάνιση άρθρων στην κατηγορία #{k.name}" %>
       <% end %>
     <% end %>
     </div>
