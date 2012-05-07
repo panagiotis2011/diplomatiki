@@ -28,7 +28,6 @@ class Student < ActiveRecord::Base
 
   def facebook
     @current_student ||= FbGraph::User.me(self.services.find_by_provider('facebook').token)
-    @page = FbGraph::Page.new(354024727961476, :access_token => services.find_by_provider('facebook').token)
   end
 
 

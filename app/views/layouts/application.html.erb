@@ -21,8 +21,8 @@
                     <li><%= link_to "Δικτύωση", services_path %></li>
                     <%= request.path == edit_student_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
                     <li><%= link_to "Το προφίλ μου", edit_student_registration_path %></li>
-                    <%= request.path == myarticles_articles_path ? raw("<li class='selected'>") : raw("<li>") %>
-                    <li><%= link_to "Τα άρθρα μου", myarticles_articles_path %></li>
+                    <%= request.path == myquestions_questions_path ? raw("<li class='selected'>") : raw("<li>") %>
+                    <li><%= link_to "Ερωτήσεις", myquestions_questions_path %></li>
                     <li><%= link_to "Έξοδος", destroy_student_session_path, :method => 'delete' %></li>
                 <% else %>
                     <%= request.path == new_student_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
@@ -41,13 +41,13 @@
         <nav id="nav_main">
             <ul>
                 <%= request.path == root_path ? raw("<li class='selected'>") : raw("<li>") %>
-                <li><%= link_to "Προτεινόμενα άρθρα", root_path %></li>
-                <%= request.path == all_articles_path ? raw("<li class='selected'>") : raw("<li>") %>
-                <li><%= link_to "Όλα τα άρθρα", all_articles_path %></li>
-                <%= request.path == about_articles_path ? raw("<li class='selected'>") : raw("<li>") %>
-                <li><%= link_to "Οδηγός χρήσης", about_articles_path %></li>
+                <li><%= link_to "Προτεινόμενες ερωτήσεις", root_path %></li>
+                <%= request.path == all_questions_path ? raw("<li class='selected'>") : raw("<li>") %>
+                <li><%= link_to "Όλες οι ερωτήσεις", all_questions_path %></li>
+                <%= request.path == about_questions_path ? raw("<li class='selected'>") : raw("<li>") %>
+                <li><%= link_to "Οδηγός χρήσης", about_questions_path %></li>
                 <li id="listsearch">
-                  <%= form_tag all_articles_path, :method => 'get' do %>
+                  <%= form_tag all_questions_path, :method => 'get' do %>
                     <%= text_field_tag :search, params[:search] %>
                     <%= submit_tag "Αναζήτηση", :name => nil, :class => "awesome search red" %>
                   <% end %>
@@ -74,9 +74,9 @@
                 <h3>Συζήτηση-Ενημέρωση</h3>
                 <h4>Τρόποι συμμετοχής:</h4>
                 <ul>
-                    <li>Γράψε ένα άρθρο</li>
-                    <li>Σχολίασε ένα άρθρο</li>
-                    <li>Βαθμολόγησε ένα άρθρο</li>
+                    <li>Ρώτησε</li>
+                    <li>Σχολίασε</li>
+                    <li>Αξιολόγησε</li>
                 </ul>
             </section>
             <section id="links" class="box">

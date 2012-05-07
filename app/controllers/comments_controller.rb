@@ -2,21 +2,21 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_student!
 
-  # δημιουργία ενός σχολίου και σύνδεσή του με ένα άρθρο και έναν σπουδαστή
+  # δημιουργία ενός σχολίου και σύνδεσή του με μία ερώτηση και έναν σπουδαστή
   def create
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.build(params[:comment])
+    @question = Question.find(params[:question_id])
+    @comment = @question.comments.build(params[:comment])
     @comment.student = current_student
 
     respond_to do |format|
-      if @article.state > 2
+      if @question.state > 2
         if @comment.save
-          format.html { redirect_to(@article, :notice => 'Το σχόλιο δημιουργήθηκε με επιτυχία.') }
+          format.html { redirect_to(@question, :notice => 'Το σχόλιο δημιουργήθηκε με επιτυχία.') }
         else
-          format.html { redirect_to(@article, :notice => 'Υπάρχει κάποιο σφάλμα και δεν αποθηκεύτηκε το σχόλιο.') }
+          format.html { redirect_to(@question, :notice => 'Υπάρχει κάποιο σφάλμα και δεν αποθηκεύτηκε το σχόλιο.') }
         end
       else
-        format.html { redirect_to(@article, :notice => 'Τα σχόλια μπορούν να γίνουν μόνο σε δημοσιευμένα άρθρα.') }
+        format.html { redirect_to(@question, :notice => 'Τα σχόλια μπορούν να γίνουν μόνο σε δημοσιευμένες ερωτήσεις.') }
       end
     end
   end
@@ -24,11 +24,11 @@ class CommentsController < ApplicationController
   # διαγραφή ενός σχολίου
   def destroy
     @comment = current_student.comments.find(params[:id])
-    @article = Article.find(params[:article_id])
+    @question = Question.find(params[:question_id])
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to @article }
+      format.html { redirect_to @question }
     end
   end
 end

@@ -7,7 +7,7 @@ class Student < ActiveRecord::Base
 
   acts_as_tagger
   has_many :services, :dependent => :destroy
-  has_many :articles, :dependent => :destroy
+  has_many :questions, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
   belongs_to :lesson

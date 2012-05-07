@@ -11,32 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120413204652) do
-
-  create_table "articles", :force => true do |t|
-    t.integer  "student_id",                :null => false
-    t.string   "title",                     :null => false
-    t.string   "message"
-    t.text     "body",                      :null => false
-    t.text     "freezebody"
-    t.integer  "state",      :default => 0, :null => false
-    t.date     "submitted"
-    t.date     "accepted"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "articles", ["student_id"], :name => "index_articles_on_student_id"
+ActiveRecord::Schema.define(:version => 20120507170957) do
 
   create_table "comments", :force => true do |t|
     t.integer  "student_id"
-    t.integer  "article_id"
-    t.string   "body",       :null => false
+    t.integer  "question_id"
+    t.string   "body",        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["student_id", "article_id"], :name => "index_comments_on_student_id_and_article_id"
+  add_index "comments", ["student_id", "question_id"], :name => "index_comments_on_student_id_and_question_id"
 
   create_table "lessons", :force => true do |t|
     t.string   "name"
@@ -44,15 +29,30 @@ ActiveRecord::Schema.define(:version => 20120413204652) do
     t.datetime "updated_at"
   end
 
+  create_table "questions", :force => true do |t|
+    t.integer  "student_id",                :null => false
+    t.string   "title",                     :null => false
+    t.text     "body",                      :null => false
+    t.text     "freezebody"
+    t.integer  "state",      :default => 0, :null => false
+    t.string   "message"
+    t.date     "submitted"
+    t.date     "accepted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questions", ["student_id"], :name => "index_questions_on_student_id"
+
   create_table "ratings", :force => true do |t|
-    t.integer  "student_id", :null => false
-    t.integer  "article_id", :null => false
+    t.integer  "student_id",  :null => false
+    t.integer  "question_id", :null => false
     t.integer  "stars"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "ratings", ["article_id"], :name => "index_ratings_on_article_id"
+  add_index "ratings", ["question_id"], :name => "index_ratings_on_question_id"
 
   create_table "services", :force => true do |t|
     t.integer  "student_id"

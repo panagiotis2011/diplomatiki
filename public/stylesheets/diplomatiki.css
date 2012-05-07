@@ -5,7 +5,7 @@
 * {	margin: 0; padding: 0; }
 
 /* tell the browser to render HTML 5 elements as block */
-header, footer, section, aside, nav, article { display: block; }
+header, footer, section, aside, nav, question { display: block; }
 
 
 body { font-size: 14px; font-family: Helvetica, Arial, Verdana; background-color: #ffffff; }
@@ -107,30 +107,30 @@ div.field, div.actions { margin-bottom: 10px; }
 div.field label { font-size: 12px; }
 
 
-/* style the errors of _form.html.erb (articles) */
+/* style the errors of _form.html.erb (questions) */
 .field_with_errors label { padding: 3px 10px 3px 10px; background-color: #c81419;  color: #ffffff; display: table; }
 #error_explanation { margin: 20px 0; padding: 0; width: 450px; border: 2px solid #c81419; background-color: #f0f0f0; }
 #error_explanation h2 { text-align: left; font-weight: bold; padding: 5px 5px 5px 15px; margin-bottom: 10px; font-size: 12px; background-color: #c81419; color: #ffffff; }
 #error_explanation ul li { font-size: 12px; margin-left: 30px; list-style: square; }
 
 
-/* section articles, this is the main index of the articles controller */
-#articles { padding: 0; margin: 0; }
-#articles { }
-.article { width: 100%; margin-bottom: 40px; }
-.article .title { font-weight: bold; margin-bottom: 10px; }
-.article .title a { font-size: 18px; text-decoration: none; color: #c81419; padding-top: 5px; }
-.article .stars .text { margin-top: 0px !important; }
+/* section questions, this is the main index of the questions controller */
+#questions { padding: 0; margin: 0; }
+#questions { }
+.question { width: 100%; margin-bottom: 40px; }
+.question .title { font-weight: bold; margin-bottom: 10px; }
+.question .title a { font-size: 18px; text-decoration: none; color: #c81419; padding-top: 5px; }
+.question .stars .text { margin-top: 0px !important; }
 
-/* show-method: display one article */
-#articleheader {}
-#articleheader h2 { margin-bottom: 5px; }
-#articleheader h3 { font-weight: normal; }
-#articleheader .byline { font-size: 12px; margin-bottom: 20px; }
-#articleheader .byline span { padding-left: 30px; }
-#articleheader .avatar { float: right; margin-left: 20px;}
-#articleheader .avatar img { border: 1px solid #74809a; }
-#articlebody { margin-top: 20px; }
+/* show-method: display one question */
+#questionheader {}
+#questionheader h2 { margin-bottom: 5px; }
+#questionheader h3 { font-weight: normal; }
+#questionheader .byline { font-size: 12px; margin-bottom: 20px; }
+#questionheader .byline span { padding-left: 30px; }
+#questionheader .avatar { float: right; margin-left: 20px;}
+#questionheader .avatar img { border: 1px solid #74809a; }
+#questionbody { margin-top: 20px; }
 
 
 .stars * { margin: 0; padding: 0; list-style: none; }
@@ -184,7 +184,7 @@ div.field label { font-size: 12px; }
 
 /* section student */
 #student h3 { font-size: 14px; font-weight: normal; margin-right: 120px;}
-#student #studentarticles { margin: 20px 0 10px 0; list-style: none; }
+#student #studentquestions { margin: 20px 0 10px 0; list-style: none; }
 #student .avatar { float: right; margin-left: 20px;}
 #student .avatar img { border: 1px solid #74809a; }
 #student .stars * { margin: 0; padding: 0; list-style: none; }
@@ -193,17 +193,17 @@ div.field label { font-size: 12px; }
 #student .floatlinks {  }
 
 
-/* section myarticles, this is the list of myarticles */
-#myarticles { padding-top: 20px;}
-#myarticles .myarticle { margin-bottom: 40px;}
-#myarticles .fullwidth { width: 100%; }
-.myarticle .title { font-size: 16px; font-weight: bold; margin-bottom: 10px; }
-.myarticle .created { font-size: 14px; }
-.myarticle .state { font-size: 14px; }
-.myarticle .reject { font-size: 14px; margin-left: 50px; border-left: 2px solid black; padding: 4px 0px 4px 10px; margin-top: 15px; }
-.myarticle .rejectmsg { font-size: 14px; margin-left: 50px; border-left: 2px solid black; padding: 4px 0px 4px 10px; margin-bottom: 15px; }
-.myarticle .actions { margin-top: 10px; }
-.myarticle span { padding: 0 10px 0 0; }
+/* section myquestions, this is the list of myquestions */
+#myquestions { padding-top: 20px;}
+#myquestions .myquestion { margin-bottom: 40px;}
+#myquestions .fullwidth { width: 100%; }
+.myquestion .title { font-size: 16px; font-weight: bold; margin-bottom: 10px; }
+.myquestion .created { font-size: 14px; }
+.myquestion .state { font-size: 14px; }
+.myquestion .reject { font-size: 14px; margin-left: 50px; border-left: 2px solid black; padding: 4px 0px 4px 10px; margin-top: 15px; }
+.myquestion .rejectmsg { font-size: 14px; margin-left: 50px; border-left: 2px solid black; padding: 4px 0px 4px 10px; margin-bottom: 15px; }
+.myquestion .actions { margin-top: 10px; }
+.myquestion span { padding: 0 10px 0 0; }
 
 
 /* search form */

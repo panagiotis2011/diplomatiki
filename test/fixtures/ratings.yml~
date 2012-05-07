@@ -9,3 +9,8 @@ two:
   student_id: 1
   article_id: 1
   stars: 1
+
+three:
+  student_id: 2
+  article_id: 7
+  stars: 4

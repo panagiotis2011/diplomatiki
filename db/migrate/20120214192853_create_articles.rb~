@@ -2,7 +2,7 @@ class CreateArticles < ActiveRecord::Migration
   def self.up
 
     create_table :articles do |t|
-      t.integer :student_id, :null => false        #ξένο κλειδί για τον πίνακα Lesson
+      t.integer :student_id, :null => false        #ξένο κλειδί για τον πίνακα Student
       t.string :title, :null => false
 
       t.text :body, :null => false

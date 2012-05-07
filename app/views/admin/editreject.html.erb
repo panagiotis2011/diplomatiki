@@ -1,15 +1,15 @@
 <section id = "admin">
-    <h4><%= link_to @article.title, @article %></h4>
-    Δημιουργός: <%= @article.student.fullname %><br />
+    <h4><%= link_to @question.title, @question %></h4>
+    Δημιουργός: <%= @question.student.fullname %><br />
 
     <br /><br /><br />
 
-    <%= form_for(@article, :url => reject_admin_path(@article)) do |f| %>
-          <% if @article.errors.any? %>
+    <%= form_for(@question, :url => reject_admin_path(@question)) do |f| %>
+          <% if @question.errors.any? %>
                 <div id="error_explanation">
-                    <h2><%= pluralize(@article.errors.count, "λάθος δεν επιτρέπει") %> την αποθήκευση του άρθρου</h2>
+                    <h2><%= pluralize(@question.errors.count, "λάθος δεν επιτρέπει") %> την αποθήκευση του άρθρου</h2>
                     <ul>
-                        <% @article.errors.full_messages.each do |msg| %>
+                        <% @question.errors.full_messages.each do |msg| %>
                             <li><%= msg %></li>
                         <% end %>
                     </ul>
@@ -17,7 +17,7 @@
           <% end %>
 
           <div class="field">
-                <label for="article_message">Μήνυμα προς τον δημιουργό του άρθρου</label><br />
+                <label for="question_message">Μήνυμα προς τον δημιουργό του άρθρου</label><br />
                 <%= f.text_area :message, :size => "100%x10", :class => "fullwidth"  %>
           </div>
 

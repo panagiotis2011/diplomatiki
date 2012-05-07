@@ -5,11 +5,11 @@ class AdminController < ApplicationController
 
 
 	def index
-		@num_state0 = Article.where(:state => '0').count
-		@num_state1 = Article.where(:state => '1').count
-		@num_state2 = Article.where(:state => '2').count
-		@num_state3 = Article.where(:state => '3').count
-		@num_state4 = Article.where(:state => '4').count
+		@num_state0 = Question.where(:state => '0').count
+		@num_state1 = Question.where(:state => '1').count
+		@num_state2 = Question.where(:state => '2').count
+		@num_state3 = Question.where(:state => '3').count
+		@num_state4 = Question.where(:state => '4').count
 		@num_published = @num_state3 + @num_state4
 		@num_students = Student.all.count
 		@num_students_active30days = Student.where('last_sign_in_at > ?', 30.days.ago).count
@@ -17,89 +17,89 @@ class AdminController < ApplicationController
 	end
 
 
-	# φόρμα για την εισαγωγή του μηνύματος στα άρθρα που είναι μη αποδεκτά
+	# φόρμα για την εισαγωγή του μηνύματος στις ερωτήσεις που είναι μη αποδεκτές
 	def editreject
-		@article = Article.find(params[:id])
-		# Μόνο υποβληθέντα άρθρα μπορούν να απορριφθούν
-		if @article.state != 1
-			flash[:notice] = 'Μόνο υποβληθέντα άρθρα μπορούν να απορριφθούν.'
-			redirect_to :action => 'articles', :state => 1
+		@question = Question.find(params[:id])
+		# Μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να απορριφθούν
+		if @question.state != 1
+			flash[:notice] = 'Μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να απορριφθούν.'
+			redirect_to :action => 'questions', :state => 1
 		end
 	end
 
 
-	# απόρριψη του άρθρου
+	# απόρριψη της ερώτησης
 	def reject
-		@article = Article.find(params[:id])
-		if @article.state == 1
-			if params[:article][:message]
-				@article.state = 2
-				@article.message = params[:article][:message]
-				@article.freezebody = @article.title + "\n\n" + @article.body + "\n\n"
-				if @article.save
-					flash[:notice] = "Το άρθρο έχει απορριφθεί."
-					redirect_to :action => 'articles', :state => 1
+		@question = Question.find(params[:id])
+		if @question.state == 1
+			if params[:question][:message]
+				@question.state = 2
+				@question.message = params[:question][:message]
+				@question.freezebody = @question.title + "\n\n" + @question.body + "\n\n"
+				if @question.save
+					flash[:notice] = "Η ερώτηση έχει απορριφθεί."
+					redirect_to :action => 'questions', :state => 1
 				else
 					render :action => "editreject"
 				end
 			else
-				flash[:notice] = "Για να απορριφθεί το άρθρο είναι απαραίτητο να σταλεί μήνυμα στον δημιουργό του."
-				redirect_to :action => 'articles', :state => 1
+				flash[:notice] = "Για να απορριφθεί η ερώτηση είναι απαραίτητο να σταλεί μήνυμα στον δημιουργό της."
+				redirect_to :action => 'questions', :state => 1
 			end
 		else
-			flash[:notice] = "Μόνο υποβληθέντα άρθρα μπορούν να απορριφθούν."
-			redirect_to :action => 'articles', :state => 1
+			flash[:notice] = "Μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να απορριφθούν."
+			redirect_to :action => 'questions', :state => 1
 		end
 	end
 
 
-	# αποδοχή του άρθρου σαν κανονικό ή σαν προτεινόμενο
+	# αποδοχή της ερώτησης σαν κανονική ή σαν προτεινόμενη
 	def accept
-		@article = Article.find(params[:id])
-		# μόνο υποβληθέντα άρθρα μπορούν να γίνουν αποδεκτά
-		if @article.state == 1
-			@article.state = 3
-			flash[:notice] = 'Το άρθρο έχει γίνει αποδεκτό.'
+		@question = Question.find(params[:id])
+		# μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να γίνουν αποδεκτές
+		if @question.state == 1
+			@question.state = 3
+			flash[:notice] = 'Η ερώτηση έχει γίνει αποδεκτή.'
 			if params[:value]
 				if params[:value] == '1'
-					@article.state = 4
-					flash[:notice] = 'Το άρθρο έχει γίνει αποδεκτό ως προτεινόμενο άρθρο.'
+					@question.state = 4
+					flash[:notice] = 'Η ερώτηση έχει γίνει αποδεκτή ως προτεινόμενη ερώτηση.'
 				end
 			end
 			# freeeze
-			@article.freezebody = @article.title + "\n\n" + @article.body + "\n\n"
-			@article.accepted = Time.now
+			@question.freezebody = @question.title + "\n\n" + @question.body + "\n\n"
+			@question.accepted = Time.now
 			# αποθήκευση άρθρου
-			if !@article.save
-				flash[:notice] = 'Υπάρχει κάποιο σφάλμα κατά την αποδοχή του άρθρου.'
+			if !@question.save
+				flash[:notice] = 'Υπάρχει κάποιο σφάλμα κατά την αποδοχή της ερώτησης.'
 			end
 		else
-			flash[:notice] = 'Μόνο υποβληθέντα άρθρα μπορούν να δημοσιευθούν.'
+			flash[:notice] = 'Μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να δημοσιευθούν.'
 		end
-		redirect_to :action => 'articles', :state => 1
+		redirect_to :action => 'questions', :state => 1
 	end
 
 
-	def articles
+	def questions
 		if params[:state]
 			@state = params[:state]
-			# λανθασμένες παράμετροι δείξε τα προς υποβολή άρθρα
+			# λανθασμένες παράμετροι δείξε τις προς υποβολή ερωτήσεις
 			if !['0', '1', '2', '3', '4'].index(@state)
 				@state = '1'
 			end
 		else
-			# καθόλου παράμετροι δείξε τα προς υποβολή άρθρα
+			# καθόλου παράμετροι δείξε τις προς υποβολή ερωτήσεις
 			@state = '1'
 		end
 		# διαφορετική σειρά ταξινόμησης για διαφορετικές καταστάσεις
 		case @state
-			when '0' then @state_name = 'Πρόχειρο'; @order = 'updated_at desc'
+			when '0' then @state_name = 'Πρόχειρη'; @order = 'updated_at desc'
 			when '1' then @state_name = 'Προς υποβολή'; @order = 'updated_at desc'
-			when '2' then @state_name = 'Μη αποδεκτό'; @order = 'updated_at desc'
-			when '3' then @state_name = 'Αποδεκτό'; @order = 'accepted desc'
-			when '4' then @state_name = 'Προτεινόμενο'; @order = 'accepted desc'
+			when '2' then @state_name = 'Μη αποδεκτή'; @order = 'updated_at desc'
+			when '3' then @state_name = 'Αποδεκτή'; @order = 'accepted desc'
+			when '4' then @state_name = 'Προτεινόμενη'; @order = 'accepted desc'
 		end
-		@articles = Article.where(:state => @state).order(@order)
+		@questions = Question.where(:state => @state).order(@order)
 	end
 
 	protected

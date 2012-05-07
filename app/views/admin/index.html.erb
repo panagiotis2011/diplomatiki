@@ -1,21 +1,21 @@
 # encoding: utf-8
 <section id = "admin">
-    <h2>Διαχειριστής: Πίνακας ελέγχου</h2>
+    <h2>Καθηγητής: Πίνακας ελέγχου</h2>
 
-    <h3>Άρθρα</h3>
+    <h3>Ερωτήσεις</h3>
     <p>
         Στατιστικά:  </p>
         <p>
-        <%=pluralize(@num_published, "Δημοσιευμένο άρθρο")%>, <%= link_to pluralize(@num_state4, "Προτεινόμενο άρθρο"), articles_admin_index_path + '?state=4' %>,
-        <%= link_to pluralize(@num_state3, "Ολοκληρωμένο άρθρο"), articles_admin_index_path + '?state=3' %>, </p>
+        <%=pluralize(@num_published, "Δημοσιευμένη ερώτηση")%>, <%= link_to pluralize(@num_state4, "Προτεινόμενη ερώτηση"), questions_admin_index_path + '?state=4' %>,
+        <%= link_to pluralize(@num_state3, "Ολοκληρωμένη ερώτηση"), questions_admin_index_path + '?state=3' %>, </p>
         <p>
-        <%= link_to pluralize(@num_state2, "Μη αποδεκτό άρθρο"), articles_admin_index_path + '?state=2' %>,
-        <%= link_to pluralize(@num_state1, "Άρθρο προς υποβολή"), articles_admin_index_path + '?state=1' %>,
-        <%= link_to pluralize(@num_state0, "Πρόχειρο άρθρο"), articles_admin_index_path + '?state=0' %>
+        <%= link_to pluralize(@num_state2, "Μη αποδεκτή ερώτηση"), questions_admin_index_path + '?state=2' %>,
+        <%= link_to pluralize(@num_state1, "Ερώτηση προς υποβολή"), questions_admin_index_path + '?state=1' %>,
+        <%= link_to pluralize(@num_state0, "Πρόχειρη ερώτηση"), questions_admin_index_path + '?state=0' %>
         </p>
         <p>
         <% if @num_state1 > 0 %>
-            <b>Συνολικά <%= link_to pluralize(@num_state1, "Άρθρο προς υποβολή") , articles_admin_index_path + '?state=1' %> είναι σε κατάσταση αναμονής για έγκριση!</b>
+            <b>Συνολικά <%= link_to pluralize(@num_state1, "Ερώτηση προς υποβολή") , questions_admin_index_path + '?state=1' %> είναι σε κατάσταση αναμονής για έγκριση!</b>
         <% end %>
     </p>
 

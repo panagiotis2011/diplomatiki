@@ -2,7 +2,7 @@
 
 
 Student.delete_all
-Article.delete_all
+Question.delete_all
 Lesson.delete_all
 
 
@@ -19,17 +19,17 @@ end
 
 
 @lesson1 = Lesson.create! :name => ''
-@lesson1.confirm!
+#@lesson1.confirm!
 @lesson2 = Lesson.create! :name => 'ΠΛΣ 50'
-@lesson2.confirm!
+#@lesson2.confirm!
 @lesson3 = Lesson.create! :name => 'ΠΛΣ 51'
-@lesson3.confirm!
+#@lesson3.confirm!
 @lesson4 = Lesson.create! :name => 'ΠΛΣ 60'
-@lesson4.confirm!
+#@lesson4.confirm!
 @lesson5 = Lesson.create! :name => 'ΠΛΣ 61'
-@lesson5.confirm!
+#@lesson5.confirm!
 @lesson6 = Lesson.create! :name => 'ΠΛΣ 62'
-@lesson6.confirm!
+#@lesson6.confirm!
 
 @student1 = Student.create! :email => 'oneadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin One', :lesson_id => '2', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin'
 @student1.confirm!
@@ -45,8 +45,8 @@ end
 @student6.confirm!
 
 
-@article1 = Article.create! :title => 'Article No. 1', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Article 1", :student_id => 6
-@article2 = Article.create! :title => 'Article No. 2', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Article 2", :student_id => 6
-@article3 = Article.create! :title => 'Article No. 3', :state => 2, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Article 3", :student_id => 6
-@article4 = Article.create! :title => 'Article No. 4', :state => 3, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "h1. Article 4", :student_id => 6
-@article5 = Article.create! :title => 'Article No. 5', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "h1. Article 5", :student_id => 6
+@question1 = Question.create! :title => 'Question No. 1', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 1", :student_id => 6
+@question2 = Question.create! :title => 'Question No. 2', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 2", :student_id => 6
+@question3 = Question.create! :title => 'Question No. 3', :state => 2, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 3", :student_id => 6
+@question4 = Question.create! :title => 'Question No. 4', :state => 3, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "h1. Question 4", :student_id => 6
+@question5 = Question.create! :title => 'Question No. 5', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "h1. Question 5", :student_id => 6

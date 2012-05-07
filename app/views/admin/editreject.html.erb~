@@ -17,12 +17,12 @@
           <% end %>
 
           <div class="field">
-                <label for="article_message">Reject message</label><br />
+                <label for="article_message">Μήνυμα προς τον δημιουργό του άρθρου</label><br />
                 <%= f.text_area :message, :size => "100%x10", :class => "fullwidth"  %>
           </div>
 
           <div class="actions">
-                <%= f.submit "Reject Article", :class => "awesome custom red" %>
+                <%= f.submit "Απόρριψη άρθρου", :class => "awesome custom red" %>
           </div>
     <% end %>
 </section>

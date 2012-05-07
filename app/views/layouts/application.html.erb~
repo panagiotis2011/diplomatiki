@@ -4,6 +4,8 @@
   <title>Diplomatiki</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'jquery-1.7.2.min.js', 'jquery-ui-1.8.20.custom.min.js', 'autocomplete-rails.js', 'rails.js'  %>
+  <%= stylesheet_link_tag 'jquery-ui-1.8.20.custom.css' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -20,7 +22,7 @@
                     <%= request.path == edit_student_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
                     <li><%= link_to "Το προφίλ μου", edit_student_registration_path %></li>
                     <%= request.path == myarticles_articles_path ? raw("<li class='selected'>") : raw("<li>") %>
-                    <li><%= link_to "Τα άρθρα μου", myarticles_articles_path %></li>
+                    <li><%= link_to "Ερωτήσεις", myarticles_articles_path %></li>
                     <li><%= link_to "Έξοδος", destroy_student_session_path, :method => 'delete' %></li>
                 <% else %>
                     <%= request.path == new_student_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
@@ -39,9 +41,9 @@
         <nav id="nav_main">
             <ul>
                 <%= request.path == root_path ? raw("<li class='selected'>") : raw("<li>") %>
-                <li><%= link_to "Προτεινόμενα άρθρα", root_path %></li>
+                <li><%= link_to "Προτεινόμενες ερωτήσεις", root_path %></li>
                 <%= request.path == all_articles_path ? raw("<li class='selected'>") : raw("<li>") %>
-                <li><%= link_to "Όλα τα άρθρα", all_articles_path %></li>
+                <li><%= link_to "Όλες οι ερωτήσεις", all_articles_path %></li>
                 <%= request.path == about_articles_path ? raw("<li class='selected'>") : raw("<li>") %>
                 <li><%= link_to "Οδηγός χρήσης", about_articles_path %></li>
                 <li id="listsearch">
@@ -72,9 +74,9 @@
                 <h3>Συζήτηση-Ενημέρωση</h3>
                 <h4>Τρόποι συμμετοχής:</h4>
                 <ul>
-                    <li>Γράψε ένα άρθρο</li>
-                    <li>Σχολίασε ένα άρθρο</li>
-                    <li>Βαθμολόγησε ένα άρθρο</li>
+                    <li>Ρώτησε</li>
+                    <li>Σχολίασε</li>
+                    <li>Αξιολόγησε</li>
                 </ul>
             </section>
             <section id="links" class="box">

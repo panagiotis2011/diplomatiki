@@ -14,16 +14,16 @@ Diplomatiki::Application.routes.draw do
 			put 'accept'
 		end
 		collection do
-			get 'articles'
+			get 'questions'
 		end
 	end
 
-	resources :articles do
+	resources :questions do
 		collection do
 			get 'autocomplete_tag_name'
 			get 'about'
 			get 'all'
-			get 'myarticles'
+			get 'myquestions'
 			delete 'destroy'
 		end
 
@@ -36,5 +36,5 @@ Diplomatiki::Application.routes.draw do
 		resources :ratings, :only => [:create, :update, :destroy]
 	end
 
-	root :to => 'articles#index'
+	root :to => 'questions#index'
 end

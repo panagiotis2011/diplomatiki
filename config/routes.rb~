@@ -20,6 +20,7 @@ Diplomatiki::Application.routes.draw do
 
 	resources :articles do
 		collection do
+			get 'autocomplete_tag_name'
 			get 'about'
 			get 'all'
 			get 'myarticles'

@@ -1,0 +1,69 @@
+# encoding: utf-8
+<h2>Διαχείριση των ερωτήσεων</h2>
+
+<p><%= link_to 'Δημιουργία νέας ερώτησης', new_question_path, :class => "awesome custom red" %></p>
+
+<section id="myquestions">
+
+    <% if !@myquestions.empty? %>
+
+        <% @myquestions.each do |question| %>
+
+            <question class="myquestion">
+
+                <div class="title"><%= question.title %></div>
+                <div class="created">
+                   <p> Δημιουργήθηκε: <%= l(question.created_at, :format => '%d %b %Y') %> </p>
+                   <p>   Ενημερώθηκε: <%= l(question.updated_at, :format => '%d %b %Y') %> </p>
+                </div>
+
+                <!-- Κατάσταση άρθρου:  0...draft, 1...submitted, 2...rejected, 3...full question, 4...featured question -->
+
+                <% if (question.state == 0) or (question.state == 2) %>
+                 <span><%= link_to "Υποβολή τώρα", submit_question_path(question), :method => :put, :class => "awesome custom red" %>
+                 </span>
+
+                  <div class="state">Τρέχουσα κατάσταση: Πρόχειρο (Ορατό μέσω απευθείας link)</div>
+                <% end%>
+
+                <% if question.state == 1 %>
+                  <div class="state">Τρέχουσα κατάσταση: Προς υποβολή (<%= l(question.submitted, :format => '%d %b %Y') %>)</div>
+                <% end%>
+
+                <% if question.state == 2 %>
+                  <div class="state">Τρέχουσα κατάσταση: Μη αποδεκτό (<%= l(question.submitted, :format => '%d %b %Y') %>)</div>
+                  <div class="reject">Παρακαλώ διαβάστε τα σχόλια, εξετάστε την ερώτησή σας και προσπαθήστε ξανά!</div>
+                  <div class="rejectmsg"><%= question.message %></div>
+                <% end%>
+
+                <% if question.state == 3 %>
+                  <div class="state">Τρέχουσα κατάσταση: Αποδοχή και δημοσίευση της ερώτησης (<%= l(question.accepted, :format => '%d %b %Y') %>)</div>
+                <% end %>
+
+                <% if question.state == 4 %>
+                  <div class="state">Τρέχουσα κατάσταση: Αποδοχή και δημοσίευση της ερώτησης ως <b>Προτεινόμενη ερώτηση</b> (<%= l(question.accepted, :format => '%d %b %Y') %>)</div>
+                <% end %>
+
+                <div class="actions">
+                    <span class="Προβολή"><%= link_to 'Προβολή', question, :class => "awesome custom red" %></span>
+                    <span class="Επεξεργασία"><%= link_to 'Επεξεργασία', edit_question_path(question), :class => "awesome custom red" %></span>
+                    <% if ((question.state == 3) or (question.state == 4) and (current_student.services.find_by_provider('facebook').token rescue nil )) %>
+                    <span> <%= link_to 'Δημοσίευση στο Facebook', postfacebook_question_path(question), :class => "awesome custom blue" %></span>
+                    <% end %>
+                    <% if (question.state == 0) or (question.state == 2) %>
+                        <span><%= link_to "Υποβολή τώρα", submit_question_path(question), :method => :put, :class => "awesome custom red" %>
+                    </span>
+                    <% end %>
+                    <% if question.state < 3 %>
+                        <span class="Διαγραφή"><%= link_to 'Διαγραφή', question, :confirm => 'Είσαι σίγουρος;', :method => :delete, :class => "awesome custom black" %></span>
+                    <% end %>
+                </div>
+
+            </question>
+        <% end %>
+
+    <% else %>
+        <p>Δεν έχεις γράψει ακόμη κάποιο ερώτηση. Ξεκίνα τώρα: <%= link_to 'Νέα ερώτηση', new_question_path, :class => "awesome custom red" %></p>
+    <% end %>
+
+</section>
