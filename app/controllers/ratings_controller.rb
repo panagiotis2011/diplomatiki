@@ -1,12 +1,12 @@
 # encoding: utf-8
 class RatingsController < ApplicationController
-  before_filter :authenticate_student!
+  before_filter :authenticate_user!
 
   # create a rating
   def create
     @question = Question.find(params[:question_id])
     @rating = @question.ratings.build(params[:rating])
-    @rating.student = current_student
+    @rating.user = current_user
 
     respond_to do |format|
       if @question.state > 2
@@ -23,7 +23,7 @@ class RatingsController < ApplicationController
 
   # update a rating
   def update
-    @rating = current_student.ratings.find(params[:id])
+    @rating = current_user.ratings.find(params[:id])
     @question = Question.find(params[:question_id])
 
     respond_to do |format|
@@ -37,7 +37,7 @@ class RatingsController < ApplicationController
 
   # remove a rating
   def destroy
-    @rating = current_student.ratings.find(params[:id])
+    @rating = current_user.ratings.find(params[:id])
     @question = Question.find(params[:question_id])
 
     @rating.destroy

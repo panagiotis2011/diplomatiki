@@ -6,7 +6,7 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
-  <% if @student.password_required? %>
+  <% if @user.password_required? %>
   <div><%= f.label :password %><br />
   <%= f.password_field :password %></div>
 

@@ -47,7 +47,7 @@
                 <div class="actions">
                     <span class="Προβολή"><%= link_to 'Προβολή', question, :class => "awesome custom red" %></span>
                     <span class="Επεξεργασία"><%= link_to 'Επεξεργασία', edit_question_path(question), :class => "awesome custom red" %></span>
-                    <% if ((question.state == 3) or (question.state == 4) and (current_student.services.find_by_provider('facebook').token rescue nil )) %>
+                    <% if ((question.state == 3) or (question.state == 4) and (current_user.services.find_by_provider('facebook').token rescue nil )) %>
                     <span> <%= link_to 'Δημοσίευση στο Facebook', postfacebook_question_path(question), :class => "awesome custom blue" %></span>
                     <% end %>
                     <% if (question.state == 0) or (question.state == 2) %>

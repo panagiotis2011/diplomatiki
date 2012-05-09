@@ -1,7 +1,7 @@
 class CreateServices < ActiveRecord::Migration
   def self.up
     create_table :services do |t|
-      t.integer :student_id				#ξένο κλειδί για τον πίνακα Student
+      t.integer :user_id				#ξένο κλειδί για τον πίνακα User
       t.string :provider
       t.string :uid
       t.string :uname

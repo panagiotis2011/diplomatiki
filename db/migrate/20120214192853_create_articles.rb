@@ -2,7 +2,7 @@ class CreateArticles < ActiveRecord::Migration
   def self.up
 
     create_table :questions do |t|
-      t.integer :student_id, :null => false        #ξένο κλειδί για τον πίνακα Student
+      t.integer :user_id, :null => false        #ξένο κλειδί για τον πίνακα User
       t.string :title, :null => false
 
       t.text :body, :null => false
@@ -13,7 +13,7 @@ class CreateArticles < ActiveRecord::Migration
       t.date :accepted
       t.timestamps
     end
-    add_index :questions, :student_id
+    add_index :questions, :user_id
   end
 
   def self.down

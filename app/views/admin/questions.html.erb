@@ -5,7 +5,7 @@
     <% @questions.each do |question| %>
       <p>
         <h4><%= link_to question.title, question %></h4>
-        Δημιουργός: <%= question.student.fullname %>
+        Δημιουργός: <%= question.user.fullname %>
 
         <%= link_to 'Διαγραφή', question, :confirm => 'Προσοχή! Αυτή η ενέργεια θα διαγράψει οριστικά το άρθρο. Να γίνει η διαγραφή;', :method => :delete %>
 

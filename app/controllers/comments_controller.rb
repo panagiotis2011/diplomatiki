@@ -1,12 +1,12 @@
 # encoding: utf-8
 class CommentsController < ApplicationController
-  before_filter :authenticate_student!
+  before_filter :authenticate_user!
 
   # δημιουργία ενός σχολίου και σύνδεσή του με μία ερώτηση και έναν σπουδαστή
   def create
     @question = Question.find(params[:question_id])
     @comment = @question.comments.build(params[:comment])
-    @comment.student = current_student
+    @comment.user = current_user
 
     respond_to do |format|
       if @question.state > 2
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 
   # διαγραφή ενός σχολίου
   def destroy
-    @comment = current_student.comments.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
     @question = Question.find(params[:question_id])
     @comment.destroy
 

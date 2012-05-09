@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 	respond_to :json
 	autocomplete :tag, :name
 	# μόνο οι μέθοδοι index, all, about και show είναι προσβάσιμες από μη πιστοποιημένους χρήστες
-	before_filter :authenticate_student!, :except => [:index, :all, :show, :about]
+	before_filter :authenticate_user!, :except => [:index, :all, :show, :about]
 	rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
 
@@ -41,7 +41,7 @@ class QuestionsController < ApplicationController
 
 
 	def myquestions
-		@myquestions = current_student.questions.all
+		@myquestions = current_user.questions.all
 		respond_to do |format|
 			format.html { render 'myquestions'}
 			format.xml  { render :xml => @myquestions }
@@ -57,7 +57,7 @@ def auto_complete_for_link_tag_list
 
 
 	def submit
-		@question = current_student.questions.find(params[:id])
+		@question = current_user.questions.find(params[:id])
 		# submit μόνο αν η ερώτηση είναι σε κατάσταση "πρόχειρη" ή "μη αποδεκτή"
 		if (@question.state == 0) or (@question.state == 2)
 			@question.state = 1
@@ -80,10 +80,10 @@ def auto_complete_for_link_tag_list
 	def show
 		@question = Question.find(params[:id])
 		@comments = @question.comments.all
-		if student_signed_in?
-			@rating_currentstudent = @question.ratings.find_by_student_id(current_student.id)
-			unless @rating_currentstudent
-				@rating_currentstudent = current_student.ratings.new
+		if user_signed_in?
+			@rating_currentuser = @question.ratings.find_by_user_id(current_user.id)
+			unless @rating_currentuser
+				@rating_currentuser = current_user.ratings.new
 			end
 		end
 		respond_to do |format|
@@ -94,7 +94,7 @@ def auto_complete_for_link_tag_list
 
 
 	def new
-		@question = current_student.questions.new
+		@question = current_user.questions.new
 		respond_to do |format|
 			format.html # new.html.erb
 			format.xml  { render :xml => @question }
@@ -102,16 +102,16 @@ def auto_complete_for_link_tag_list
 	end
 
 	def edit
-		@question = current_student.questions.find(params[:id])
+		@question = current_user.questions.find(params[:id])
 	end
 
 	def postfacebook
-		@question = current_student.questions.find(params[:id])
+		@question = current_user.questions.find(params[:id])
 		begin
-			current_student.facebook.feed!(
+			current_user.facebook.feed!(
 			:message => "Στον Χώρο Συζήτησης Ενημέρωσης δημοσιεύθηκε ερώτηση με τίτλο: #{ @question.title }",
 			:name => 'My Rails 3 App with Omniauth, Devise and FB_graph')
-			page = FbGraph::Page.new(354024727961476, :access_token => current_student.services.find_by_provider('facebook').token)
+			page = FbGraph::Page.new(354024727961476, :access_token => current_user.services.find_by_provider('facebook').token)
 			page.feed!(
 			:message => "Στον Χώρο Συζήτησης Ενημέρωσης δημοσιεύθηκε ερώτηση με τίτλο: #{ @question.title }",
 			:name => 'My Rails 3 App with Omniauth, Devise and FB_graph')
@@ -155,7 +155,7 @@ def auto_complete_for_link_tag_list
 
 	def create
 
-		@question = current_student.questions.new(params[:question])
+		@question = current_user.questions.new(params[:question])
 		respond_to do |format|
 			if @question.save
 				format.html { redirect_to(@question, :notice => 'Η ερώτηση δημιουργήθηκε επιτυχώς.') }
@@ -169,7 +169,7 @@ def auto_complete_for_link_tag_list
 
 
 	def update
-		@question = current_student.questions.find(params[:id])
+		@question = current_user.questions.find(params[:id])
 
 		# Εάν μία ερώτηση έχει ήδη γίνει αποδεκτή ο φοιτητής δεν επιτρέπεται να κάνει αλλαγές στον τίτλο
 		if @question.state > 2
@@ -189,11 +189,11 @@ def auto_complete_for_link_tag_list
 
 	def destroy
 		# οι καθηγητές μπορούν να διαγράψουν ερωτήσεις σε κάθε κατάσταση
-		if current_student.id < 5
+		if current_user.id < 5
 			@question = Question.find(params[:id])
 			@question.destroy
 		else
-			@question = current_student.questions.find(params[:id])
+			@question = current_user.questions.find(params[:id])
 
 			# Ο φοιτητής μπορεί να διαγράψει μόνο ερωτήσεις σε κατάσταση "πρόχειρη", "προς υποβολή" ή "μη αποδεκτή"
 			if (@question.state < 3)

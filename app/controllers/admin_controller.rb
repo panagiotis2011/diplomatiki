@@ -1,6 +1,6 @@
 # encoding: utf-8
 class AdminController < ApplicationController
-  before_filter :authenticate_student!
+  before_filter :authenticate_user!
   before_filter :is_admin
 
 
@@ -11,9 +11,9 @@ class AdminController < ApplicationController
 		@num_state3 = Question.where(:state => '3').count
 		@num_state4 = Question.where(:state => '4').count
 		@num_published = @num_state3 + @num_state4
-		@num_students = Student.all.count
-		@num_students_active30days = Student.where('last_sign_in_at > ?', 30.days.ago).count
-		@num_students_created30days = Student.where('created_at > ?', 30.days.ago).count
+		@num_users = User.all.count
+		@num_users_active30days = User.where('last_sign_in_at > ?', 30.days.ago).count
+		@num_users_created30days = User.where('created_at > ?', 30.days.ago).count
 	end
 
 
@@ -104,8 +104,8 @@ class AdminController < ApplicationController
 
 	protected
 	def is_admin
-		if current_student
-			if current_student.id < 5
+		if current_user
+			if current_user.id < 5
 				return 1
 			end
 		end

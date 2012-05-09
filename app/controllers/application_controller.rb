@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authenticate_student!, :except => [:index, :all, :show, :about]
+  before_filter :authenticate_user!, :except => [:index, :all, :show, :about]
   before_filter :count_questions
 
   def about
