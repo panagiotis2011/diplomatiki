@@ -1,7 +1,7 @@
 # encoding: utf-8
 class AdminController < ApplicationController
-  before_filter :authenticate_student!
-  before_filter :is_admin
+	before_filter :authenticate_user!
+	before_filter :is_admin
 
 
 	def index
@@ -10,10 +10,12 @@ class AdminController < ApplicationController
 		@num_state2 = Question.where(:state => '2').count
 		@num_state3 = Question.where(:state => '3').count
 		@num_state4 = Question.where(:state => '4').count
+		@num_user_kind0 = User.where(:user_kind => '0').count
+		@num_user_kind1 = User.where(:user_kind => '1').count
 		@num_published = @num_state3 + @num_state4
-		@num_students = Student.all.count
-		@num_students_active30days = Student.where('last_sign_in_at > ?', 30.days.ago).count
-		@num_students_created30days = Student.where('created_at > ?', 30.days.ago).count
+		@num_users = User.all.count
+		@num_users_active30days = User.where('last_sign_in_at > ?', 30.days.ago).count
+		@num_users_created30days = User.where('created_at > ?', 30.days.ago).count
 	end
 
 
@@ -32,7 +34,7 @@ class AdminController < ApplicationController
 	def reject
 		@question = Question.find(params[:id])
 		if @question.state == 1
-			if params[:uestion][:message]
+			if params[:question][:message]
 				@question.state = 2
 				@question.message = params[:question][:message]
 				@question.freezebody = @question.title + "\n\n" + @question.body + "\n\n"
@@ -80,6 +82,27 @@ class AdminController < ApplicationController
 	end
 
 
+	# μόνο ο superuser (user.id = 1) έχει την δυνατότητα αλλαγής του user_kind
+	def accept1
+		@user = User.find(params[:id])
+		if params[:value]
+			if params[:value] == '0'
+				@user.user_kind = 1
+				flash[:notice] = 'O χρήστης έγινε καθηγητής.'
+			else
+				@user.user_kind = 0
+				flash[:notice] = 'O χρήστης έγινε σπουδαστής.'
+			end
+
+		end
+		if !@user.save
+			flash[:notice] = 'Υπάρχει κάποιο σφάλμα.'
+		end
+		redirect_to root_url
+	end
+
+
+	# διαχείριση των ερωτήσεων από τους καθηγητές (user_kind = 1)
 	def questions
 		if params[:state]
 			@state = params[:state]
@@ -102,12 +125,34 @@ class AdminController < ApplicationController
 		@questions = Question.where(:state => @state).order(@order)
 	end
 
+
+	# διαχείριση των χρηστών από τον διαχειριστή (user.id = 1)
+	def users
+		if params[:user_kind]
+			@user_kind = params[:user_kind]
+			# λανθασμένες παράμετροι δείξε τους σπουδαστές
+			if !['0', '1'].index(@user_kind)
+				@user_kind = '0'
+			end
+		else
+			# καθόλου παράμετροι δείξε τους σπουδαστές
+			@user_kind = '0'
+		end
+		# διαφορετική σειρά ταξινόμησης για διαφορετικές καταστάσεις
+		case @user_kind
+			when '0' then @user_kind_name = 'Σπουδαστής'; @order = 'updated_at desc'
+			when '1' then @user_kind_name = 'Καθηγητής'; @order = 'updated_at desc'
+		end
+		@users = User.where(:user_kind => @user_kind).order(@order).paginate(:page => params[:page], :per_page => 10)
+	end
+
+
 	protected
 	def is_admin
-		if current_student
-			if current_student.id < 5
+		if current_user.user_kind == 1
+			#if current_user.user_kind == 1
 				return 1
-			end
+			#end
 		end
 		redirect_to root_url
 	end

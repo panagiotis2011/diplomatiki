@@ -1,16 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  student_id: 1
+  user_id: 1
   question_id: 1
   stars: 1
 
 two:
-  student_id: 1
+  user_id: 1
   question_id: 1
   stars: 1
 
 three:
-  student_id: 2
+  user_id: 2
   question_id: 7
   stars: 4

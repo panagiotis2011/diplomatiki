@@ -17,13 +17,13 @@
                    <p>   Ενημερώθηκε: <%= l(question.updated_at, :format => '%d %b %Y') %> </p>
                 </div>
 
-                <!-- Κατάσταση άρθρου:  0...draft, 1...submitted, 2...rejected, 3...full question, 4...featured question -->
+                <!-- Κατάσταση ερώτησης:  0...draft, 1...submitted, 2...rejected, 3...full question, 4...featured question -->
 
                 <% if (question.state == 0) or (question.state == 2) %>
                  <span><%= link_to "Υποβολή τώρα", submit_question_path(question), :method => :put, :class => "awesome custom red" %>
                  </span>
 
-                  <div class="state">Τρέχουσα κατάσταση: Πρόχειρο (Ορατό μέσω απευθείας link)</div>
+                  <div class="state">Τρέχουσα κατάσταση: Πρόχειρη (Ορατό μέσω απευθείας link)</div>
                 <% end%>
 
                 <% if question.state == 1 %>
@@ -47,7 +47,7 @@
                 <div class="actions">
                     <span class="Προβολή"><%= link_to 'Προβολή', question, :class => "awesome custom red" %></span>
                     <span class="Επεξεργασία"><%= link_to 'Επεξεργασία', edit_question_path(question), :class => "awesome custom red" %></span>
-                    <% if ((question.state == 3) or (question.state == 4) and (current_student.services.find_by_provider('facebook').token rescue nil )) %>
+                    <% if ((question.state == 3) or (question.state == 4) and (current_user.services.find_by_provider('facebook').token rescue nil )) %>
                     <span> <%= link_to 'Δημοσίευση στο Facebook', postfacebook_question_path(question), :class => "awesome custom blue" %></span>
                     <% end %>
                     <% if (question.state == 0) or (question.state == 2) %>
@@ -63,7 +63,7 @@
         <% end %>
 
     <% else %>
-        <p>Δεν έχεις γράψει ακόμη κάποιο ερώτηση. Ξεκίνα τώρα: <%= link_to 'Νέα ερώτηση', new_question_path, :class => "awesome custom red" %></p>
+        <p>Δεν έχεις γράψει ακόμη κάποια ερώτηση. Ξεκίνα τώρα: <%= link_to 'Νέα ερώτηση', new_question_path, :class => "awesome custom red" %></p>
     <% end %>
 
 </section>

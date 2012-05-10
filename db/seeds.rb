@@ -18,20 +18,20 @@ module ActiveModel
 end
 
 
-@lesson1 = Lesson.create! :name => ''
+@lesson1 = Lesson.create! :name => 'ΠΛΣ 50'
 #@lesson1.confirm!
-@lesson2 = Lesson.create! :name => 'ΠΛΣ 50'
+@lesson2 = Lesson.create! :name => 'ΠΛΣ 51'
 #@lesson2.confirm!
-@lesson3 = Lesson.create! :name => 'ΠΛΣ 51'
+@lesson3 = Lesson.create! :name => 'ΠΛΣ 60'
 #@lesson3.confirm!
-@lesson4 = Lesson.create! :name => 'ΠΛΣ 60'
+@lesson4 = Lesson.create! :name => 'ΠΛΣ 61'
 #@lesson4.confirm!
-@lesson5 = Lesson.create! :name => 'ΠΛΣ 61'
+@lesson5 = Lesson.create! :name => 'ΠΛΣ 62'
 #@lesson5.confirm!
-@lesson6 = Lesson.create! :name => 'ΠΛΣ 62'
+@lesson6 = Lesson.create! :name => ''
 #@lesson6.confirm!
 
-@user1 = User.create! :email => 'oneadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin One', :lesson_id => '2', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin'
+@user1 = User.create! :email => 'oneadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin One', :lesson_id => '2', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin', :user_kind => '1'
 @user1.confirm!
 @user2 = User.create! :email => 'twoadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin Two', :lesson_id => '3', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin2'
 @user2.confirm!
@@ -43,6 +43,7 @@ end
 @user5.confirm!
 @user6 = User.create! :email => 'foititis@diplomatiki.gr', :password => '12345678', :fullname => 'userone', :lesson_id => '1', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of User1'
 @user6.confirm!
+
 
 
 @question1 = Question.create! :title => 'Question No. 1', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 1", :user_id => 6

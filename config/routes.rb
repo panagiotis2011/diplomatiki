@@ -12,11 +12,15 @@ Diplomatiki::Application.routes.draw do
 			get 'editreject'
 			put 'reject'
 			put 'accept'
+			put 'accept1'
 		end
 		collection do
 			get 'questions'
+			get 'users'
 		end
 	end
+
+	resources :users
 
 	resources :questions do
 		collection do

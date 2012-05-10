@@ -10,25 +10,25 @@
 </head>
 <body>
    <header id="page_header">
-        <nav id="nav_student">
+        <nav id="nav_user">
             <ul>
-                <% if student_signed_in? %>
-                		<% if admin_signed_in %>
+                <% if user_signed_in? %>
+                		<% if current_user is_admin %>
                 		    <li><%= link_to "Διαχείριση", admin_index_path %></li>
                      <% end %>
-                    <li><span id="currentstudent"><%= current_student.email %></span></li>
+                    <li><span id="currentuser"><%= current_user.email %></span></li>
                        &nbsp;
                     <li><%= link_to "Δικτύωση", services_path %></li>
-                    <%= request.path == edit_student_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
-                    <li><%= link_to "Το προφίλ μου", edit_student_registration_path %></li>
-                    <%= request.path == myarticles_articles_path ? raw("<li class='selected'>") : raw("<li>") %>
-                    <li><%= link_to "Ερωτήσεις", myarticles_articles_path %></li>
-                    <li><%= link_to "Έξοδος", destroy_student_session_path, :method => 'delete' %></li>
+                    <%= request.path == edit_user_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
+                    <li><%= link_to "Το προφίλ μου", edit_user_registration_path %></li>
+                    <%= request.path == myquestions_questions_path ? raw("<li class='selected'>") : raw("<li>") %>
+                    <li><%= link_to "Οι ερωτήσεις μου", myquestions_questions_path %></li>
+                    <li><%= link_to "Έξοδος", destroy_user_session_path, :method => 'delete' %></li>
                 <% else %>
-                    <%= request.path == new_student_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
-                    <li><%= link_to "Εγγραφή", new_student_registration_path %></li>
-                    <%= request.path == new_student_session_path ? raw("<li class='selected'>") : raw("<li>") %>
-                    <li><%= link_to "Είσοδος", new_student_session_path %></li>
+                    <%= request.path == new_user_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
+                    <li><%= link_to "Εγγραφή", new_user_registration_path %></li>
+                    <%= request.path == new_user_session_path ? raw("<li class='selected'>") : raw("<li>") %>
+                    <li><%= link_to "Είσοδος", new_user_session_path %></li>
                 <% end %>
             </ul>
         </nav>
@@ -42,12 +42,12 @@
             <ul>
                 <%= request.path == root_path ? raw("<li class='selected'>") : raw("<li>") %>
                 <li><%= link_to "Προτεινόμενες ερωτήσεις", root_path %></li>
-                <%= request.path == all_articles_path ? raw("<li class='selected'>") : raw("<li>") %>
-                <li><%= link_to "Όλες οι ερωτήσεις", all_articles_path %></li>
-                <%= request.path == about_articles_path ? raw("<li class='selected'>") : raw("<li>") %>
-                <li><%= link_to "Οδηγός χρήσης", about_articles_path %></li>
+                <%= request.path == all_questions_path ? raw("<li class='selected'>") : raw("<li>") %>
+                <li><%= link_to "Όλες οι ερωτήσεις", all_questions_path %></li>
+                <%= request.path == about_questions_path ? raw("<li class='selected'>") : raw("<li>") %>
+                <li><%= link_to "Οδηγός χρήσης", about_questions_path %></li>
                 <li id="listsearch">
-                  <%= form_tag all_articles_path, :method => 'get' do %>
+                  <%= form_tag all_questions_path, :method => 'get' do %>
                     <%= text_field_tag :search, params[:search] %>
                     <%= submit_tag "Αναζήτηση", :name => nil, :class => "awesome search red" %>
                   <% end %>

@@ -1,5 +1,5 @@
 Diplomatiki::Application.routes.draw do
-	devise_for :students, :controllers => { :registrations => "students/registrations" }
+	devise_for :users, :controllers => { :registrations => "users/registrations" }
 
 	match '/auth/:provider/callback' => 'services#create'
 	match '/auth/twitter', :as => :auth_twitter
@@ -12,18 +12,24 @@ Diplomatiki::Application.routes.draw do
 			get 'editreject'
 			put 'reject'
 			put 'accept'
+			put 'accept1'
 		end
 		collection do
-			get 'articles'
+			get 'questions'
+			get 'users'
 		end
 	end
 
-	resources :articles do
+	resources :users
+
+
+
+	resources :questions do
 		collection do
 			get 'autocomplete_tag_name'
 			get 'about'
 			get 'all'
-			get 'myarticles'
+			get 'myquestions'
 			delete 'destroy'
 		end
 
@@ -36,5 +42,5 @@ Diplomatiki::Application.routes.draw do
 		resources :ratings, :only => [:create, :update, :destroy]
 	end
 
-	root :to => 'articles#index'
+	root :to => 'questions#index'
 end

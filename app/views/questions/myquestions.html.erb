@@ -17,13 +17,13 @@
                    <p>   Ενημερώθηκε: <%= l(question.updated_at, :format => '%d %b %Y') %> </p>
                 </div>
 
-                <!-- Κατάσταση άρθρου:  0...draft, 1...submitted, 2...rejected, 3...full question, 4...featured question -->
+                <!-- Κατάσταση ερώτησης:  0...Πρόχειρη, 1...Προς υποβολή, 2...Μη αποδεκτή, 3...Ολοκληρωμένη ερώτηση, 4...Προτεινόμενη ερώτηση -->
 
                 <% if (question.state == 0) or (question.state == 2) %>
                  <span><%= link_to "Υποβολή τώρα", submit_question_path(question), :method => :put, :class => "awesome custom red" %>
                  </span>
 
-                  <div class="state">Τρέχουσα κατάσταση: Πρόχειρο (Ορατό μέσω απευθείας link)</div>
+                  <div class="state">Τρέχουσα κατάσταση: Πρόχειρη (Ορατό μέσω απευθείας link)</div>
                 <% end%>
 
                 <% if question.state == 1 %>
@@ -31,7 +31,7 @@
                 <% end%>
 
                 <% if question.state == 2 %>
-                  <div class="state">Τρέχουσα κατάσταση: Μη αποδεκτό (<%= l(question.submitted, :format => '%d %b %Y') %>)</div>
+                  <div class="state">Τρέχουσα κατάσταση: Μη αποδεκτή (<%= l(question.submitted, :format => '%d %b %Y') %>)</div>
                   <div class="reject">Παρακαλώ διαβάστε τα σχόλια, εξετάστε την ερώτησή σας και προσπαθήστε ξανά!</div>
                   <div class="rejectmsg"><%= question.message %></div>
                 <% end%>

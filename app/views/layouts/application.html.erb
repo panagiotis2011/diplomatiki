@@ -22,7 +22,7 @@
                     <%= request.path == edit_user_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
                     <li><%= link_to "Το προφίλ μου", edit_user_registration_path %></li>
                     <%= request.path == myquestions_questions_path ? raw("<li class='selected'>") : raw("<li>") %>
-                    <li><%= link_to "Ερωτήσεις", myquestions_questions_path %></li>
+                    <li><%= link_to "Οι ερωτήσεις μου", myquestions_questions_path %></li>
                     <li><%= link_to "Έξοδος", destroy_user_session_path, :method => 'delete' %></li>
                 <% else %>
                     <%= request.path == new_user_registration_path ? raw("<li class='selected'>") : raw("<li>") %>

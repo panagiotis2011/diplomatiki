@@ -1,6 +1,6 @@
 # encoding: utf-8
 <section id = "admin">
-    <h2>Καθηγητής: Πίνακας ελέγχου</h2>
+    <h2>Διαχειριστής: Πίνακας ελέγχου</h2>
 
     <h3>Ερωτήσεις</h3>
     <p>
@@ -19,7 +19,23 @@
         <% end %>
     </p>
 
-    <h3>Φοιτητές</h3>
+    <% if (admin_signed_in and current_user.id == 1) %>
+    <h3>Χρήστες</h3>
+    <p>
+        Στατιστικά:  </p>
+
+         <p>
+        <%=pluralize(@num_users, "χρήστης")%>, <%= link_to pluralize(@num_user_kind0, "Φοιτητής"), users_admin_index_path + '?user_kind=0' %>,
+        <%= link_to pluralize(@num_user_kind1, "Καθηγητής"), users_admin_index_path + '?user_kind=1' %>
+        </p>
+
+        <p>
+        Σύνολο: <%=pluralize(@num_users, "Φοιτητής") %>, <%= pluralize(@num_users_active30days, "Φοιτητής χρησιμοποίησε") %> τον χώρο συζήτησης και επικοινωνίας τις τελευταίες 30 ημέρες.</p>
+
+        <p>Νέοι φοιτητές: <%= pluralize(@num_users_created30days, "Φοιτητής έχει") %> εγγραφεί τις τελευταίες 30 ημέρες στον χώρο συζήτησης και επικοινωνίας.
+    </p>
+    <% else %>
+        <h3>Φοιτητές</h3>
     <p>
         Στατιστικά:  </p>
         <p>
@@ -27,4 +43,6 @@
 
         <p>Νέοι φοιτητές: <%= pluralize(@num_users_created30days, "Φοιτητής έχει") %> εγγραφεί τις τελευταίες 30 ημέρες στον χώρο συζήτησης και επικοινωνίας.
     </p>
+
+    <% end %>
 </section>

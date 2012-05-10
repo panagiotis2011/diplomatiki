@@ -49,11 +49,11 @@ class QuestionsController < ApplicationController
 	end
 
 
-def auto_complete_for_link_tag_list
-    @tags = Link.tag_counts_on(:tags).where('tags.name LIKE ?', params[:link][:tag_list])
-    render :inline => "<%= auto_complete_result(@tags, 'name') %>", :layout => false
-    logger.info "#{@tags.size} tags found."
-  end
+	def auto_complete_for_link_tag_list
+		@tags = Link.tag_counts_on(:tags).where('tags.name LIKE ?', params[:link][:tag_list])
+		render :inline => "<%= auto_complete_result(@tags, 'name') %>", :layout => false
+		logger.info "#{@tags.size} tags found."
+	end
 
 
 	def submit
@@ -101,9 +101,11 @@ def auto_complete_for_link_tag_list
 		end
 	end
 
+
 	def edit
 		@question = current_user.questions.find(params[:id])
 	end
+
 
 	def postfacebook
 		@question = current_user.questions.find(params[:id])
@@ -153,8 +155,8 @@ def auto_complete_for_link_tag_list
 		end
 	end
 
-	def create
 
+	def create
 		@question = current_user.questions.new(params[:question])
 		respond_to do |format|
 			if @question.save
@@ -189,12 +191,11 @@ def auto_complete_for_link_tag_list
 
 	def destroy
 		# οι καθηγητές μπορούν να διαγράψουν ερωτήσεις σε κάθε κατάσταση
-		if current_user.id < 5
-			@question = Question.find(params[:id])
+		@question = Question.find(params[:id])
+		if current_user.user_kind == 1
 			@question.destroy
 		else
 			@question = current_user.questions.find(params[:id])
-
 			# Ο φοιτητής μπορεί να διαγράψει μόνο ερωτήσεις σε κατάσταση "πρόχειρη", "προς υποβολή" ή "μη αποδεκτή"
 			if (@question.state < 3)
 				@question.destroy
@@ -208,12 +209,12 @@ def auto_complete_for_link_tag_list
 		end
 	end
 
+
 	def about
 	end
 
 
 	protected
-
 	def record_not_found
 		flash[:error] = 'Η ερώτηση που ζητήσατε δεν βρέθηκε.'
 		redirect_to root_url

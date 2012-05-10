@@ -20,7 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 				# εάν ο σπουδαστής επιθυμεί να συμπληρώσει κάποιον κωδικό
 				params[resource_name][:haslocalpw] = true
 			end
-			# ο παρακάτω κώδικας έχει αντιγραφεί από τον devise controller, στη θέση τυο update_with_password χρησιμοποιούμε update_attributes
+			# ο παρακάτω κώδικας έχει αντιγραφεί από τον devise controller, στη θέση του update_with_password χρησιμοποιούμε update_attributes
 			if resource.update_attributes(params[resource_name])
 				set_flash_message :notice, :updated
 				sign_in resource_name, resource
