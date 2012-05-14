@@ -192,7 +192,7 @@ class QuestionsController < ApplicationController
 	def destroy
 		# οι καθηγητές μπορούν να διαγράψουν ερωτήσεις σε κάθε κατάσταση
 		@question = Question.find(params[:id])
-		if admin_signed_in
+		if current_user.user_kind == 1
 			@question.destroy
 		else
 			@question = current_user.questions.find(params[:id])

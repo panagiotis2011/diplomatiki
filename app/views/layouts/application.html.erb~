@@ -13,7 +13,7 @@
         <nav id="nav_user">
             <ul>
                 <% if user_signed_in? %>
-                		<% if current_user is_admin %>
+                		<% if admin_signed_in %>
                 		    <li><%= link_to "Διαχείριση", admin_index_path %></li>
                      <% end %>
                     <li><span id="currentuser"><%= current_user.email %></span></li>
@@ -34,7 +34,8 @@
         </nav>
         <div id="page_title">
            <h1><span>Χώρος </span>Συζήτησης Ενημέρωσης</h1>
-            <h2><%= image_tag "facebook_32.png", :size => "32x32" %>οιτητών <span> EAΠ και </span>διδασκόν<%= image_tag "twitter_32.png", :size => "32x32" %>ων <span><%= l(Time.now, :format => :default) %></span> </p></h2>
+            <h2><%=link_to (image_tag "facebook_32.png", :size => "32x32"),{},:title=>'Facebook',:target=>'_blank',:href=>'http://www.facebook.com'%>οιτητών <span> EAΠ και </span>διδασκόν<%= link_to (image_tag "twitter_32.png", :size => "32x32"),{},:title=>'Twitter',:target=>'_blank',:href=>'http://www.twitter.com'
+ %>ων <span><%= l(Time.now, :format => :default) %></span> </p></h2>
         </div>
     </header>
       <header id="nav_header">

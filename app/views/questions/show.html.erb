@@ -52,10 +52,10 @@
                 <div class="avatar"><%= image_tag gravatar(comment.user.email, 48) %></div>
                 <div class="commentbody">
                     <div class="commenthead">
-                      <%= comment.user.fullname %> - <%=time_ago_in_words(comment.created_at)%> ago
+                      <%= comment.user.fullname %> - <%=time_ago_in_words(comment.created_at)%> πριν
                       <% # display delete link only for comments written by this particular user %>
                       <% if user_signed_in? and comment.user_id == current_user.id %>
-                          <span><%= link_to 'delete', question_comment_path(@question, comment), :confirm => 'Are you sure?', :method => :delete, :class => "" %></span>
+                          <span><%= link_to 'Διαγραφή', question_comment_path(@question, comment), :confirm => 'Are you sure?', :method => :delete, :class => "" %></span>
                       <% end %>
                     </div>
                     <div><%= comment.body %></div>

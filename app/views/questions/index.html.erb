@@ -5,7 +5,7 @@
                 <li class="yellowstars" style="width: <%= question.avg_rating * 25 %>px !important;"></li>
             </ul>
             <div class = "title"><%= link_to question.title, question %></div>
-            <div class = "byline"><%= l(question.created_at, :format => '%d %B') %> : <%= question.state %></div>
+            <div class = "byline"><%= l(question.created_at, :format => '%d %B, %Y') %> : <%= question.state %></div>
 
         </question>
     <% end %>

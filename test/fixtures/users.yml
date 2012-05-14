@@ -31,24 +31,3 @@ user3:
   encrypted_password: abcdef3
   #password_salt:  gheureuf
   confirmed_at: <%= Time.now %>
-
-user4:
-  id: 4
-  email: user4@diplomatiki.eu
-  encrypted_password: abcdef3
-  #password_salt:  gheureuf
-  confirmed_at: <%= Time.now %>
-
-user5:
-  id: 5
-  email: user5@diplomatiki.eu
-  encrypted_password: abcdef3
-  #password_salt:  gheureuf
-  confirmed_at: <%= Time.now %>
-
-user6:
-  id: 6
-  email: user6@diplomatiki.eu
-  encrypted_password: abcdef3
-  #password_salt:  gheureuf
-  confirmed_at: <%= Time.now %>

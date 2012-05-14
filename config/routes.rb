@@ -36,7 +36,7 @@ Diplomatiki::Application.routes.draw do
 			get 'postfacebook'
 		end
 
-		resources :comments, :only => [:create, :destroy]
+		resources :comments, :only => [:create, :edit, :update, :destroy]
 		resources :ratings, :only => [:create, :update, :destroy]
 	end
 

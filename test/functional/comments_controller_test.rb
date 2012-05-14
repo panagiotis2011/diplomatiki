@@ -61,6 +61,7 @@ class CommentsControllerTest < ActionController::TestCase
     end
   end
 
+
  # destroy
   test "should not destroy comment anonymous" do
     assert_no_difference('Comment.count') do
