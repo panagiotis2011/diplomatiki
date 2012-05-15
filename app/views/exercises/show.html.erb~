@@ -1,0 +1,22 @@
+<section id="exercises">
+
+
+<p>
+  <b>Τίτλος:</b>
+  <%= @exercise.etitle %>
+</p>
+
+<p>
+  <b>Κείμενο:</b>
+  <%= @exercise.ebody %>
+</p>
+
+<p>
+  <b>Μέσος Όρος:</b>
+  <%= @exercise.average %>
+</p>
+
+
+
+<%= link_to 'Επιστροφή στις ασκήσεις', exercises_path %>
+</section>

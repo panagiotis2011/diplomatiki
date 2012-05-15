@@ -1,0 +1,5 @@
+<h1>Νέα άσκηση</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Πίσω', exercises_path %>

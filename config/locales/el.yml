@@ -1,4 +1,8 @@
 el:
+  will_paginate:
+     next_label: επόμενη σελίδα
+     previous_label: προηγούμενη σελίδα
+
   date:
     abbr_day_names:
     - Κυρ

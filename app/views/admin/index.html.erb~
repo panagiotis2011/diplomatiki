@@ -19,7 +19,28 @@
         <% end %>
     </p>
 
-    <% if (admin_signed_in and current_user.id== 1) %>
+    <h3>Ασκήσεις</h3>
+    <p>
+        Στατιστικά:  </p>
+        <p>
+        <%= link_to pluralize(@num_state5, "Άσκηση"), exercises_path %>,
+          </p>
+    <th>Τίτλος</th>
+    <th>Κείμενο</th>
+    <th>Μέσος Όρος</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <% @exercises.each do |exercise| %>
+    <td><%= exercise.etitle %></td>
+    <td><%= exercise.ebody %></td>
+    <td><%= exercise.average %></td>
+    <td><%= link_to 'Εμφάνισε', exercise %></td>
+    <td><%= link_to 'Βαθμολόγησε', edit_exercise_path(exercise) %></td>
+    <td><%= link_to 'Διέγραψε', exercise, :confirm => 'Είσαι σίγουρος?', :method => :delete %></td>
+    <% end %>
+
+    <% if (admin_signed_in and current_user.id == 1) %>
     <h3>Χρήστες</h3>
     <p>
         Στατιστικά:  </p>
@@ -45,4 +66,6 @@
     </p>
 
     <% end %>
-</section>
+
+
+    </section>

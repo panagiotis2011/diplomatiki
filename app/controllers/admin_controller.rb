@@ -10,6 +10,7 @@ class AdminController < ApplicationController
 		@num_state2 = Question.where(:state => '2').count
 		@num_state3 = Question.where(:state => '3').count
 		@num_state4 = Question.where(:state => '4').count
+		@num_state5 = Exercise.count
 		@num_user_kind0 = User.where(:user_kind => '0').count
 		@num_user_kind1 = User.where(:user_kind => '1').count
 		@num_published = @num_state3 + @num_state4

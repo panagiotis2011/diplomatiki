@@ -19,6 +19,13 @@
         <% end %>
     </p>
 
+    <h3>Ασκήσεις</h3>
+    <p>
+        Στατιστικά:  </p>
+        <p>
+        <%= link_to pluralize(@num_state5, "Άσκηση"), exercises_path %>,
+          </p>
+
     <% if (admin_signed_in and current_user.id == 1) %>
     <h3>Χρήστες</h3>
     <p>
@@ -45,4 +52,6 @@
     </p>
 
     <% end %>
-</section>
+
+
+    </section>

@@ -5,7 +5,7 @@
 * {	margin: 0; padding: 0; }
 
 /* tell the browser to render HTML 5 elements as block */
-header, footer, section, aside, nav, question { display: block; }
+header, footer, section, aside, nav, question, exercise { display: block; }
 
 
 body { font-size: 14px; font-family: Helvetica, Arial, Verdana; background-color: #ffffff; }
@@ -132,6 +132,24 @@ div.field label { font-size: 12px; }
 #questionheader .avatar img { border: 1px solid #74809a; }
 #questionbody { margin-top: 20px; }
 
+
+/* section exercise, this is the main index of the exercises controller */
+#exercises { padding: 0; margin: 0; }
+#exercises { }
+.exercise { width: 100%; margin-bottom: 40px; }
+.exercise .etitle { font-weight: bold; margin-bottom: 10px; }
+.exercise .etitle a { font-size: 18px; text-decoration: none; color: #c81419; padding-top: 5px; }
+.exercise .stars .text { margin-top: 0px !important; }
+
+/* show-method: display one exercise */
+#exerciseheader {}
+#exerciseheader h2 { margin-bottom: 5px; }
+#exerciseheader h3 { font-weight: normal; }
+#exerciseheader .byline { font-size: 12px; margin-bottom: 20px; }
+#exerciseheader .byline span { padding-left: 30px; }
+#exerciseheader .avatar { float: right; margin-left: 20px;}
+#exerciseheader .avatar img { border: 1px solid #74809a; }
+#exerciseebody { margin-top: 20px; }
 
 .stars * { margin: 0; padding: 0; list-style: none; }
 .stars { height: 25px; width: 125px; background: url('../images/star.png') left top repeat-x; }

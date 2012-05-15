@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
+  has_many :exercises, :through => :writings
+  has_many :writings
   belongs_to :lesson
 
   # Setup accessible (or protected) attributes for your model

@@ -1,4 +1,6 @@
 Diplomatiki::Application.routes.draw do
+  resources :exercises
+
 	devise_for :users, :controllers => { :registrations => "users/registrations" }
 
 	match '/auth/:provider/callback' => 'services#create'
@@ -36,7 +38,7 @@ Diplomatiki::Application.routes.draw do
 			get 'postfacebook'
 		end
 
-		resources :comments, :only => [:create, :edit, :destroy]
+		resources :comments, :only => [:create, :edit, :update, :destroy]
 		resources :ratings, :only => [:create, :update, :destroy]
 	end
 

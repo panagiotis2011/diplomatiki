@@ -1,8 +1,7 @@
-# encoding: utf-8
 <%= form_for(@question) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %>: και έτσι δεν επιτρέπεται η αποθήκευση του άρθρου</h2>
+      <h2><%= pluralize(@question.errors.count, "error") %>: και έτσι δεν επιτρέπεται η αποθήκευση της ερώτησης</h2>
 
       <ul>
       <% @question.errors.full_messages.each do |msg| %>
@@ -13,7 +12,6 @@
   <% end %>
 
 
-
   <% # Ο τίτλος του άρθρου δεν μπορεί να αλλάξει εφόσον το άρθρο γίνει αποδεκτό %>
   <% if @question.state < 3 %>
     <div class="field">
@@ -22,7 +20,7 @@
     </div>
    <% else %>
     <div class="field">
-        <label for="question_title">Τίτλος (Δεν μπορεί να αλλάξει εφόσον η ερώτηση γίνει αποδεκτή)</label><br />
+        <label for="question_title">Τίτλος (Δεν μπορεί να αλλάξει εφόσον η ερώτηση έχει γίνει αποδεκτή)</label><br />
         <%= f.text_field :title, :readonly => true,  :size => "100%", :class => "fullwidth"  %>
     </div>
    <% end %>

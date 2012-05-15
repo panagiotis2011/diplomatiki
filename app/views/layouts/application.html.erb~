@@ -51,6 +51,7 @@
                   <%= form_tag all_questions_path, :method => 'get' do %>
                     <%= text_field_tag :search, params[:search] %>
                     <%= submit_tag "Αναζήτηση", :name => nil, :class => "awesome search red" %>
+                <li><%= link_to "Ασκήσεις", exercises_path %></li>
                   <% end %>
              </li>
             </ul>
