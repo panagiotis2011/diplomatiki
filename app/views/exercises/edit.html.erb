@@ -1,7 +1,7 @@
 <h1>Βαθμολόγηση άσκησης</h1>
  <% if @exercise.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@exercise.errors.count, "error") %>  και έτσι δεν επιτρέπεται η αποθήκευση της άσκησης</h2>
+      <h2><%= pluralize(@exercise.errors.count, "σφάλμα") %>  και έτσι δεν επιτρέπεται η βαθμολόγηση της άσκησης</h2>
 
       <ul>
       <% @exercise.errors.full_messages.each do |msg| %>
@@ -19,7 +19,7 @@
 
   </div>
   <div class="actions">
-    <%= f.submit :class => "awesome custom red" %>
+    <%= f.submit "Βαθμολόγηση", :class => "awesome custom red" %>
     <%= link_to 'Επιστροφή στις ασκήσεις', exercises_path, :class => "awesome custom red" %>
   </div>
 

@@ -30,7 +30,7 @@ a:hover { background-color: transparent !important; color: #c81419; }
 li a:hover { background-color: transparent !important; color: #c81419; }
 
 /* style the page header */
-header#page_header { margin: 0px 2% 10px 2%; padding: 5px 15px; }
+header#page_header { margin: 0px 2% 10px 2%; padding: 0px 15px; }
 #page_title h1 { color: #74809a; padding: 0 0; }
 #page_title h1 span { color: #c81419; }
 #page_title h2 { font-size: 14px; font-weight: normal; color: #74809a; padding: 0 0; margin: 10px 0 10px 25px; border: none; }
@@ -40,7 +40,7 @@ header#page_header { margin: 0px 2% 10px 2%; padding: 5px 15px; }
 #maincontainer { overflow: hidden; }
 
 /* do some floating: we have two columns, content and sidebar, both are in maincontainer */
-#content { float: left; width: 75%; margin: 4px 10px 40px 2%; padding: 0 0 0 5px; }
+#content { float: left; width: 75%; margin: 0px 10px 40px 2%; padding: 0 0 0 5px; }
 
 /* this is our sidebar with its elements */
 #sidebar { float: right; width: 18%; margin: 0px 2% 40px 0px; padding: 0; }
@@ -243,7 +243,7 @@ listsearch input[type=text] { font-size: 12px; height: 20px; width: 250px; margi
 
 /* main navigation */
 nav_header { line-height: 40px; }
-#nav_main { padding-left: 3%; padding: 0 15; margin-bottom: 50px;
+#nav_main { padding-left: 3%; padding: 0 15; margin-bottom: 25px;
 /* taken from awesome buttons */
 background-color: #151515;
 background-image: -moz-linear-gradient(top, rgba(255,255,255,.2), rgba(150,150,150,.2), rgba(0,0,0,.0)) !important;
@@ -252,7 +252,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#30ffffff,endCo
 }
 #nav_main ul { padding: 0; margin: 0; list-style: none; }
 #nav_main ul li { padding: 0; margin: 0 20px 0 0; display: inline; }
-#nav_main li a { margin-right: 20px; width: 140px; font-size: 14px; line-height: 44px; text-align: center; text-decoration: none; }
+#nav_main li a { margin-right: 20px; width: 140px; font-size: 14px; line-height: 40px; text-align: center; text-decoration: none; }
 #nav_main ul li.selected a, #nav_main ul li a:hover { color: #ffffff; }
 
 
@@ -362,3 +362,66 @@ footer#page_footer { clear: both; background-color: #ffffff; margin: 0px 5% 50px
     border-radius: 7px;
     -moz-border-radius: 7px;
   }
+
+  #calendar table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#calendar td,
+#calendar th {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 10px;
+  padding: 6px;
+  border: 1px solid #999;
+}
+
+#calendar th {
+  background: #DDD;
+  color: #666;
+  text-align: center;
+  width: 14.2857142857143%;
+}
+
+#calendar td {
+  background: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 16px;
+}
+
+#calendar .notmonth {
+  color: #CCC;
+}
+
+#calendar #month {
+  margin: 0;
+  padding-top: 0px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#calendar #month a, #calendar #month a:hover {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999;
+}
+
+#calendar .today {
+  background-color: #dddddd;
+}
+
+#calendar ul {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  list-style: none;
+}
+
+#calendar li {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  text-align: center;
+}

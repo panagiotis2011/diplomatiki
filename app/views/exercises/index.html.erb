@@ -1,37 +1,38 @@
 <% if admin_signed_in %>
 
 <table border="1">
-    <th>Τίτλος </th>
-    <th>Μέσος Όρος</th>
+    <th>Τίτλος της άσκησης</th>
+    <th>Μέσος Όρος βαθμολογίας</th>
+        <th>Download της άσκησης από Amazon s3</th>
+
 
 
     <% @exercises.each do |exercise| %>
     <tr>
-        <td align="center"><%= exercise.etitle %></td>
 
+        <td align="center"><%= exercise.etitle %></td>
         <th><%= exercise.average %></td>
-        <td><%= link_to 'Εμφάνισε', exercise %></td>
-        <td><%= link_to 'Βαθμολόγησε', edit_exercise_path(exercise) %></td>
-        <td><%= link_to 'Διέγραψε', exercise, :confirm => 'Είσαι σίγουρος?', :method => :delete %></td>
+        <th><%= exercise.writings %></td>
+        <td><%= link_to 'Εμφάνιση', exercise %></td>
+        <td><%= link_to 'Βαθμολόγηση', edit_exercise_path(exercise) %></td>
+        <td><%= link_to 'Διαγραφή', exercise, :confirm => 'Είσαι σίγουρος?', :method => :delete %></td>
         </tr>
+
+
     <% end %>
 
   	</table>
      <div class='pagination'>
           <%= will_paginate @exercises %>
       </div>
+
 	<br />
      <%= link_to 'Νέα άσκηση', new_exercise_path, :class => "awesome custom red" %>
 <% else %>
 
-
-
-
-
 	<table>
  	 <tr>
-	  <h1> </h1>
-	   <section id = "exercises">
+   <section id = "exercises">
   		  <% @exercises.each do |exercise| %>
       		<exercise class="exercise">
             <div class = "etitle"><%= link_to exercise.etitle, exercise %></div>

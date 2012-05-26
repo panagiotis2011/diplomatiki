@@ -1,7 +1,7 @@
 <%= form_for(@question) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %>: και έτσι δεν επιτρέπεται η αποθήκευση της ερώτησης</h2>
+      <h2><%= pluralize(@question.errors.count, "σφάλμα") %> και έτσι δεν επιτρέπεται η αποθήκευση της ερώτησης</h2>
 
       <ul>
       <% @question.errors.full_messages.each do |msg| %>
@@ -36,7 +36,7 @@
   </div>
 
    <div class="actions">
-    <%= f.submit :class => "awesome custom red" %>
+    <%= f.submit "Δημιουργία ερώτησης", :class => "awesome custom red" %>
     <%= link_to 'Εμφάνιση αυτής της ερώτησης', @question, :class => "awesome custom red" %>
     <%= link_to 'Επιστροφή στις ερωτήσεις μου', myquestions_questions_path, :class => "awesome custom red" %>
   </div>

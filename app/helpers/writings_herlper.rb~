@@ -1,0 +1,8 @@
+module WritingsHelper
+
+	def datel
+		@exercise = Exercise.find_by_id
+		@d = @exercise.writings.last
+		@datel = @d.writing_date
+	end
+end

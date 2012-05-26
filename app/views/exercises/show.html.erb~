@@ -16,7 +16,10 @@
   <%= @exercise.average %>
 </p>
 
+<p>
+<%= link_to "Άσκηση download", @exercise.askisi.url %>
+</p>
 
 
-<%= link_to 'Επιστροφή στις ασκήσεις', exercises_path %>
+<%= link_to 'Επιστροφή στις ασκήσεις', exercises_path, :class => "awesome custom red" %>
 </section>

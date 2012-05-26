@@ -7,6 +7,7 @@ class CreateWritings < ActiveRecord::Migration
 
       t.timestamps
     end
+   #scope :exercised, lambda { |exercise_id| where("exercise_id = ?", exercise_id)}
   end
 
   def self.down

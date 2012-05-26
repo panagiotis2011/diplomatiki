@@ -17,6 +17,8 @@ class AdminController < ApplicationController
 		@num_users = User.all.count
 		@num_users_active30days = User.where('last_sign_in_at > ?', 30.days.ago).count
 		@num_users_created30days = User.where('created_at > ?', 30.days.ago).count
+		@user.attributes = {'exercise_ids' => []}.merge(params[:user] || {})
+
 	end
 
 
@@ -126,14 +128,6 @@ class AdminController < ApplicationController
 		@questions = Question.where(:state => @state).order(@order)
 	end
 
-	def exercises
-	    @exercises = Exercise.all
-    @exercises = Exercise.paginate(:page => params[:page])
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @exercises }
-	end
-	end
 
 	# διαχείριση των χρηστών από τον διαχειριστή (user.id = 1)
 	def users
@@ -154,7 +148,6 @@ class AdminController < ApplicationController
 		end
 		@users = User.where(:user_kind => @user_kind).order(@order).paginate(:page => params[:page], :per_page => 10)
 	end
-
 
 	protected
 	def is_admin

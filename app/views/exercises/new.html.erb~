@@ -1,5 +1,7 @@
+<section id="exercises">
 <h1>Νέα άσκηση</h1>
 
 <%= render 'form' %>
+    <%= link_to "Προσθήκη άσκησης", writings_path(:exercise_id => :exercise_id), :method => :post, :class => "awesome custom red"  %>
 
-<%= link_to 'Πίσω', exercises_path %>
+</section>

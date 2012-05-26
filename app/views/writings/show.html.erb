@@ -1,0 +1,23 @@
+<section id="writings">
+
+
+<p>
+  <b>Ημερομηνία:</b>
+  <%= l(@writing.writing_date, :format => :long) %>
+</p>
+
+<p>
+  <b>Τίτλος άσκησης:</b>
+  <%= @writing.exercise.etitle %>
+</p>
+
+<p>
+  <b>Οδηγίες επίλυσης:</b>
+  <%= @writing.exercise.ebody %>
+</p>
+
+<p>
+<%= link_to "Ημερολόγιο", writings_path, :class => "awesome custom red" %>
+</p>
+
+</section>

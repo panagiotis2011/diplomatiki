@@ -1,7 +1,7 @@
 <h1>Βαθμολόγηση άσκησης</h1>
  <% if @exercise.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@exercise.errors.count, "error") %>  και έτσι δεν επιτρέπεται η αποθήκευση της άσκησης</h2>
+      <h2><%= pluralize(@exercise.errors.count, "σφάλμα") %>  και έτσι δεν επιτρέπεται η βαθμολόγηση της άσκησης</h2>
 
       <ul>
       <% @exercise.errors.full_messages.each do |msg| %>
@@ -15,7 +15,7 @@
 
  <div class="field">
    <label for="exercise_average">Βαθμολογία (Μέσος όρος) </label><br />
-   <%= f.text_field :average, number_with_precision :precision => 3, number_with_scale :scale =>1 %>
+   <%= f.text_field :average, :precision => 3, :scale =>1 %>
 
   </div>
   <div class="actions">

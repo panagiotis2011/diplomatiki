@@ -102,11 +102,6 @@ class QuestionsController < ApplicationController
 	end
 
 
-	def edit
-		@question = current_user.questions.find(params[:id])
-	end
-
-
 	def postfacebook
 		@question = current_user.questions.find(params[:id])
 		begin
@@ -155,6 +150,9 @@ class QuestionsController < ApplicationController
 		end
 	end
 
+	def edit
+		@question = current_user.questions.find(params[:id])
+	end
 
 	def create
 		@question = current_user.questions.new(params[:question])

@@ -11,11 +11,21 @@ class ExercisesController < ApplicationController
     end
   end
 
+
+	def myexercises
+		@myexercises = current_user.exercises.all
+		@myexercises = current_user.exercise.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
+		respond_to do |format|
+			format.html { render 'myexercises'}
+			format.xml  { render :xml => @myexercises }
+		end
+	end
+
   # GET /exercises/1
   # GET /exercises/1.xml
   def show
     @exercise = Exercise.find(params[:id])
-
+    #@writings = Writing.find(all, :conditions => ["exercise_id = ?", @exercise.id]))
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @exercise }
@@ -25,7 +35,7 @@ class ExercisesController < ApplicationController
   # GET /exercises/new
   # GET /exercises/new.xml
   def new
-    @exercise = Exercise.new
+    @exercise = current_user.exercises.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,8 +55,9 @@ class ExercisesController < ApplicationController
 
     respond_to do |format|
       if @exercise.save
-        format.html { redirect_to(@exercise, :notice => 'Η άσκση δημιουργήθηκε επιτυχώς.') }
+        format.html { redirect_to(@exercise, :notice => 'Η άσκηση δημιουργήθηκε επιτυχώς.') }
         format.xml  { render :xml => @exercise, :status => :created, :location => @exercise }
+        #format.xml  { render :xml => @writing, :status => :created, :location => @writing }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @exercise.errors, :status => :unprocessable_entity }

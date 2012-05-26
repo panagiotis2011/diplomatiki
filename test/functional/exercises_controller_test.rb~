@@ -38,6 +38,7 @@ class ExercisesControllerTest < ActionController::TestCase
   end
 
   test "should update exercise" do
+  sign_in users(:user1)
     put :update, :id => @exercise.to_param, :exercise => @exercise.attributes
     assert_redirected_to exercise_path(assigns(:exercise))
   end

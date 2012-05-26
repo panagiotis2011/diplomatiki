@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Diplomatiki</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag 'jquery-1.7.2.min.js', 'jquery-ui-1.8.20.custom.min.js', 'autocomplete-rails.js', 'rails.js'  %>
+  <%= javascript_include_tag 'jquery-1.7.2.min.js', 'jquery-ui-1.8.20.custom.min.js', 'autocomplete-rails.js', 'rails.js', 'ui.datepicker-el.js' %>
   <%= stylesheet_link_tag 'jquery-ui-1.8.20.custom.css' %>
   <%= csrf_meta_tag %>
 </head>
@@ -34,7 +35,7 @@
         </nav>
         <div id="page_title">
            <h1><span>Χώρος </span>Συζήτησης Ενημέρωσης</h1>
-            <h2><%=link_to (image_tag "facebook_32.png", :size => "32x32"),{},:title=>'Facebook',:target=>'_blank',:href=>'http://www.facebook.com'%>οιτητών <span> EAΠ και </span>διδασκόν<%= link_to (image_tag "twitter_32.png", :size => "32x32"),{},:title=>'Twitter',:target=>'_blank',:href=>'http://www.twitter.com'
+            <h2><%= link_to (image_tag "facebook_32.png", :size => "32x32"),{},:title=>'Facebook',:target=>'_blank',:href=>'http://www.facebook.com' %>οιτητών <span> EAΠ και </span>διδασκόν<%= link_to (image_tag "twitter_32.png", :size => "32x32"),{},:title=>'Twitter',:target=>'_blank',:href=>'http://www.twitter.com'
  %>ων <span><%= l(Time.now, :format => :default) %></span> </p></h2>
         </div>
     </header>
@@ -50,7 +51,7 @@
                 <li id="listsearch">
                   <%= form_tag all_questions_path, :method => 'get' do %>
                     <%= text_field_tag :search, params[:search] %>
-                    <%= submit_tag "Αναζήτηση", :name => nil, :class => "awesome search red" %>
+                   <li> <%= submit_tag "Αναζήτηση", :name => nil, :class => "awesome search red" %> </li>
                 <li><%= link_to "Ασκήσεις", exercises_path %></li>
                   <% end %>
              </li>

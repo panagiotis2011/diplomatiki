@@ -1,0 +1,11 @@
+<h2>Ασκήσεις μου</h2>
+<ul>
+  <% for writing in @user.writings %>
+    <li>
+      <%=h writing.exercise.etitle %>
+      (<%= link_to "remove", writing, :method => :delete %>)
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Προσθήκη ασκήσεων", users_path %></p>

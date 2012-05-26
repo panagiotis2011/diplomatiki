@@ -17,6 +17,8 @@ class AdminController < ApplicationController
 		@num_users = User.all.count
 		@num_users_active30days = User.where('last_sign_in_at > ?', 30.days.ago).count
 		@num_users_created30days = User.where('created_at > ?', 30.days.ago).count
+		@current_user.attributes = {'exercise_ids' => []}.merge(params[:user] || {})
+
 	end
 
 
@@ -146,7 +148,6 @@ class AdminController < ApplicationController
 		end
 		@users = User.where(:user_kind => @user_kind).order(@order).paginate(:page => params[:page], :per_page => 10)
 	end
-
 
 	protected
 	def is_admin

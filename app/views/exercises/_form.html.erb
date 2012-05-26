@@ -1,7 +1,7 @@
-<%= form_for(@exercise) do |f| %>
+<%= form_for(@exercise, :html => { :multipart => true }) do |f| %>
   <% if @exercise.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@exercise.errors.count, "error") %>  και έτσι δεν επιτρέπεται η αποθήκευση της άσκησης</h2>
+      <h2><%= pluralize(@exercise.errors.count, "σφάλμα") %>  και έτσι δεν επιτρέπεται η αποθήκευση της άσκησης</h2>
 
       <ul>
       <% @exercise.errors.full_messages.each do |msg| %>
@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
 
   <div class="field">
    <label for="exercise_etitle">Τίτλος άσκησης </label><br />
@@ -22,10 +21,12 @@
     <%= f.text_area :ebody, :size => "100%x10", :class => "fullwidth"  %>
   </div>
 
-
+  <div class="field">
+    <%= f.file_field :askisi %>
+  </div>
 
   <div class="actions">
-    <%= f.submit :class => "awesome custom red" %>
+    <%= f.submit "Δημιουργία άσκησης", :class => "awesome custom red" %>
     <%= link_to 'Εμφάνιση αυτής της άσκησης', @exercise, :class => "awesome custom red" %>
     <%= link_to 'Επιστροφή στις ασκήσεις', exercises_path, :class => "awesome custom red" %>
   </div>
