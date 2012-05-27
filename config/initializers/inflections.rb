@@ -4,6 +4,7 @@ ActiveSupport::Inflector.inflections do |inflect|
 	inflect.plural /^(ox)$/i, '\1\2en'
 	inflect.singular /^(ox)en/i, '\1'
 	inflect.irregular 'Πρόχειρη ερώτηση', 'Πρόχειρες ερωτήσεις'
+	inflect.irregular 'Άσκηση', 'Ασκήσεις'
 	inflect.irregular 'Ερώτηση προς υποβολή', 'Ερωτήσεις προς υποβολή'
 	inflect.irregular 'Μη αποδεκτή ερώτηση', 'Μη αποδεκτές ερωτήσεις'
 	inflect.irregular 'Ολοκληρωμένη ερώτηση', 'Ολοκληρωμένες ερωτήσεις'

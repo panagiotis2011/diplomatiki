@@ -10,12 +10,15 @@ class AdminController < ApplicationController
 		@num_state2 = Question.where(:state => '2').count
 		@num_state3 = Question.where(:state => '3').count
 		@num_state4 = Question.where(:state => '4').count
+		@num_state5 = Exercise.count
 		@num_user_kind0 = User.where(:user_kind => '0').count
 		@num_user_kind1 = User.where(:user_kind => '1').count
 		@num_published = @num_state3 + @num_state4
 		@num_users = User.all.count
 		@num_users_active30days = User.where('last_sign_in_at > ?', 30.days.ago).count
 		@num_users_created30days = User.where('created_at > ?', 30.days.ago).count
+		@current_user.attributes = {'exercise_ids' => []}.merge(params[:user] || {})
+
 	end
 
 
@@ -145,7 +148,6 @@ class AdminController < ApplicationController
 		end
 		@users = User.where(:user_kind => @user_kind).order(@order).paginate(:page => params[:page], :per_page => 10)
 	end
-
 
 	protected
 	def is_admin

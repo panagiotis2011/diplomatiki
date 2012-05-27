@@ -1,0 +1,49 @@
+<% if admin_signed_in %>
+
+<table border="1">
+    <th>Τίτλος της άσκησης</th>
+    <th>Μέσος Όρος βαθμολογίας</th>
+        <th>Download της άσκησης από Amazon s3</th>
+
+
+
+    <% @exercises.each do |exercise| %>
+    <tr>
+
+        <td align="center"><%= exercise.etitle %></td>
+        <th><%= exercise.average %></td>
+        <th><%= exercise.writings.last %></td>
+        <td><%= link_to 'Εμφάνιση', exercise %></td>
+        <td><%= link_to 'Βαθμολόγηση', edit_exercise_path(exercise) %></td>
+        <td><%= link_to 'Διαγραφή', exercise, :confirm => 'Είσαι σίγουρος?', :method => :delete %></td>
+        </tr>
+
+
+    <% end %>
+
+  	</table>
+     <div class='pagination'>
+          <%= will_paginate @exercises %>
+      </div>
+
+	<br />
+     <%= link_to 'Νέα άσκηση', new_exercise_path, :class => "awesome custom red" %>
+<% else %>
+
+	<table>
+ 	 <tr>
+   <section id = "exercises">
+  		  <% @exercises.each do |exercise| %>
+      		<exercise class="exercise">
+            <div class = "etitle"><%= link_to exercise.etitle, exercise %></div>
+            <div class = "byline"><%= l(exercise.created_at, :format => '%d %B, %Y') %> </div>
+            </exercise>
+        <% end %>
+
+      <div class='pagination'>
+          <%= will_paginate @exercises %>
+      </div>
+
+<% end %>
+  </tr>
+  	</table>

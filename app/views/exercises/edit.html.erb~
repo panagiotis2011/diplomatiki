@@ -1,0 +1,27 @@
+<h1>Βαθμολόγηση άσκησης</h1>
+ <% if @exercise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exercise.errors.count, "σφάλμα") %>  και έτσι δεν επιτρέπεται η βαθμολόγηση της άσκησης</h2>
+
+      <ul>
+      <% @exercise.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_for(@exercise) do |f| %>
+
+ <div class="field">
+   <label for="exercise_average">Βαθμολογία (Μέσος όρος) </label><br />
+   <%= f.text_field :average, :precision => 3, :scale =>1 %>
+
+  </div>
+  <div class="actions">
+    <%= f.submit :class => "awesome custom red" %>
+    <%= link_to 'Επιστροφή στις ασκήσεις', exercises_path, :class => "awesome custom red" %>
+  </div>
+
+
+<% end %>

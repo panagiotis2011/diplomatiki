@@ -10,7 +10,7 @@ class AdminControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
   end
   test "should not accept Question as normal user" do
-    sign_in users(:user5)
+    sign_in users(:user2)
     put :accept, :id => questions(:four).id, :value => '0'
     assert !assigns(:Question)
     assert_redirected_to root_url
@@ -50,7 +50,7 @@ class AdminControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
   end
   test "should not get editreject as normal user" do
-    sign_in users(:user5)
+    sign_in users(:user2)
     get :editreject, :id => questions(:four).id
     assert_redirected_to root_url
   end
@@ -67,7 +67,7 @@ class AdminControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
   end
   test "should not reject Question as normal user" do
-    sign_in users(:user5)
+    sign_in users(:user2)
     put :reject, :id => questions(:four).id, :question => { :message => 'reject' }
     assert !assigns(:Question)
     assert_redirected_to root_url

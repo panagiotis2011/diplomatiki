@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 	respond_to :json
 	autocomplete :tag, :name
 	# μόνο οι μέθοδοι index, all, about και show είναι προσβάσιμες από μη πιστοποιημένους χρήστες
-	before_filter :authenticate_user!, :except => [:index, :all, :show, :about]
+	before_filter :authenticate_user!, :except => [:index, :all, :about]
 	rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
 
@@ -102,11 +102,6 @@ class QuestionsController < ApplicationController
 	end
 
 
-	def edit
-		@question = current_user.questions.find(params[:id])
-	end
-
-
 	def postfacebook
 		@question = current_user.questions.find(params[:id])
 		begin
@@ -155,6 +150,9 @@ class QuestionsController < ApplicationController
 		end
 	end
 
+	def edit
+		@question = current_user.questions.find(params[:id])
+	end
 
 	def create
 		@question = current_user.questions.new(params[:question])

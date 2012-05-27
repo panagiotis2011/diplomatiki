@@ -1,6 +1,17 @@
 # encoding: utf-8
 <section id = "admin">
     <h2>Διαχειριστής: Πίνακας ελέγχου</h2>
+    <h3>Ασκήσεις</h3>
+    <p>
+        Στατιστικά:  </p>
+        <p>
+        <%= link_to pluralize(@num_state5, "Άσκηση"), exercises_path %>
+         </p>
+
+<h3>Προγραμματισμός ύλης</h3>
+
+    <%= link_to "Ημερομηνία παράδοσης άσκησης", new_writing_path, :method => :get, :class => "awesome custom red" %>
+
 
     <h3>Ερωτήσεις</h3>
     <p>
@@ -18,6 +29,7 @@
             <b>Συνολικά <%= link_to pluralize(@num_state1, "Ερώτηση προς υποβολή") , questions_admin_index_path + '?state=1' %> είναι σε κατάσταση αναμονής για έγκριση!</b>
         <% end %>
     </p>
+
 
     <% if (admin_signed_in and current_user.id == 1) %>
     <h3>Χρήστες</h3>
@@ -45,4 +57,10 @@
     </p>
 
     <% end %>
-</section>
+
+
+
+
+
+
+    </section>

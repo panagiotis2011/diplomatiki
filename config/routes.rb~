@@ -1,10 +1,20 @@
 Diplomatiki::Application.routes.draw do
+  resources :exercises do
+      collection do
+           get 'myexercises'
+      end
+  end
+
 	devise_for :users, :controllers => { :registrations => "users/registrations" }
 
 	match '/auth/:provider/callback' => 'services#create'
 	match '/auth/twitter', :as => :auth_twitter
 
-
+	resources :writings do
+		collection do
+			get 'autocomplete_tag_name'
+		end
+	end
 	resources :services, :only => [:index, :create, :destroy]
 
 	resources :admin, :only => [:index, :delete] do
@@ -21,8 +31,6 @@ Diplomatiki::Application.routes.draw do
 	end
 
 	resources :users
-
-
 
 	resources :questions do
 		collection do

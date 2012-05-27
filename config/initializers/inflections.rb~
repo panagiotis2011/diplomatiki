@@ -9,6 +9,7 @@ ActiveSupport::Inflector.inflections do |inflect|
 	inflect.irregular 'Ολοκληρωμένη ερώτηση', 'Ολοκληρωμένες ερωτήσεις'
 	inflect.irregular 'Προτεινόμενη ερώτηση', 'Προτεινόμενες ερωτήσεις'
 	inflect.irregular 'Δημοσιευμένη ερώτηση', 'Δημοσιευμένες ερωτήσεις'
+	inflect.irregular 'Χρήστης', 'Χρήστες'
 	inflect.irregular 'Φοιτητής', 'Φοιτητές'
 	inflect.irregular 'Καθηγητής', 'Καθηγητές'
 	inflect.irregular 'Φοιτητής χρησιμοποίησε', 'Φοιτητές χρησιμοποίησαν'

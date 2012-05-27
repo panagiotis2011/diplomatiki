@@ -1,9 +1,16 @@
 Diplomatiki::Application.routes.draw do
+  resources :exercises do
+      collection do
+           get 'myexercises'
+      end
+  end
+
 	devise_for :users, :controllers => { :registrations => "users/registrations" }
 
 	match '/auth/:provider/callback' => 'services#create'
 	match '/auth/twitter', :as => :auth_twitter
 
+	resources :writings
 
 	resources :services, :only => [:index, :create, :destroy]
 

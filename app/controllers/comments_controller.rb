@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
 		end
 	end
 
+
 	# διαγραφή ενός σχολίου
 	def destroy
 		@comment = current_user.comments.find(params[:id])

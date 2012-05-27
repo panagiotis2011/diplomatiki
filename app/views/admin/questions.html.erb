@@ -7,7 +7,7 @@
         <h4><%= link_to question.title, question %></h4>
         Δημιουργός: <%= question.user.fullname %>
 
-        <%= link_to 'Διαγραφή', question, :confirm => 'Προσοχή! Αυτή η ενέργεια θα διαγράψει οριστικά το άρθρο. Να γίνει η διαγραφή;', :method => :delete %>
+        <%= link_to 'Διαγραφή', question, :confirm => 'Προσοχή! Αυτή η ενέργεια θα διαγράψει οριστικά την ερώτηση. Να γίνει η διαγραφή;', :method => :delete %>
 
         <% if question.state == 1 %>
           <%= link_to 'Απόρριψη', editreject_admin_path(question) %>

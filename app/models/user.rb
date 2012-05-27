@@ -10,10 +10,12 @@ class User < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
+  has_many :exercises, :through => :writings
+  has_many :writings
   belongs_to :lesson
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :fullname, :shortbio, :weburl, :lesson_id, :user_kind
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :fullname, :shortbio, :weburl, :lesson_id
   validates :weburl, :url => {:allow_blank => true}, :length => { :maximum => 50 }
   validates :fullname, :length => { :maximum => 40 }
   validates :shortbio, :length => { :maximum => 500 }

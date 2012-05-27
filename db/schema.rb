@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509154112) do
+ActiveRecord::Schema.define(:version => 20120517142448) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(:version => 20120509154112) do
   end
 
   add_index "comments", ["user_id", "question_id"], :name => "index_comments_on_user_id_and_question_id"
+
+  create_table "exercises", :force => true do |t|
+    t.string   "etitle"
+    t.text     "ebody"
+    t.decimal  "average",             :precision => 3, :scale => 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "askisi_file_name"
+    t.string   "askisi_content_type"
+    t.integer  "askisi_file_size"
+    t.datetime "askisi_updated_at"
+  end
 
   create_table "lessons", :force => true do |t|
     t.string   "name"
@@ -113,5 +125,13 @@ ActiveRecord::Schema.define(:version => 20120509154112) do
   add_index "users", ["fullname"], :name => "index_users_on_fullname"
   add_index "users", ["lesson_id"], :name => "index_users_on_lesson_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "writings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "exercise_id"
+    t.date     "writing_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

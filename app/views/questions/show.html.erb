@@ -8,7 +8,9 @@
     </h2>
 
 
-    <div class="byline">Γράφτηκε από: <%= link_to @question.user.fullname, "" %></div>
+    <div class="byline">Γράφτηκε από: <%= @question.user.fullname %>, Θεματική ενότητα: <%= @question.user.lesson.name %></div>
+    <div class="byline">Προσωπική ιστοσελίδα: <%= link_to @question.user.weburl, url_for(@question.user.weburl) %></div>
+    <div class="byline">Σύντομο βιογραφικό: <%= @question.user.shortbio %></div>
 
 
     <div class="avatar"><%= image_tag gravatar(@question.user.email, 64) %></div>
@@ -52,10 +54,11 @@
                 <div class="avatar"><%= image_tag gravatar(comment.user.email, 48) %></div>
                 <div class="commentbody">
                     <div class="commenthead">
-                      <%= comment.user.fullname %> - <%=time_ago_in_words(comment.created_at)%> ago
+                      <%= link_to comment.user.fullname, url_for(comment.user.weburl) %>, <%= @current_user.lesson.name %>, - <%=time_ago_in_words(comment.created_at)%> πριν
+
                       <% # display delete link only for comments written by this particular user %>
                       <% if user_signed_in? and comment.user_id == current_user.id %>
-                          <span><%= link_to 'delete', question_comment_path(@question, comment), :confirm => 'Are you sure?', :method => :delete, :class => "" %></span>
+                          <span><%= link_to 'Διαγραφή', question_comment_path(@question, comment), :confirm => 'Are you sure?', :method => :delete, :class => "" %></span>
                       <% end %>
                     </div>
                     <div><%= comment.body %></div>

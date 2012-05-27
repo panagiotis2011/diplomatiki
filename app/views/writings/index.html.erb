@@ -1,0 +1,23 @@
+<div id="page_title">
+<div id="calendar">
+  <h1 id="month">
+    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
+    <span><%= I18n.localize(@date, :format => '%B %Y') %></span>
+    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>
+  </h1>
+  <% calendar_for @writings, :year => @date.year, :month => @date.month do |calendar| %>
+    <%= calendar.head('Κυριακή', 'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο') %>
+    <% calendar.day(:day_method => :writing_date) do |date, writings| %>
+      <%= date.day %>
+      <ul>
+        <% for writing in writings %>
+          <li><%= link_to (writing.exercise.etitle), writing %></li>
+          <% if admin_signed_in %>
+           <li><%= link_to 'Διαγραφή', writing, :confirm => 'Είσαι σίγουρος?', :method => :delete %></li>
+        <% end %>
+                <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</div>
+</div>
