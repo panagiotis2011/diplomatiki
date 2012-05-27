@@ -1,0 +1,42 @@
+<section id="deviseauth">
+	<h2>Εγγραφή χρήστη</h2>
+
+	<div id="local2" class="box">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+			<%= devise_error_messages! %>
+
+			<div><%= f.label :email %><br />
+			<%= f.email_field :email %></div>
+
+			<div><%= f.label :password %><br />
+			<%= f.password_field :password %></div>
+
+			<div><%= f.label :password_confirmation %><br />
+			<%= f.password_field :password_confirmation %></div>
+
+			<p><%= recaptcha_tags %></p>
+
+			<div><%= f.submit "Εγγραφή" %></div>
+		<% end %>
+	</div>
+
+	<div id="remote2">
+		<div id="terms" class="box">
+			<%= link_to "Υπηρεσίες δικτύωσης", "#" %>
+		</div>
+		<div id="services" class="box">
+			<a href="/auth/facebook" class="services"><%= image_tag "facebook_64.png", :size => "64x64",  :alt => "Facebook" %>Facebook</a>
+			<a href="/auth/twitter" class="services"><%= image_tag "twitter_64.png", :size => "64x64",  :alt => "Twitter" %>Twitter</a>
+			<a href="/auth/google" class="services"><%= image_tag "google_64.png", :size => "64x64",  :alt => "Google" %>Google</a>
+			<a href="/auth/linkedIn" class="services"><%= image_tag "linkedin_64.png", :size => "64x64",  :alt => "LinkedIn" %>LinkedIn</a>
+			<a href="/auth/yahoo" class="services"><%= image_tag "yahoo_64.png", :size => "64x64",  :alt => "Yahoo" %>Yahoo</a>
+			<a href="/auth/github" class="services"><%= image_tag "github_64.png", :size => "64x64",  :alt => "Github" %>Github*</a>
+			<div id="footnote_signup">*Μπορείτε να χρησιμοποιήσετε το Github μόνο αν έχετε ενεργοποιήσει μία δημόσια ηλεκτρονική διεύθυνση</div>
+		</div>
+	</div>
+
+
+	<div id="devise_links">
+		<%= render :partial => "devise/shared/links" %>
+	</div>
+</section>

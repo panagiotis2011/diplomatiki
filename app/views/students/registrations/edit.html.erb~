@@ -1,0 +1,37 @@
+# encoding: utf-8
+<h2>Διαμόρφωση προφίλ</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <p><%= f.label :email %><span>       (Δεν εμφανίζεται ποτέ)</span><br />
+  <%= f.email_field :email %></p>
+   <%= image_tag gravatar(resource.email, 30) %></p>
+  <p>Ο Χώρος συζήτησης ενημέρωσης χρησιμοποιεί την υπηρεσία Gravatar και σε συνδυασμό με την ηλεκτρονική σας διεύθυνση εμφανίζει την avatar εικόνα σας. Μπορείτε να ρυθμίσετε το avatar σας στο <%= link_to 'Gravatar', 'http://www.gravatar.com' %>.<br />
+
+
+  <p><%= f.label 'name', 'Όνομα Επίθετο' %><span>(Θα εμφανίζεται στα άρθρα / σχόλια)</span><br />
+  <%= f.text_field :fullname %></p>
+
+  <p><%= f.label 'lesson', 'Θεματική ενότητα' %><span>   (Θα εμφανίζεται στα άρθρα / σχόλια)</span><br />
+  <%= f.select :lesson_id, @lessons %></p>
+
+  <p><%= f.label 'about', 'Σχετικά με εμένα' %><span>    (Θα εμφανίζεται στα άρθρα)</span><br />
+  <%= f.text_area :shortbio, :size => "90%x5", :class => "fullwidth" %></p>
+
+  <p><%= f.label 'url', 'Η προσωπική σας ιστοσελίδα' %><span>    (Θα εμφανίζεται στα άρθρα / σχόλια)</span><br />
+  <%= f.url_field :weburl %></p>
+
+  <p><%= f.label :password %> <span>     (Εάν δεν θέλεις να το αλλάξεις άφησέ το κενό)</span><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.label :current_password %> <span>(Απαιτείται ο τρέχων κωδικός για να εφαρμοστούν οι αλλαγές)</span><br />
+  <%= f.password_field :current_password %></p>
+
+  <div><%= f.submit "Ενημέρωση", :class => "awesome custom" %></div>
+<% end %>
+
+<div id="cancel">Δεν είσαι ευχαριστημένος; <%= link_to "Διαγραφή λογαριασμού", registration_path(resource_name), :confirm => "Είσαι σίγουρος; (Αυτή η ενέργεια δεν μπορεί να αντιστραφεί)", :method => :delete %>.</div>

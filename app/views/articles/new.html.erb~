@@ -1,0 +1,19 @@
+<section id="myarticles">
+    <h2>Νέο άρθρο</h2>
+
+   <% @tags.sort_by(&:count).reverse.each do |k| %>
+      <% url_opts = {:action => "index", :controller => "articles"}
+         link_name = "#{k.name} (#{k.count})" %>
+      <% if @keyword == k.name %>
+        <%= link_to link_name, url_opts.merge(:keyword => nil), :class => "tag current_tag", :title => "Click again to see all" %>
+      <% else %>
+        <%= link_to link_name,  url_opts.merge(:keyword => k.name), :class => "tag", :title => "Click to filter by #{k.name}" %>
+      <% end %>
+    <% end %>
+
+
+    <%= render 'form' %>
+
+    <%= sanitize textilize ('Μια *απλή* παράγραφος με _πλάγια γραμματοσειρά_ και ένα "link":http://redcloth.org') %>
+    <%= sanitize CodeRay.highlight("Εδώ οι χαρακτήρες του κειμένου είναι χρώματος λευκού σε μαύρο φόντο!", :ruby, :css => :class) %>
+</section>
