@@ -11,20 +11,21 @@ class ExerciseTest < ActiveSupport::TestCase
   end
  test "should not have a average outside boundaries" do
     exercise = Exercise.new :etitle => "MyString", :ebody => "MyText"
+    #exercise.save
 
     exercise.average = -1
-    assert !exercise.edit
+    assert !exercise.save
     exercise.average = 'a'
-    assert !exercise.update
+    assert !exercise.save
     exercise.average = 11
-    assert !exercise.update
+    assert !exercise.save
 
     exercise.average = 0
-    assert exercise.update
+    assert exercise.save
     exercise.average = 2
-    assert exercise.update
+    assert exercise.save
     exercise.average = 10
-    assert exercise.update
+    assert exercise.save
   end
 
 end

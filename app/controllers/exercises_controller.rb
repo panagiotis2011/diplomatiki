@@ -1,5 +1,6 @@
 # encoding: utf-8
 class ExercisesController < ApplicationController
+
   # GET /exercises
   # GET /exercises.xml
   def index
@@ -11,15 +12,6 @@ class ExercisesController < ApplicationController
     end
   end
 
-
-	def myexercises
-		@myexercises = current_user.exercises.all
-		@myexercises = current_user.exercise.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
-		respond_to do |format|
-			format.html { render 'myexercises'}
-			format.xml  { render :xml => @myexercises }
-		end
-	end
 
   # GET /exercises/1
   # GET /exercises/1.xml

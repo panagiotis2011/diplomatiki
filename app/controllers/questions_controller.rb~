@@ -2,8 +2,8 @@
 class QuestionsController < ApplicationController
 	respond_to :json
 	autocomplete :tag, :name
-	# μόνο οι μέθοδοι index, all, about και show είναι προσβάσιμες από μη πιστοποιημένους χρήστες
-	before_filter :authenticate_user!, :except => [:index, :all, :show, :about]
+	# μόνο οι μέθοδοι index, και all είναι προσβάσιμες από μη πιστοποιημένους χρήστες
+	before_filter :authenticate_user!, :except => [:index, :all]
 	rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
 
@@ -80,7 +80,9 @@ class QuestionsController < ApplicationController
 	def show
 		@question = Question.find(params[:id])
 		@comments = @question.comments.all
+		@name = Lesson.find(params[:id])
 		if user_signed_in?
+			#@name = current_user.lesson.name
 			@rating_currentuser = @question.ratings.find_by_user_id(current_user.id)
 			unless @rating_currentuser
 				@rating_currentuser = current_user.ratings.new
@@ -150,9 +152,11 @@ class QuestionsController < ApplicationController
 		end
 	end
 
+
 	def edit
 		@question = current_user.questions.find(params[:id])
 	end
+
 
 	def create
 		@question = current_user.questions.new(params[:question])
@@ -170,7 +174,6 @@ class QuestionsController < ApplicationController
 
 	def update
 		@question = current_user.questions.find(params[:id])
-
 		# Εάν μία ερώτηση έχει ήδη γίνει αποδεκτή ο φοιτητής δεν επιτρέπεται να κάνει αλλαγές στον τίτλο
 		if @question.state > 2
 			params[:question].delete(:title)
@@ -208,14 +211,9 @@ class QuestionsController < ApplicationController
 	end
 
 
-	def about
-	end
-
-
 	protected
 	def record_not_found
 		flash[:error] = 'Η ερώτηση που ζητήσατε δεν βρέθηκε.'
 		redirect_to root_url
 	end
-
 end

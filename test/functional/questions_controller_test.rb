@@ -57,22 +57,10 @@ class QuestionsControllerTest < ActionController::TestCase
 	end
 
 
-	# about
-	test "should get about anonymous" do
-		get :about
-		assert_response :success
-	end
-	test "should get about signed in" do
-		sign_in users(:user2)
-		get :about
-		assert_response :success
-	end
-
-
 	# show
-	test "should show question anonymous" do
+	test "should not show question anonymous" do
 		get :show, :id => @question_user1.to_param
-		assert_response :success
+		assert_redirected_to new_user_session_path
 	end
 	test "should show question signed in" do
 		sign_in users(:user2)

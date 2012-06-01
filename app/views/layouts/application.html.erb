@@ -35,7 +35,7 @@
         </nav>
         <div id="page_title">
            <h1><span>Χώρος </span>Συζήτησης Ενημέρωσης</h1>
-            <h2><%= link_to (image_tag "facebook_32.png", :size => "32x32"),{},:title=>'Facebook',:target=>'_blank',:href=>'http://www.facebook.com' %>οιτητών <span> EAΠ και </span>διδασκόν<%= link_to (image_tag "twitter_32.png", :size => "32x32"),{},:title=>'Twitter',:target=>'_blank',:href=>'http://www.twitter.com'
+            <h2><%= link_to (image_tag "facebook_32.png", :size => "32x32"),{},:title=>'Ο Χώρος Συζήτησης Ενημέρωσης στο Facebook',:target=>'_blank',:href=>'http://www.facebook.com/eap.edu' %>οιτητών <span> EAΠ και </span>διδασκόν<%= link_to (image_tag "twitter_32.png", :size => "32x32"),{},:title=>'Twitter',:target=>'_blank',:href=>'http://www.twitter.com'
  %>ων <span><%= l(Time.now, :format => :default) %></span> </p></h2>
         </div>
     </header>
@@ -46,12 +46,13 @@
                 <li><%= link_to "Προτεινόμενες ερωτήσεις", root_path %></li>
                 <%= request.path == all_questions_path ? raw("<li class='selected'>") : raw("<li>") %>
                 <li><%= link_to "Όλες οι ερωτήσεις", all_questions_path %></li>
-                <%= request.path == about_questions_path ? raw("<li class='selected'>") : raw("<li>") %>
+                <%= request.path == writings_path ? raw("<li class='selected'>") : raw("<li>") %>
                 <li><%= link_to "Ημερολόγιο", writings_path %></li>
                 <li id="listsearch">
                   <%= form_tag all_questions_path, :method => 'get' do %>
                     <%= text_field_tag :search, params[:search] %>
                    <li> <%= submit_tag "Αναζήτηση", :name => nil, :class => "awesome search red" %> </li>
+                <%= request.path == exercises_path ? raw("<li class='selected'>") : raw("<li>") %>
                 <li><%= link_to "Ασκήσεις", exercises_path %></li>
                   <% end %>
              </li>
@@ -90,6 +91,7 @@
                 <div><%= link_to "Εικονικές Τάξεις", "http://centra.eap.gr" %></div>
                 <div><%= link_to "Online Ασκήσεις", "http://moodle.eap.gr" %></div>
             </section>
+
 
 
 				<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>

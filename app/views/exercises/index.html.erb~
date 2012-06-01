@@ -12,7 +12,7 @@
 
         <td align="center"><%= exercise.etitle %></td>
         <th><%= exercise.average %></td>
-        <th><%= exercise.askisi.url %></td>
+        <th><%= link_to 'Askhsh download', exercise.askisi.url %></td>
         <td><%= link_to 'Εμφάνιση', exercise %></td>
         <td><%= link_to 'Βαθμολόγηση', edit_exercise_path(exercise) %></td>
         <td><%= link_to 'Διαγραφή', exercise, :confirm => 'Είσαι σίγουρος?', :method => :delete %></td>

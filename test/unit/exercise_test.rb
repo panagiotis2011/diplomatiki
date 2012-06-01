@@ -9,23 +9,23 @@ class ExerciseTest < ActiveSupport::TestCase
     assert exercise.errors[:ebody].any?
     assert !exercise.save
   end
- test "should not have a average outside boundaries" do
-    exercise = Exercise.new :etitle => "MyString", :ebody => "MyText"
-    exercise.save
+ #test "should not have a average outside boundaries" do
+    #exercise = Exercise.new :etitle => "MyString", :ebody => "MyText"
+    #exercise.save
 
-    exercise.average = -1
-    assert !exercise.save
-    exercise.average = 'a'
-    assert !exercise.save
-    exercise.average = 11
-    assert !exercise.save
+    #exercise.average = -1
+    #assert !exercise.save
+    #exercise.average = 'a'
+    #assert !exercise.save
+    #exercise.average = 11
+    #assert !exercise.save
 
-    exercise.average = 0
-    assert exercise.save
-    exercise.average = 2
-    assert exercise.save
-    exercise.average = 10
-    assert exercise.save
-  end
+    #exercise.average = 0
+    #assert exercise.save
+    #exercise.average = 2
+    #assert exercise.save
+    #exercise.average = 10
+    #assert exercise.save
+  #end
 
 end

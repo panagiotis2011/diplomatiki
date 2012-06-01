@@ -28,7 +28,7 @@ end
 #@lesson4.confirm!
 @lesson5 = Lesson.create! :name => 'ΠΛΣ 62'
 #@lesson5.confirm!
-@lesson6 = Lesson.create! :name => ''
+#@lesson6 = Lesson.create! :name => ''
 #@lesson6.confirm!
 
 @user1 = User.create! :email => 'oneadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin One', :lesson_id => '2', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin', :user_kind => '1'
@@ -39,7 +39,7 @@ end
 @user3.confirm!
 @user4 = User.create! :email => 'fouradmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin Four', :lesson_id => '5', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin4'
 @user4.confirm!
-@user5 = User.create! :email => 'fiveadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin Five', :lesson_id => '6', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin5'
+@user5 = User.create! :email => 'fiveadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin Five', :lesson_id => '5', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin5'
 @user5.confirm!
 @user6 = User.create! :email => 'foititis@diplomatiki.gr', :password => '12345678', :fullname => 'userone', :lesson_id => '1', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of User1'
 @user6.confirm!

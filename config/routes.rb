@@ -32,9 +32,9 @@ Diplomatiki::Application.routes.draw do
 	resources :questions do
 		collection do
 			get 'autocomplete_tag_name'
-			get 'about'
 			get 'all'
 			get 'myquestions'
+			get 'about'
 			delete 'destroy'
 		end
 

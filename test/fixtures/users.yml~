@@ -14,6 +14,7 @@ user1:
   id: 1
   email: user1@diplomatiki.eu
   user_kind: 1
+  lesson_id: 1
   encrypted_password: abcdef1
   #password_salt:  efvfvffdv
   confirmed_at: <%= Time.now %>
@@ -21,6 +22,7 @@ user1:
 user2:
   id: 2
   email: user2@diplomatiki.eu
+  lesson_id: 1
   encrypted_password: abcdef2
   #password_salt:  hjujzjjzt
   confirmed_at: <%= Time.now %>
@@ -28,27 +30,7 @@ user2:
 user3:
   id: 3
   email: user3@diplomatiki.eu
-  encrypted_password: abcdef3
-  #password_salt:  gheureuf
-  confirmed_at: <%= Time.now %>
-
-user4:
-  id: 4
-  email: user4@diplomatiki.eu
-  encrypted_password: abcdef3
-  #password_salt:  gheureuf
-  confirmed_at: <%= Time.now %>
-
-user5:
-  id: 5
-  email: user5@diplomatiki.eu
-  encrypted_password: abcdef3
-  #password_salt:  gheureuf
-  confirmed_at: <%= Time.now %>
-
-user6:
-  id: 6
-  email: user6@diplomatiki.eu
+  lesson_id: 2
   encrypted_password: abcdef3
   #password_salt:  gheureuf
   confirmed_at: <%= Time.now %>

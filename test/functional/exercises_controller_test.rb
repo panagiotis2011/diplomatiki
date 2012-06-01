@@ -3,6 +3,7 @@ require 'test_helper'
 class ExercisesControllerTest < ActionController::TestCase
   setup do
     @exercise = exercises(:one)
+    @exercise.etitle = 'unique etitle'
   end
 
   test "should get index" do

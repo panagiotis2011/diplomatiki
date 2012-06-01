@@ -14,18 +14,4 @@ class UsersController < ApplicationController
 			end
 		end
 	end
-
-
-	def destroy
-			@user = User.find(params[:id])
-			if current_user.id < 2
-				@user.destroy
-			else
-				flash[:error] = 'δεν μπορεί να διαγραφεί.'
-			end
-		end
-		respond_to do |format|
-			format.html { redirect_to(users_url) }
-			format.xml  { head :ok }
-		end
-	end
+end

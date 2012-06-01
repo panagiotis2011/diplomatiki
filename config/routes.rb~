@@ -10,11 +10,8 @@ Diplomatiki::Application.routes.draw do
 	match '/auth/:provider/callback' => 'services#create'
 	match '/auth/twitter', :as => :auth_twitter
 
-	resources :writings do
-		collection do
-			get 'autocomplete_tag_name'
-		end
-	end
+	resources :writings
+
 	resources :services, :only => [:index, :create, :destroy]
 
 	resources :admin, :only => [:index, :delete] do
@@ -35,7 +32,6 @@ Diplomatiki::Application.routes.draw do
 	resources :questions do
 		collection do
 			get 'autocomplete_tag_name'
-			get 'about'
 			get 'all'
 			get 'myquestions'
 			delete 'destroy'

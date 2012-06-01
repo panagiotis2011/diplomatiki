@@ -1,5 +1,5 @@
 <section id="deviseauth">
-	<h2>Εγγραφή</h2>
+	<h2>Εγγραφή χρήστη</h2>
 
 	<div id="local2" class="box">
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -22,7 +22,7 @@
 
 	<div id="remote2">
 		<div id="terms" class="box">
-			<%= link_to "Υπηρεσίες δικτύωσης", "#" %>
+			<%= link_to "Υπηρεσίες δικτύωσης", "<div class="fb-like" data-href="http://localhost:3000/" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true" data-font="lucida grande"></div>" %>
 		</div>
 		<div id="services" class="box">
 			<a href="/auth/facebook" class="services"><%= image_tag "facebook_64.png", :size => "64x64",  :alt => "Facebook" %>Facebook</a>
