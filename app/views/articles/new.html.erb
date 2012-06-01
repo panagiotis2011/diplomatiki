@@ -1,8 +1,0 @@
-<section id="myarticles">
-    <h2>Νέο άρθρο</h2>
-
-    <%= render 'form' %>
-
-    <%= sanitize textilize ('Μια *απλή* παράγραφος με _πλάγια γραμματοσειρά_ και ένα "link":http://redcloth.org') %>
-    <%= sanitize CodeRay.highlight("Εδώ οι χαρακτήρες του κειμένου είναι χρώματος λευκού σε μαύρο φόντο!", :ruby, :css => :class) %>
-</section>
