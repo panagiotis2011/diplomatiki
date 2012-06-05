@@ -1,9 +1,9 @@
 <% if admin_signed_in %>
 
 <table border="1">
-    <th>Τίτλος της άσκησης</th>
+    <th><span>Τίτλος της άσκησης</span></th>
     <th>Μέσος Όρος βαθμολογίας</th>
-        <th>Download της άσκησης από Amazon s3</th>
+        <th>Καταληκτική ημερομηνία <p> παράδοσης της άσκησης</th>
 
 
 
@@ -12,7 +12,7 @@
 
         <td align="center"><%= exercise.etitle %></td>
         <th><%= exercise.average %></td>
-        <th><%= link_to 'Askhsh download', exercise.askisi.url %></td>
+        <th><%= exercise.writings.last.try(:writing_date) %></td>
         <td><%= link_to 'Εμφάνιση', exercise %></td>
         <td><%= link_to 'Βαθμολόγηση', edit_exercise_path(exercise) %></td>
         <td><%= link_to 'Διαγραφή', exercise, :confirm => 'Είσαι σίγουρος?', :method => :delete %></td>

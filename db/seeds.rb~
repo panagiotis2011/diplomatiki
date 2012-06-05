@@ -28,26 +28,57 @@ end
 #@lesson4.confirm!
 @lesson5 = Lesson.create! :name => 'ΠΛΣ 62'
 #@lesson5.confirm!
-#@lesson6 = Lesson.create! :name => ''
+@lesson6 = Lesson.create! :name => ''
 #@lesson6.confirm!
 
-@user1 = User.create! :email => 'oneadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin One', :lesson_id => '2', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin', :user_kind => '1'
+@user1 = User.create! :email => 'oneadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin One', :lesson_id => '2', :weburl => 'http://www.facebook.com/eap.edu', :shortbio => 'Short biography of Admin', :user_kind => '1'
 @user1.confirm!
-@user2 = User.create! :email => 'twoadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin Two', :lesson_id => '3', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin2'
+@user2 = User.create! :email => 'twoadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin Two', :lesson_id => '3', :weburl => 'http://www.facebook.com/eap.edu', :shortbio => 'Short biography of Admin2'
 @user2.confirm!
-@user3 = User.create! :email => 'threeadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin Three', :lesson_id => '4', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin3'
+@user3 = User.create! :email => 'threeadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin Three', :lesson_id => '4', :weburl => 'http://www.facebook.com/eap.edu', :shortbio => 'Short biography of Admin3'
 @user3.confirm!
-@user4 = User.create! :email => 'fouradmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin Four', :lesson_id => '5', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin4'
+@user4 = User.create! :email => 'fouradmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin Four', :lesson_id => '5', :weburl => 'http://www.facebook.com/eap.edu', :shortbio => 'Short biography of Admin4'
 @user4.confirm!
-@user5 = User.create! :email => 'fiveadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin Five', :lesson_id => '5', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of Admin5'
+@user5 = User.create! :email => 'fiveadmin@diplomatiki.gr', :password => '12345678', :fullname => 'admin Five', :lesson_id => '6', :weburl => 'http://www.facebook.com/eap.edu', :shortbio => 'Short biography of Admin5'
 @user5.confirm!
-@user6 = User.create! :email => 'foititis@diplomatiki.gr', :password => '12345678', :fullname => 'userone', :lesson_id => '1', :weburl => 'http://www.diplomatiki.eu', :shortbio => 'Short biography of User1'
+@user6 = User.create! :email => 'foititis@diplomatiki.gr', :password => '12345678', :fullname => 'userone', :lesson_id => '1', :weburl => 'http://www.facebook.com/eap.edu', :shortbio => 'Short biography of User1'
 @user6.confirm!
 
 
 
-@question1 = Question.create! :title => 'Question No. 1', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 1", :user_id => 6
-@question2 = Question.create! :title => 'Question No. 2', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 2", :user_id => 6
-@question3 = Question.create! :title => 'Question No. 3', :state => 2, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 3", :user_id => 6
-@question4 = Question.create! :title => 'Question No. 4', :state => 3, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "h1. Question 4", :user_id => 6
-@question5 = Question.create! :title => 'Question No. 5', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "h1. Question 5", :user_id => 6
+@question1 = Question.create! :title => 'Ερώτηση No. 1', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Ερώτηση 1", :user_id => 6
+@question2 = Question.create! :title => 'Ερώτηση No. 2', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Ερώτηση 2", :user_id => 6
+@question3 = Question.create! :title => 'Ερώτηση No. 3', :state => 2, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Ερώτηση 3", :user_id => 6
+@question4 = Question.create! :title => 'Ερώτηση No. 4', :state => 3, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "h1. Ερώτηση 4", :user_id => 6
+@question5 = Question.create! :title => 'Είσοδος μέσω Facebook', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο χρήστης να συνδεθεί στην σελίδα
+κάνοντας χρήση του λογαριασμού του στο *Facebook*;
+Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=PQNf427I1mE", :user_id => 1
+@question6 = Question.create! :title => 'Αποσύνδεση της υπηρεσίας Facebook', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο χρήστης να αποσυνδέσει από την σελίδα
+τον λογαριασμό του *Facebook*;
+Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=94KjzXIbmSk&feature=youtu.be", :user_id => 1
+@question7 = Question.create! :title => 'Δημιουργία ερώτησης', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο φοιτητής να δημιουργήσει στην εφαρμογή
+κάποια ερώτηση και πως ο καθηγητής την χαρακτηρίζει;
+Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=mctEIOmjCHs&feature=youtu.be", :user_id => 1
+@question8 = Question.create! :title => 'Προγραμματισμός της ύλης', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως γίνεται ο προγραμματισμός της ύλης των ασκήσεων από τον *καθηγητή*;
+Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=FJfwFG1H1_c&feature=youtu.be", :user_id => 1
+@question9 = Question.create! :title => 'Ανάρτηση άσκησης', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο *καθηγητής* να ανεβάσει στην σελίδα
+ασκήσεις κάνοντας χρήση της υπηρεσίας amazon s3; Ακολουθεί _screencast_ στην παρακάτω \"σελίδα:\"http://www.youtube.com/watch?v=OdtaatHvlMQ&feature=youtu.be", :user_id => 1
+
+
+
+
+
+
+
+@exercise1 = Exercise.create! :etitle => 'PLS50-2012-E01', :ebody => 'exercise 1'
+@exercise2 = Exercise.create! :etitle => 'PLS50-2012-E02', :ebody => 'exercise 2'
+@exercise3 = Exercise.create! :etitle => 'PLS50-2012-E03', :ebody => 'exercise 3'
+@exercise4 = Exercise.create! :etitle => 'PLS51-2012-E01', :ebody => 'exercise 4'
+@exercise5 = Exercise.create! :etitle => 'PLS51-2012-E02', :ebody => 'exercise 5'
+@exercise6 = Exercise.create! :etitle => 'PLS51-2012-E03', :ebody => 'exercise 6'
+@exercise7 = Exercise.create! :etitle => 'PLS51-2012-E04', :ebody => 'exercise 7'
+@exercise8 = Exercise.create! :etitle => 'PLS60-2012-E01', :ebody => 'exercise 8'
+@exercise9 = Exercise.create! :etitle => 'PLS60-2012-E02', :ebody => 'exercise 9'
+@exercise10 = Exercise.create! :etitle => 'PLS60-2012-E03', :ebody => 'exercise 10'
+@exercise11 = Exercise.create! :etitle => 'PLS60-2012-E04', :ebody => 'exercise 11'
+@exercise12 = Exercise.create! :etitle => 'PLS61-2012-E01', :ebody => 'exercise 12'

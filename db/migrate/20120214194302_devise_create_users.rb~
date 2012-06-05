@@ -12,7 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :fullname
       t.text :shortbio
-      t.string :weburl, :default => 'www.facebook.com/eap.edu'
+      t.string :weburl
       t.integer :lesson_id, :null => false, :default => 1  #ξένο κλειδί για τον πίνακα Lesson
 
       t.timestamps

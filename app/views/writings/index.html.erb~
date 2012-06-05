@@ -7,7 +7,7 @@
   </h1>
   <% calendar_for @writings, :year => @date.year, :month => @date.month do |calendar| %>
     <%= calendar.head('Κυριακή', 'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο') %>
-    <% calendar.day(:day_method => :writing_date) do |date, writings| %>
+    <%= calendar.day(:day_method => :writing_date) do |date, writings| %>
       <%= date.day %>
       <ul>
         <% for writing in writings %>

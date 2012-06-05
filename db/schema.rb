@@ -95,8 +95,8 @@ ActiveRecord::Schema.define(:version => 20120517142448) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",   :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",   :null => false
+    t.string   "email",                                 :default => "",                         :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",                         :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -112,11 +112,11 @@ ActiveRecord::Schema.define(:version => 20120517142448) do
     t.datetime "locked_at"
     t.string   "fullname"
     t.text     "shortbio"
-    t.string   "weburl"
-    t.integer  "lesson_id",                             :default => 1,    :null => false
+    t.string   "weburl",                                :default => "www.facebook.com/eap.edu"
+    t.integer  "lesson_id",                             :default => 1,                          :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "haslocalpw",                            :default => true, :null => false
+    t.boolean  "haslocalpw",                            :default => true,                       :null => false
     t.integer  "user_kind",                             :default => 0
   end
 

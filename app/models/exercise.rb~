@@ -8,9 +8,9 @@ class Exercise < ActiveRecord::Base
 							:s3_credentials => "config/s3.yml",
 							:path => "/:style/:id/:filename"
 	has_many :users, :through => :writings
-	has_many :writings
+	has_many :writings, :depentent => :destroy
 
-	attr_accessible :etitle, :ebody, :average, :askisi, :exercise_id
+	attr_accessible :etitle, :ebody, :average, :askisi
 
 	validates :etitle, :presence => true, :length => { :maximum => 20 }, :uniqueness => true
 	validates :ebody, :presence => true

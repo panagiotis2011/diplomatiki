@@ -11,7 +11,7 @@
       <%= date.day %>
       <ul>
         <% for writing in writings %>
-          <li><%= link_to (writing.exercise.etitle), writing %></li>
+          <li><%= link_to (writing.exercise.try(:etitle)), writing %></li>
           <% if admin_signed_in %>
            <li><%= link_to 'Διαγραφή', writing, :confirm => 'Είσαι σίγουρος?', :method => :delete %></li>
         <% end %>
