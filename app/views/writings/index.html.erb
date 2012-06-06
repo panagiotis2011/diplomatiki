@@ -5,7 +5,7 @@
     <span><%= I18n.localize(@date, :format => '%B %Y') %></span>
     <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>
   </h1>
-  <% calendar_for @writings, :year => @date.year, :month => @date.month do |calendar| %>
+  <%= calendar_for @writings, :year => @date.year, :month => @date.month do |calendar| %>
     <%= calendar.head('Κυριακή', 'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο') %>
     <%= calendar.day(:day_method => :writing_date) do |date, writings| %>
       <%= date.day %>
