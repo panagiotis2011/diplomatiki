@@ -62,7 +62,9 @@ end
 @question8 = Question.create! :title => 'Προγραμματισμός της ύλης', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως γίνεται ο προγραμματισμός της ύλης των ασκήσεων από τον *καθηγητή*;
 Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=FJfwFG1H1_c&feature=youtu.be", :user_id => 1
 @question9 = Question.create! :title => 'Ανάρτηση άσκησης', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο *καθηγητής* να ανεβάσει στην σελίδα
-ασκήσεις κάνοντας χρήση της υπηρεσίας amazon s3; Ακολουθεί _screencast_ στην παρακάτω \"σελίδα:\"http://www.youtube.com/watch?v=OdtaatHvlMQ&feature=youtu.be", :user_id => 1
+ασκήσεις κάνοντας χρήση της υπηρεσίας amazon s3; Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=OdtaatHvlMQ&feature=youtu.be", :user_id => 1
+@question10 = Question.create! :title => 'Ανάρτηση στο Facebook', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο *φοιτητής* να ανεβάσει στο Facebook
+τον τίτλο της ερώτησης που έχει δημοσιευθεί. Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=YTLzuxnLTCI&feature=youtu.be", :user_id => 1
 
 
 

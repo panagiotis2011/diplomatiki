@@ -1,11 +1,8 @@
 # encoding: utf-8
 
-
 User.delete_all
 Question.delete_all
 Lesson.delete_all
-
-
 
 module ActiveModel
   module MassAssignmentSecurity
@@ -16,7 +13,6 @@ module ActiveModel
     end
   end
 end
-
 
 @lesson1 = Lesson.create! :name => 'ΠΛΣ 50'
 #@lesson1.confirm!
@@ -44,8 +40,6 @@ end
 @user6 = User.create! :email => 'foititis@diplomatiki.gr', :password => '12345678', :fullname => 'userone', :lesson_id => '1', :weburl => 'http://www.facebook.com/eap.edu', :shortbio => 'Short biography of User1'
 @user6.confirm!
 
-
-
 @question1 = Question.create! :title => 'Ερώτηση No. 1', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Ερώτηση 1", :user_id => 6
 @question2 = Question.create! :title => 'Ερώτηση No. 2', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Ερώτηση 2", :user_id => 6
 @question3 = Question.create! :title => 'Ερώτηση No. 3', :state => 2, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Ερώτηση 3", :user_id => 6
@@ -63,12 +57,8 @@ end
 Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=FJfwFG1H1_c&feature=youtu.be", :user_id => 1
 @question9 = Question.create! :title => 'Ανάρτηση άσκησης', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο *καθηγητής* να ανεβάσει στην σελίδα
 ασκήσεις κάνοντας χρήση της υπηρεσίας amazon s3; Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=OdtaatHvlMQ&feature=youtu.be", :user_id => 1
-
-
-
-
-
-
+@question10 = Question.create! :title => 'Ανάρτηση στο Facebook', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο *φοιτητής* να ανεβάσει στο Facebook
+τον τίτλο της ερώτησης που έχει δημοσιευθεί. Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=YTLzuxnLTCI&feature=youtu.be", :user_id => 1
 
 @exercise1 = Exercise.create! :etitle => 'PLS50-2012-E01', :ebody => 'exercise 1'
 @exercise2 = Exercise.create! :etitle => 'PLS50-2012-E02', :ebody => 'exercise 2'
