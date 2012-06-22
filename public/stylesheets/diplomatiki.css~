@@ -236,7 +236,7 @@ listsearch input[type=text] { font-size: 12px; height: 20px; width: 250px; margi
 #currentuser { font-size: 11px; color: #666666; }
 #nav_user { text-align: right; }
 #nav_user ul { padding: 0; margin: 0; list-style: none; }
-#nav_user ul li { padding: 0; margin: 0 20px 0 0; display:inline; }
+#nav_user ul li { padding: 0; margin: 0 10px 0 0; display:inline; }
 #nav_user li a { width: 100px; font-size: 11px; text-align: center; text-decoration: none; }
 #nav_user ul li.selected a { color: #c81419; }
 
@@ -251,8 +251,8 @@ background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#30ffffff,endColorstr=#10000000) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=135,strength=2);
 }
 #nav_main ul { padding: 0; margin: 0; list-style: none; }
-#nav_main ul li { padding: 0; margin: 0 20px 0 0; display: inline; }
-#nav_main li a { margin-right: 20px; width: 140px; font-size: 14px; line-height: 400px; text-align: center; text-decoration: none; }
+#nav_main ul li { padding: 0; margin: 0 2px 0 0; display: inline; }
+#nav_main li a { margin-right: 10px; width: 140px; font-size: 14px; line-height: 50px; text-align: center; text-decoration: none; }
 #nav_main ul li.selected a, #nav_main ul li a:hover { color: #ffffff; }
 
 
