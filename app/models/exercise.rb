@@ -5,7 +5,10 @@ class Exercise < ActiveRecord::Base
 							:url => ":s3_domain_url",
 							#:s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
 							#:s3_credentials => "#{Rails_root.to_s}/config/s3.yml",
-							:s3_credentials => "config/s3.yml",
+							#:s3_credentials => "config/s3.yml",
+							:bucket => ENV['S3_BUCKET'],
+							:s3_credentials => { :access_key_id => ENV['S3_KEY'],
+							                     :secret_access_key => ENV['S3_SECRET'] },
 							:path => "/:style/:id/:filename"
 	has_many :users, :through => :writings
 	has_many :writings, :dependent => :destroy
