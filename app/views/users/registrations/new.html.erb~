@@ -22,7 +22,7 @@
 
 	<div id="remote2">
 		<div id="terms" class="box">
-			<%= link_to "Υπηρεσίες δικτύωσης", "<div class="fb-like" data-href="http://localhost:3000/" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true" data-font="lucida grande"></div>" %>
+			<%= link_to "Υπηρεσίες δικτύωσης", "#" %>
 		</div>
 		<div id="services" class="box">
 			<a href="/auth/facebook" class="services"><%= image_tag "facebook_64.png", :size => "64x64",  :alt => "Facebook" %>Facebook</a>
