@@ -38,7 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 		else
 			build_resource
 			clean_up_passwords(resource)
-			flash.now[:error] = "Υπάρχει ένα σφάλμα με τον κωδικό recaptcha. Παρακαλώ ξαναπροσπαθήσε. [Κωδικός σφάλαμτος: " + flash[:recaptcha_error] + "]"
+			flash.now[:error] = "Υπάρχει ένα σφάλμα με τον κωδικό recaptcha. Παρακαλώ ξαναπροσπαθήστε. [Κωδικός σφάλαμτος: " + flash[:recaptcha_error] + "]"
 			flash.delete(:recaptcha_error)
 			render_with_scope :new
 		end
