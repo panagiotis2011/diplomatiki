@@ -105,7 +105,7 @@
 					interval: 30000,
 					title: '',
 					subject: 'Social media',
-					width: 180,
+					width: 170,
 					height: 300,
 					theme: {
 						shell: {
