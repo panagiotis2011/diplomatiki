@@ -7,12 +7,12 @@
 		<div><%= f.label :password %><br />
 		<%= f.password_field :password %></div>
 		<% if devise_mapping.rememberable? -%>
-			<div><%= f.check_box :remember_me %> <%= f.label :remember_me, 'Να με θυμάσαι' %></div>
+			<div><%= f.check_box :remember_me %> <%= f.label :remember_me, 'Παραμείνετε συνδεδεμένος' %></div>
 		<% end %>
 		<div><%= f.submit "Είσοδος" %></div>
 	<% end %>
 </div>
-<div id="remote">
+<div id="remote2">
 	<div id="terms" class="box">
 		<%= link_to "Υπηρεσίες δικτύωσης", "#" %>
 	</div>

@@ -45,7 +45,7 @@
  <noscript>
    <iframe src="http://www.google.com/recaptcha/api/noscript?k=6Lch1c0SAAAAAHsxgl1RhawFT8JU3_YHXHMkAka4"
         height="300" width="500" frameborder="0"></iframe><br>
-   <textarea name="recaptcha_challenge_field" rows="3" cols="43">
+   <textarea name="recaptcha_challenge_field" rows="3" cols="40">
    </textarea>
    <input type="hidden" name="recaptcha_response_field"
         value="manual_challenge">
@@ -59,7 +59,7 @@
 
 	<div id="remote2">
 		<div id="terms" class="box">
-			<%= link_to "Υπηρεσίες δικτύωσης", "#" %>
+			<%= link_to "Ανατροφοδότηση", "#" %>
 		</div>
 		<div id="services" class="box">
 			<a href="/auth/facebook" class="services"><%= image_tag "facebook_64.png", :size => "64x64",  :alt => "Facebook" %>Facebook</a>
