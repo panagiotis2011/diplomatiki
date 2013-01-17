@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.11'
+gem 'rails', '3.2.11'
 gem 'pg'
 gem 'devise'
 gem 'recaptcha', :require => 'recaptcha/rails'
