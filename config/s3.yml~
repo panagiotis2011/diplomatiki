@@ -1,9 +1,0 @@
-development:
-  bucket: diplomatiki-dev
-  access_key_id: "AKIAJ3QJES3ODG55HHNA"
-  secret_access_key: "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"
-
-production:
-  bucket: diplomatiki-dev
-  access_key_id: ENV["S3_KEY"]
-  secret_access_key: ENV["S3_SECRET"]

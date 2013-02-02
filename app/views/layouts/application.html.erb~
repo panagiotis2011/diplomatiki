@@ -34,9 +34,9 @@
             </ul>
         </nav>
         <div id="page_title">
-           <h1><span>Χώρος </span>Συζήτησης Ενημέρωσης</h1>
-            <h2><%= link_to (image_tag "facebook_32.png", :size => "32x32"),{},:title=>'Ο Χώρος Συζήτησης Ενημέρωσης στο Facebook',:target=>'_blank',:href=>'http://www.facebook.com/eap.edu' %>οιτητών <span> EAΠ και </span>διδασκόν<%= link_to (image_tag "twitter_32.png", :size => "32x32"),{},:title=>'Twitter',:target=>'_blank',:href=>'http://www.twitter.com'
- %>ων <span><%= l(Time.now, :format => :default) %></span> </p></h2>
+           <h1><span>Εκπαίδευση </span>Συζήτηση Ενημέρωση</h1>
+            <h2><%= link_to (image_tag "facebook_32.png", :size => "32x32"),{},:title=>'Εκπαίδευση Συζήτηση Ενημέρωση στο Facebook',:target=>'_blank',:href=>'http://www.facebook.com/schooligans' %>acebook <span> education </span>on<%= link_to (image_tag "twitter_32.png", :size => "32x32"),{},:title=>'Twitter',:target=>'_blank',:href=>'http://www.twitter.com'
+ %>ime <span><%= l(Time.now, :format => :default) %></span> </p></h2>
         </div>
     </header>
       <header id="nav_header">
@@ -66,11 +66,6 @@
                     <div class="flash <%= key %>"><%= value %></div>
                 <% end %>
             </section>
-    <section id="flash">
-        <% flash.each do |key, value| %>
-            <div class="flash <%= key %>"><%= value %></div>
-        <% end %>
-    </section>
 <%= yield %>
    </section>
         <section id="sidebar">
@@ -85,9 +80,9 @@
             </section>
             <section id="links" class="box">
                 <h3>Χρήσιμα links</h3>
-                <div><%= link_to "Χώροι Θεματικών Ενοτήτων", "http://class.eap.gr" %></div>
-                <div><%= link_to "Υπηρεσίες Μητρώου", "http://open.eap.gr" %></div>
-                <div><%= link_to "Online Ασκήσεις", "http://moodle.eap.gr" %></div>
+                <div><%= link_to "Ψηφιακό Σχολείο", "http://www.study4exams.gr/" %></div>
+                <div><%= link_to "Moodle", "http://users.sch.gr/papetridis/moodle/" %></div>
+                <div><%= link_to "Ηλεκτρονική Τάξη", "http://eclass.sch.gr/index.php" %></div>
                 <div><%= link_to "Εικονικές Τάξεις", "http://centra.eap.gr" %></div>
                 <div><%= link_to "Ψηφιακό υλικό", "http://edy.eap.gr" %></div>
 
