@@ -25,18 +25,20 @@
                     <%= request.path == myquestions_questions_path ? raw("<li class='selected'>") : raw("<li>") %>
                     <li><%= link_to "Οι ερωτήσεις μου", myquestions_questions_path %></li>
                     <li><%= link_to "Έξοδος", destroy_user_session_path, :method => 'delete' %></li>
+                    
                 <% else %>
                     <%= request.path == new_user_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
                     <li><%= link_to "Εγγραφή", new_user_registration_path %></li>
                     <%= request.path == new_user_session_path ? raw("<li class='selected'>") : raw("<li>") %>
                     <li><%= link_to "Είσοδος", new_user_session_path %></li>
+                    
                 <% end %>
             </ul>
         </nav>
         <div id="page_title">
-           <h1><span>Εκπαίδευση </span>Συζήτηση Ενημέρωση</h1>
-            <h2><%= link_to (image_tag "facebook_32.png", :size => "32x32"),{},:title=>'Εκπαίδευση Συζήτηση Ενημέρωση στο Facebook',:target=>'_blank',:href=>'http://www.facebook.com/schooligans' %>acebook <span> education </span>on<%= link_to (image_tag "twitter_32.png", :size => "32x32"),{},:title=>'Twitter',:target=>'_blank',:href=>'http://www.twitter.com'
- %>ime <span><%= l(Time.now, :format => :default) %></span> </p></h2>
+           <h1>σχολείο <span> μετά </span> το σχολείο </h1>
+            <h2><%= link_to (image_tag "facebook_32.png", :size => "32x32"),{},:title=>'Το σχολείο μετά το σχολείο στο Facebook',:target=>'_blank',:href=>'http://www.facebook.com/schooligans' %> <span><%= l(Time.now, :format => :default) %></span> <%= link_to (image_tag "twitter_32.png", :size => "32x32"),{},:title=>'Twitter',:target=>'_blank',:href=>'http://www.twitter.com'
+ %></h2>
         </div>
     </header>
       <header id="nav_header">
@@ -80,11 +82,13 @@
             </section>
             <section id="links" class="box">
                 <h3>Χρήσιμα links</h3>
-                <div><%= link_to "Ψηφιακό Σχολείο", "http://www.study4exams.gr/" %></div>
-                <div><%= link_to "Moodle", "http://users.sch.gr/papetridis/moodle/" %></div>
-                <div><%= link_to "Ηλεκτρονική Τάξη", "http://eclass.sch.gr/index.php" %></div>
-                <div><%= link_to "Εικονικές Τάξεις", "http://centra.eap.gr" %></div>
-                <div><%= link_to "Ψηφιακό υλικό", "http://edy.eap.gr" %></div>
+                <li><div><%= link_to "Tag Cloud", "http://users.sch.gr/papetridis/tag-cloud/TagCloudFX.swf" %></div></li>
+                <li><div><%= link_to "Security Lab", "http://esecuritylab.blogspot.gr/" %></div></li>
+                <li><div><%= link_to "Online Moodle", "http://users.sch.gr/papetridis/moodle/" %></div></li>
+                <li><div><%= link_to "Ψηφιακό Σχολείο", "http://www.study4exams.gr/" %></div></li>
+                <li><div><%= link_to "Ηλεκτρονική Τάξη", "http://eclass.sch.gr/index.php" %></div></li>
+               
+
 
 
             </section>
@@ -124,6 +128,7 @@
 
 
             </section>
+          
     </section>
     <footer id="page_footer">
         <hr />
