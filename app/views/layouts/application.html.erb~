@@ -37,7 +37,7 @@
         </nav>
         <div id="page_title">
            <h1>σχολείο <span> μετά </span> το σχολείο </h1>
-            <h2><%= link_to (image_tag "facebook_32.png", :size => "32x32"),{},:title=>'Το σχολείο μετά το σχολείο στο Facebook',:target=>'_blank',:href=>'http://www.facebook.com/schooligans' %> <span><%= l(Time.now, :format => :default) %></span> <%= link_to (image_tag "twitter_32.png", :size => "32x32"),{},:title=>'Twitter',:target=>'_blank',:href=>'http://www.twitter.com'
+            <h2><%= link_to (image_tag "facebook_32.png", :size => "32x32"),{},:title=>'Το σχολείο μετά το σχολείο στο Facebook',:target=>'_blank',:href=>'http://www.facebook.com/schooligans' %> <span><%= l(Time.now, :format => :default) %></span> <%= link_to (image_tag "twitter_32.png", :size => "32x32"),{},:title=>'#sxoleio στο Twitter',:target=>'_blank',:href=>'http://www.twitter.com'
  %></h2>
         </div>
     </header>
@@ -100,10 +100,10 @@
 					new TWTR.Widget({
 					version: 2,
 					type: 'search',
-					search: 'Social media',
+					search: 'sxoleio',
 					interval: 30000,
 					title: '',
-					subject: 'Social media',
+					subject: 'σχολείο μετά το σχολείο',
 					width: 170,
 					height: 300,
 					theme: {
