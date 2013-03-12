@@ -108,11 +108,11 @@ class QuestionsController < ApplicationController
 		@question = current_user.questions.find(params[:id])
 		begin
 			current_user.facebook.feed!(
-			:message => "Στον Χώρο Συζήτησης Ενημέρωσης δημοσιεύθηκε ερώτηση με τίτλο: #{ @question.title }",
+			:message => "Στο σχολείο μετά το σχολείο δημοσιεύθηκε ερώτηση με τίτλο: #{ @question.title }",
 			:name => 'My Rails 3 App with Omniauth, Devise and FB_graph')
-			page = FbGraph::Page.new(354024727961476, :access_token => current_user.services.find_by_provider('facebook').token)
+			page = FbGraph::Page.new(163573307071006, :access_token => current_user.services.find_by_provider('facebook').token)
 			page.feed!(
-			:message => "Στον Χώρο Συζήτησης Ενημέρωσης δημοσιεύθηκε ερώτηση με τίτλο: #{ @question.title }",
+			:message => "Στο σχολείο μετά το σχολείο δημοσιεύθηκε ερώτηση με τίτλο: #{ @question.title }",
 			:name => 'My Rails 3 App with Omniauth, Devise and FB_graph')
 		rescue FbGraph::InvalidToken => e
 			case e.message
