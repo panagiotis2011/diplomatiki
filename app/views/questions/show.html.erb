@@ -1,0 +1,98 @@
+<section id="questionheader">
+    <h2><%= @question.title %>
+       <ul class="stars floatstars">
+            <li class="yellowstars" style="width: <%= @question.avg_rating * 25 %>px !important;"></li>
+            <li class="text">Ο μέσος όρος είναι <%= @question.avg_rating %> από συνολικά <%= pluralize(@question.count_ratings, "ψήφο") %></li>
+       </ul>
+
+    </h2>
+
+
+    <div class="byline">Γράφτηκε από: <%= @question.user.fullname %>, Θεματική ενότητα: <%= @question.user.lesson.try(:name) %></div>
+    <div class="byline">Προσωπική ιστοσελίδα: <%= link_to @question.user.weburl, url_for(@question.user.weburl) %></div>
+    <div class="byline">Σύντομο βιογραφικό: <%= @question.user.shortbio %></div>
+
+
+    <div class="avatar"><%= image_tag gravatar(@question.user.email, 64) %></div>
+
+</section>
+
+<section id="questionbody" class="textile">
+
+	<h2><%= @question.title %></h2>
+	<div class="textile">
+		<%= sanitize textilize(coderay_dressed(@question.body)) %>
+	</div>
+
+</section>
+
+
+<% # comments και ratings είναι διαθέσιμα μόνο για άρθρα που είναι δημοσιευμένα %>
+<% if @question.state > 2 %>
+
+     <section id="rating">
+        <% if user_signed_in? %>
+            <%= form_for [@question, @rating_currentuser] do |f| %>
+                <div id="ratingbox">
+                    <ul id="ratingbuttons">
+                        <li><%= f.radio_button :stars, "5" %><span>Τέλεια</span></li>
+                        <li><%= f.radio_button :stars, "4" %><span>Πολύ καλή</span></li>
+                        <li><%= f.radio_button :stars, "3" %><span>Καλή</span></li>
+                        <li><%= f.radio_button :stars, "2" %><span>Μέτρια</span></li>
+                        <li><%= f.radio_button :stars, "1" %><span>Αδιάφορη</span></li>
+                    </ul>
+                    <div class="center"><%= f.submit "Αξιολόγησε αυτή την ερώτηση", :class => "awesome custom red" %></div>
+                </div>
+            <% end %>
+        <% else %>
+            <div id="ratingbox"><%= link_to "Είσοδος", new_user_session_path %> για να βαθμολογήσεις αυτό το άρθρο</div>
+        <% end %>
+    </section>
+    <section id="comments">
+        <% @comments.each do |comment| %>
+            <question class="comment">
+                <div class="avatar"><%= image_tag gravatar(comment.user.email, 48) %></div>
+                <div class="commentbody">
+                    <div class="commenthead">
+
+                      <%= link_to comment.user.fullname, url_for(comment.user.weburl) %>, <%= comment.user.lesson.try(:name) %>, - <%=time_ago_in_words(comment.created_at)%> πριν
+
+                      <% # εμφάνιση του link διαγραφή μόνο για σχόλια που έχουν γραφεί από τον συγκεκριμένο χρήστη %>
+                      <% if user_signed_in? and comment.user_id == current_user.id %>
+                          <span><%= link_to 'Διαγραφή', question_comment_path(@question, comment), :confirm => 'Are you sure?', :method => :delete, :class => "" %></span>
+                      <% end %>
+                    </div>
+                    <div><%= comment.body %></div>
+                </div>
+            </question>
+        <% end %>
+
+        <% # add a new comment %>
+        <question class="comment newcomment">
+                <% if user_signed_in? %>
+                    <div class="avatar"><%= image_tag gravatar(current_user.email, 48) %></div>
+                    <div class="commentbody">
+                        <% if current_user.fullname == nil or current_user.fullname == '' %>
+                            <div class="commenthead">
+                                Παρακαλώ ενημερώστε το <%= link_to "Προφίλ", edit_user_registration_path %> πριν σχολιάσετε το άρθρο.
+                            </div>
+                        <% else %>
+                            <div class="commenthead">
+                                <%= current_user.fullname %>
+                            </div>
+                            <div>
+                                <%= form_for [@question, current_user.comments.new] do |f| %>
+                                    <%= f.text_area :body, :size => "100%x10", :class => "fullwidth" %>
+                                    <%= f.submit "Πρόσθεσε σχόλιο", :class => "awesome custom red" %>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                <% else %>
+                    <div class="signin">
+                       Παρακαλώ κάντε <%= link_to "Σύνδεση", new_user_session_path %> πριν σχολιάσετε κάποια ερώτηση.
+                    </div>
+                <% end %>
+        </question>
+    </section>
+<% end %>

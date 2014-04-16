@@ -1,0 +1,29 @@
+<section id = "questions">
+    <% @questions.each do |question| %>
+        <question class="question">
+            <ul class="stars floatstars">
+                <li class="yellowstars" style="width: <%= question.avg_rating * 25 %>px !important;"></li>
+            </ul>
+            <div class = "title"><%= link_to question.title, question %></div>
+            <div class = "byline"><%= l(question.created_at, :format => '%d %B, %Y') %> : <%= question.state %></div>
+
+        </question>
+    <% end %>
+
+     <div class='pagination'>
+        <%= will_paginate @questions %>
+    </div>
+
+     <div class='tag-box'>
+       <% @tags.sort_by(&:count).reverse.each do |k| %>
+
+      <% url_opts = {:action => "all", :controller => "questions"}
+         link_name = "#{k.name} (#{k.count})" %>
+      <% if @tag == k.name %>
+        <%= link_to link_name, url_opts.merge(:tag => nil), :class => "tag current_tag", :title => "Κλικ για εμφάνιση όλων" %>
+      <% else %>
+        <%= link_to link_name,  url_opts.merge(:tag => k.name), :class => "tag", :title => "Κλικ για εμφάνιση των ερωτήσεων στην κατηγορία #{k.name}" %>
+      <% end %>
+    <% end %>
+    </div>
+</section>

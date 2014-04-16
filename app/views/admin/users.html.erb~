@@ -1,0 +1,26 @@
+<section id = "admin">
+<%= javascript_include_tag :defaults %>
+<h2>Διαχειριστής: <%= @user_kind_name.capitalize %> </h2>
+
+
+
+    <% @users.each do |user| %>
+      <p>
+        <h4><%= link_to user.fullname, user %></h4>
+          <%= user.email %>
+                 Θεματική ενότητα:   <%= user.lesson.name %>
+
+
+        <% if user.user_kind == 0 %>
+          <%= link_to 'Μεταβολή σε καθηγητή', accept1_admin_path(user, :value => '0'), :method => :put %>
+        <% else %>
+          <%= link_to 'Διαγραφή', user, :confirm => 'Προσοχή! Αυτή η ενέργεια θα διαγράψει οριστικά τον χρήστη. Να γίνει η διαγραφή;', :method => :delete %>
+        <% end %>
+
+      </p>
+    <% end %>
+
+     <div class='pagination'>
+        <%= will_paginate @users %>
+    </div>
+</section>

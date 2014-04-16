@@ -1,0 +1,44 @@
+<%= form_for(@question) do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "σφάλμα") %> και έτσι δεν επιτρέπεται η αποθήκευση της ερώτησης</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <% # Ο τίτλος του άρθρου δεν μπορεί να αλλάξει εφόσον το άρθρο γίνει αποδεκτό %>
+  <% if @question.state < 3 %>
+    <div class="field">
+        <label for="question_title">Τίτλος (Κείμενο, μέγιστος αριθμός χαρακτήρων 80)</label><br />
+        <%= f.text_field :title, :size => "100%", :class => "fullwidth"  %>
+    </div>
+   <% else %>
+    <div class="field">
+        <label for="question_title">Τίτλος (Δεν μπορεί να αλλάξει εφόσον η ερώτηση έχει γίνει αποδεκτή)</label><br />
+        <%= f.text_field :title, :readonly => true,  :size => "100%", :class => "fullwidth"  %>
+    </div>
+   <% end %>
+
+  <div class="field">
+    <label for="question_body">Η ερώτησή σας (Μετατρέψτε το απλό κείμενο σε html - <%= link_to "Περισσότερα εδώ!", 'http://redcloth.org' %>)</label><br />
+    <%= f.text_area :body, :size => "100%x15", :class => "fullwidth"  %>
+  </div>
+
+  <div class="field">
+   <label for="tag_list">Κατηγορία (Μπορείτε να προσθέσετε διαφορετικές κατηγορίες διαχωρίζοντάς τες με κόμμα)</label><br />
+    <%= f.autocomplete_field :tag_list, autocomplete_tag_name_questions_path, :"data-delimiter" => ', ' %>
+  </div>
+
+   <div class="actions">
+    <%= f.submit "Δημιουργία ερώτησης", :class => "awesome custom red" %>
+    <%= link_to 'Εμφάνιση αυτής της ερώτησης', @question, :class => "awesome custom red" %>
+    <%= link_to 'Επιστροφή στις ερωτήσεις μου', myquestions_questions_path, :class => "awesome custom red" %>
+  </div>
+
+<% end %>

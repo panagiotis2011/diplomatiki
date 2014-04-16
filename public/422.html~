@@ -1,0 +1,27 @@
+# encoding: utf-8, 422
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Οι αλλαγές που θέλετε να κάνετε έχουν απορριφθεί. (422)</title>
+  <style type="text/css">
+    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
+    div.dialog {
+      width: 25em;
+      padding: 0 4em;
+      margin: 4em auto 0 auto;
+      border: 1px solid #ccc;
+      border-right-color: #999;
+      border-bottom-color: #999;
+    }
+    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+  </style>
+</head>
+
+<body>
+  <!-- This file lives in public/422.html -->
+  <div class="dialog">
+    <h1>Οι αλλαγές που θέλετε να κάνετε έχουν απορριφθεί..</h1>
+    <p>Ίσως προσπαθείτε να αλλάξετε κάτι για το οποίο δεν έχετε τα κατάλληλα δικαιώματα.</p>
+  </div>
+</body>
+</html>

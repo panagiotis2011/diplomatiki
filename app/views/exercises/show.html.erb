@@ -1,0 +1,25 @@
+<section id="exercises">
+
+
+<p>
+  <b>Τίτλος:</b>
+  <%= @exercise.etitle %>
+</p>
+
+<p>
+  <b>Οδηγίες:</b>
+  <%= @exercise.ebody %>
+</p>
+
+<p>
+  <b>Μέσος Όρος:</b>
+  <%= @exercise.average %>
+</p>
+
+<p>
+<%= link_to "Άσκηση download", @exercise.askisi.url %>
+</p>
+
+
+<%= link_to 'Επιστροφή στις ασκήσεις', exercises_path, :class => "awesome custom red" %>
+</section>

@@ -1,0 +1,161 @@
+# encoding: utf-8
+class AdminController < ApplicationController
+	before_filter :authenticate_user!
+	before_filter :is_admin
+
+
+	def index
+		@num_state0 = Question.where(:state => '0').count
+		@num_state1 = Question.where(:state => '1').count
+		@num_state2 = Question.where(:state => '2').count
+		@num_state3 = Question.where(:state => '3').count
+		@num_state4 = Question.where(:state => '4').count
+		@num_state5 = Exercise.count
+		@num_user_kind0 = User.where(:user_kind => '0').count
+		@num_user_kind1 = User.where(:user_kind => '1').count
+		@num_published = @num_state3 + @num_state4
+		@num_users = User.all.count
+		@num_users_active30days = User.where('last_sign_in_at > ?', 30.days.ago).count
+		@num_users_created30days = User.where('created_at > ?', 30.days.ago).count
+		@current_user.attributes = {'exercise_ids' => []}.merge(params[:user] || {})
+
+	end
+
+
+	# φόρμα για την εισαγωγή του μηνύματος στις ερωτήσεις που είναι μη αποδεκτές
+	def editreject
+		@question = Question.find(params[:id])
+		# Μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να απορριφθούν
+		if @question.state != 1
+			flash[:notice] = 'Μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να απορριφθούν.'
+			redirect_to :action => 'questions', :state => 1
+		end
+	end
+
+
+	# απόρριψη της ερώτησης
+	def reject
+		@question = Question.find(params[:id])
+		if @question.state == 1
+			if params[:question][:message]
+				@question.state = 2
+				@question.message = params[:question][:message]
+				@question.freezebody = @question.title + "\n\n" + @question.body + "\n\n"
+				if @question.save
+					flash[:notice] = "Η ερώτηση έχει απορριφθεί."
+					redirect_to :action => 'questions', :state => 1
+				else
+					render :action => "editreject"
+				end
+			else
+				flash[:notice] = "Για να απορριφθεί η ερώτηση είναι απαραίτητο να σταλεί μήνυμα στον δημιουργό της."
+				redirect_to :action => 'questions', :state => 1
+			end
+		else
+			flash[:notice] = "Μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να απορριφθούν."
+			redirect_to :action => 'questions', :state => 1
+		end
+	end
+
+
+	# αποδοχή της ερώτησης σαν κανονική ή σαν προτεινόμενη
+	def accept
+		@question = Question.find(params[:id])
+		# μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να γίνουν αποδεκτές
+		if @question.state == 1
+			@question.state = 3
+			flash[:notice] = 'Η ερώτηση έχει γίνει αποδεκτή.'
+			if params[:value]
+				if params[:value] == '1'
+					@question.state = 4
+					flash[:notice] = 'Η ερώτηση έχει γίνει αποδεκτή ως προτεινόμενη ερώτηση.'
+				end
+			end
+			# freeeze
+			@question.freezebody = @question.title + "\n\n" + @question.body + "\n\n"
+			@question.accepted = Time.now
+			# αποθήκευση άρθρου
+			if !@question.save
+				flash[:notice] = 'Υπάρχει κάποιο σφάλμα κατά την αποδοχή της ερώτησης.'
+			end
+		else
+			flash[:notice] = 'Μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να δημοσιευθούν.'
+		end
+		redirect_to :action => 'questions', :state => 1
+	end
+
+
+	# μόνο ο superuser (user.id = 1) έχει την δυνατότητα αλλαγής του user_kind
+	def accept1
+		@user = User.find(params[:id])
+		if params[:value]
+			if params[:value] == '0'
+				@user.user_kind = 1
+				flash[:notice] = 'O χρήστης έγινε καθηγητής.'
+			else
+				@user.user_kind = 0
+				flash[:notice] = 'O χρήστης έγινε σπουδαστής.'
+			end
+
+		end
+		if !@user.save
+			flash[:notice] = 'Υπάρχει κάποιο σφάλμα.'
+		end
+		redirect_to root_url
+	end
+
+
+	# διαχείριση των ερωτήσεων από τους καθηγητές (user_kind = 1)
+	def questions
+		if params[:state]
+			@state = params[:state]
+			# λανθασμένες παράμετροι δείξε τις προς υποβολή ερωτήσεις
+			if !['0', '1', '2', '3', '4'].index(@state)
+				@state = '1'
+			end
+		else
+			# καθόλου παράμετροι δείξε τις προς υποβολή ερωτήσεις
+			@state = '1'
+		end
+		# διαφορετική σειρά ταξινόμησης για διαφορετικές καταστάσεις
+		case @state
+			when '0' then @state_name = 'Πρόχειρη'; @order = 'updated_at desc'
+			when '1' then @state_name = 'Προς υποβολή'; @order = 'updated_at desc'
+			when '2' then @state_name = 'Μη αποδεκτή'; @order = 'updated_at desc'
+			when '3' then @state_name = 'Αποδεκτή'; @order = 'accepted desc'
+			when '4' then @state_name = 'Προτεινόμενη'; @order = 'accepted desc'
+		end
+		@questions = Question.where(:state => @state).order(@order)
+	end
+
+
+	# διαχείριση των χρηστών από τον διαχειριστή (user.id = 1)
+	def users
+		if params[:user_kind]
+			@user_kind = params[:user_kind]
+			# λανθασμένες παράμετροι δείξε τους σπουδαστές
+			if !['0', '1'].index(@user_kind)
+				@user_kind = '0'
+			end
+		else
+			# καθόλου παράμετροι δείξε τους σπουδαστές
+			@user_kind = '0'
+		end
+		# διαφορετική σειρά ταξινόμησης για διαφορετικές καταστάσεις
+		case @user_kind
+			when '0' then @user_kind_name = 'Σπουδαστής'; @order = 'updated_at desc'
+			when '1' then @user_kind_name = 'Καθηγητής'; @order = 'updated_at desc'
+		end
+		@users = User.where(:user_kind => @user_kind).order(@order).paginate(:page => params[:page], :per_page => 10)
+	end
+
+	protected
+	def is_admin
+		if current_user
+			if current_user.user_kind == 1
+				return 1
+			end
+		end
+		redirect_to root_url
+	end
+end

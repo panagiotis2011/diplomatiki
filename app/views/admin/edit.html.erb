@@ -1,0 +1,12 @@
+<h1>User <%= @user.id -%></h1>
+
+<h2>Ασκήσεις χρήστη</h2>
+<% form_for @user do -%>
+  <% Exercise.all.each do |exercise| -%>
+    <div>
+      <%= check_box_tag :exercise_ids, exercise.id, @user.exercises.include?(exercise), :name => 'user[exercise_ids][]' -%>
+      <%= label_tag :exercise_ids, exercise.id -%>
+    </div>
+  <% end -%>
+  <%= submit_tag -%>
+<% end -%>

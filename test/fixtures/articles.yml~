@@ -1,0 +1,76 @@
+one:
+  id: 1
+  student_id: 1
+  title: MyString
+  body: MyText
+  message: MyString
+  freezebody: MyText
+  state: 0
+  submitted: 2011-02-11
+  accepted: 2011-02-11
+
+two:
+  id: 2
+  student_id: 1
+  title: MyString
+  body: MyText
+  message: MyString
+  freezebody: MyText
+  state: 3
+  submitted: 2011-02-11
+  accepted: 2011-02-11
+
+three:
+  id: 3
+  student_id: 2
+  title: MyString
+  body: MyText
+  message: MyString
+  freezebody: MyText
+  state: 0
+  submitted: 2011-02-11
+  accepted: 2011-02-11
+
+four:
+  id: 4
+  student_id: 2
+  title: MyString
+  body: MyText
+  message: MyString
+  freezebody: MyText
+  state: 1
+  submitted: 2011-02-11
+  accepted: 2011-02-11
+
+five:
+  id: 5
+  student_id: 2
+  title: MyString
+  body: MyText
+  message: MyString
+  freezebody: MyText
+  state: 2
+  submitted: 2011-02-11
+  accepted: 2011-02-11
+
+six:
+  id: 6
+  student_id: 2
+  title: MyString
+  body: MyText
+  message: MyString
+  freezebody: MyText
+  state: 3
+  submitted: 2011-02-11
+  accepted: 2011-02-11
+
+seven:
+  id: 7
+  student_id: 2
+  title: MyString
+  body: MyText
+  message: MyString
+  freezebody: MyText
+  state: 4
+  submitted: 2011-02-11
+  accepted: 2011-02-11

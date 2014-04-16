@@ -1,0 +1,16 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  question_id: 1
+  stars: 1
+
+two:
+  user_id: 1
+  question_id: 1
+  stars: 1
+
+three:
+  user_id: 2
+  question_id: 7
+  stars: 4
