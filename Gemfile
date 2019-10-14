@@ -10,7 +10,7 @@ gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'rails-i18n'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'rails3-jquery-autocomplete'
-gem 'paperclip', '~> 3.0'
+gem 'paperclip', '~> 4.3'
 gem 'aws-sdk', '~> 1.3.4'
 gem "watu_table_builder", :require => "table_builder"
 
