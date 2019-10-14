@@ -62,9 +62,8 @@ GEM
     gravatar_image_tag (1.0.0.pre2)
     hashie (1.2.0)
     hike (1.2.1)
-    httparty (0.8.1)
-      multi_json
-      multi_xml
+    httparty (0.16.2)
+      multi_xml (>= 0.5.2)
     httpclient (2.2.4)
     i18n (0.6.1)
     journey (1.0.4)
@@ -80,7 +79,7 @@ GEM
     mogli (0.0.28)
       httparty (>= 0.4.3)
     multi_json (1.1.0)
-    multi_xml (0.4.1)
+    multi_xml (0.6.0)
     multipart-post (1.1.5)
     nokogiri (1.5.2)
     oauth (0.4.5)
