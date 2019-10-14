@@ -43,6 +43,7 @@ GEM
     builder (3.0.4)
     cocaine (0.2.1)
     coderay (1.0.5)
+    concurrent-ruby (1.1.5)
     daemons (1.1.8)
     dalli (1.1.5)
     devise (1.5.3)
@@ -66,7 +67,8 @@ GEM
       multi_json
       multi_xml
     httpclient (2.2.4)
-    i18n (0.6.1)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     journey (1.0.4)
     jquery-rails (1.0.19)
       railties (~> 3.0)
