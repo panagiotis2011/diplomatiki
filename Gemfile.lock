@@ -115,7 +115,7 @@ GEM
       mime-types
     pg (0.13.2)
     polyglot (0.3.3)
-    rack (1.4.4)
+    rack (1.4.7)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-oauth2 (0.14.4)
