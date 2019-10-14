@@ -15,7 +15,7 @@ gem 'aws-sdk', '~> 1.3.4'
 gem "watu_table_builder", :require => "table_builder"
 
 
-gem 'will_paginate', '~> 3.0.pre2'
+gem 'will_paginate', '~> 3.0'
 gem 'RedCloth'
 gem 'coderay'
 gem 'validate_url'
