@@ -60,7 +60,7 @@ GEM
       rack-oauth2 (>= 0.14.4)
       tzinfo
     gravatar_image_tag (1.0.0.pre2)
-    hashie (1.2.0)
+    hashie (3.6.0)
     hike (1.2.1)
     httparty (0.8.1)
       multi_json
@@ -87,9 +87,9 @@ GEM
     oauth2 (0.5.2)
       faraday (~> 0.7)
       multi_json (~> 1.0)
-    omniauth (1.0.2)
-      hashie (~> 1.2)
-      rack
+    omniauth (1.4.2)
+      hashie (>= 1.2, < 4)
+      rack (>= 1.0, < 3)
     omniauth-facebook (1.2.0)
       omniauth-oauth2 (~> 1.0.0)
     omniauth-github (1.0.1)
@@ -115,7 +115,7 @@ GEM
       mime-types
     pg (0.13.2)
     polyglot (0.3.3)
-    rack (1.4.4)
+    rack (1.4.7)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-oauth2 (0.14.4)
