@@ -44,7 +44,7 @@ GEM
     cocaine (0.2.1)
     coderay (1.0.5)
     daemons (1.1.8)
-    dalli (1.1.5)
+    dalli (3.2.3)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
